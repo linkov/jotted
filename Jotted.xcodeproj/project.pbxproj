@@ -17,11 +17,12 @@
 		844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D21669AAE800935AB8 /* ISKDrawingView.m */; };
 		844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D41669AAE800935AB8 /* ISKFlipsideViewController.m */; };
 		844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D71669AAE800935AB8 /* ISKRootView.m */; };
-		844B90E91669AAE800935AB8 /* ISKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D91669AAE800935AB8 /* ISKStackViewController.m */; };
+		844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */; };
 		844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DA1669AAE800935AB8 /* InfoPlist.strings */; };
 		844B90EB1669AAE800935AB8 /* Jotted-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DC1669AAE800935AB8 /* Jotted-Info.plist */; };
 		844B90EC1669AAE800935AB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
 		84738D051669BCBB006501CE /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
+		84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D111669CE2C006501CE /* ISKMainViewController.m */; };
 		84C06115160258350059F8BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C06114160258350059F8BD /* Default-568h@2x.png */; };
 		C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D215F2691600EF7DA4 /* UIKit.framework */; };
 		C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
@@ -50,8 +51,7 @@
 		844B90D51669AAE800935AB8 /* ISKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMacros.h; sourceTree = "<group>"; };
 		844B90D61669AAE800935AB8 /* ISKRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKRootView.h; sourceTree = "<group>"; };
 		844B90D71669AAE800935AB8 /* ISKRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKRootView.m; sourceTree = "<group>"; };
-		844B90D81669AAE800935AB8 /* ISKStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStackViewController.h; sourceTree = "<group>"; };
-		844B90D91669AAE800935AB8 /* ISKStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStackViewController.m; sourceTree = "<group>"; };
+		844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKSimpleStackViewController.m; sourceTree = "<group>"; };
 		844B90DB1669AAE800935AB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		844B90DC1669AAE800935AB8 /* Jotted-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Jotted-Info.plist"; sourceTree = "<group>"; };
 		844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Jotted-Prefix.pch"; sourceTree = "<group>"; };
@@ -59,6 +59,9 @@
 		84738D031669BCBB006501CE /* ISKNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKNoteView.h; sourceTree = "<group>"; };
 		84738D041669BCBB006501CE /* ISKNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKNoteView.m; sourceTree = "<group>"; };
 		84738D071669BCDC006501CE /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		84738D101669CE2C006501CE /* ISKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMainViewController.h; sourceTree = "<group>"; };
+		84738D111669CE2C006501CE /* ISKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKMainViewController.m; sourceTree = "<group>"; };
+		84738D141669CE95006501CE /* ISKSimpleStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKSimpleStackViewController.h; sourceTree = "<group>"; };
 		84C06114160258350059F8BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3BA32CE15F2691600EF7DA4 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BA32D215F2691600EF7DA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -126,8 +129,10 @@
 				844B90D51669AAE800935AB8 /* ISKMacros.h */,
 				844B90D61669AAE800935AB8 /* ISKRootView.h */,
 				844B90D71669AAE800935AB8 /* ISKRootView.m */,
-				844B90D81669AAE800935AB8 /* ISKStackViewController.h */,
-				844B90D91669AAE800935AB8 /* ISKStackViewController.m */,
+				84738D141669CE95006501CE /* ISKSimpleStackViewController.h */,
+				844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */,
+				84738D101669CE2C006501CE /* ISKMainViewController.h */,
+				84738D111669CE2C006501CE /* ISKMainViewController.m */,
 				84738D031669BCBB006501CE /* ISKNoteView.h */,
 				84738D041669BCBB006501CE /* ISKNoteView.m */,
 			);
@@ -248,9 +253,10 @@
 				844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
-				844B90E91669AAE800935AB8 /* ISKStackViewController.m in Sources */,
+				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
+				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

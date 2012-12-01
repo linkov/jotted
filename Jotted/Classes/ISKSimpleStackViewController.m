@@ -9,10 +9,10 @@
 #define TRANSITION_Y_AXIS 88
 
 #include "ISKNoteView.h"
-#import "ISKStackViewController.h"
+#import "ISKSimpleStackViewController.h"
 #import "ISKRootView.h"
 
-@interface ISKStackViewController () {
+@interface ISKSimpleStackViewController () {
     
     UISwipeGestureRecognizer *clearGR;
     UISwipeGestureRecognizer *flipGR;
@@ -53,7 +53,7 @@
 
 @end
 
-@implementation ISKStackViewController
+@implementation ISKSimpleStackViewController
 
 -(void)loadView
 {

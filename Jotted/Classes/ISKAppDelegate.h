@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class ISKStackViewController;
+@class ISKSimpleStackViewController;
 
 @interface ISKAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ISKStackViewController *mainViewController;
+@property (strong, nonatomic) ISKSimpleStackViewController *mainViewController;
 
 @end
