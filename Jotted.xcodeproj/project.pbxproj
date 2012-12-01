@@ -21,6 +21,7 @@
 		844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DA1669AAE800935AB8 /* InfoPlist.strings */; };
 		844B90EB1669AAE800935AB8 /* Jotted-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DC1669AAE800935AB8 /* Jotted-Info.plist */; };
 		844B90EC1669AAE800935AB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
+		84738D051669BCBB006501CE /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
 		84C06115160258350059F8BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C06114160258350059F8BD /* Default-568h@2x.png */; };
 		C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D215F2691600EF7DA4 /* UIKit.framework */; };
 		C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
@@ -55,6 +56,9 @@
 		844B90DC1669AAE800935AB8 /* Jotted-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Jotted-Info.plist"; sourceTree = "<group>"; };
 		844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Jotted-Prefix.pch"; sourceTree = "<group>"; };
 		844B90DE1669AAE800935AB8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84738D031669BCBB006501CE /* ISKNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKNoteView.h; sourceTree = "<group>"; };
+		84738D041669BCBB006501CE /* ISKNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKNoteView.m; sourceTree = "<group>"; };
+		84738D071669BCDC006501CE /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		84C06114160258350059F8BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3BA32CE15F2691600EF7DA4 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BA32D215F2691600EF7DA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +96,7 @@
 				844B90DC1669AAE800935AB8 /* Jotted-Info.plist */,
 				844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */,
 				844B90DE1669AAE800935AB8 /* main.m */,
+				84738D071669BCDC006501CE /* Const.h */,
 			);
 			path = Jotted;
 			sourceTree = "<group>";
@@ -123,6 +128,8 @@
 				844B90D71669AAE800935AB8 /* ISKRootView.m */,
 				844B90D81669AAE800935AB8 /* ISKStackViewController.h */,
 				844B90D91669AAE800935AB8 /* ISKStackViewController.m */,
+				84738D031669BCBB006501CE /* ISKNoteView.h */,
+				84738D041669BCBB006501CE /* ISKNoteView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
+				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

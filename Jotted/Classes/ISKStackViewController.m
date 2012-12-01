@@ -8,6 +8,7 @@
 
 #define TRANSITION_Y_AXIS 88
 
+#include "ISKNoteView.h"
 #import "ISKStackViewController.h"
 #import "ISKRootView.h"
 
@@ -20,9 +21,9 @@
     UITapGestureRecognizer *switchViewGR;
     UITapGestureRecognizer *switchViewGR2;
     
-    UIView *firstView;
-    UIView *secondView;
-    UIView *thirdView;
+    ISKNoteView *firstView;
+    ISKNoteView *secondView;
+    ISKNoteView *thirdView;
     
     UIImageView *pencil;
     UIImageView *upArrow;
@@ -88,19 +89,16 @@
     [hideGR release];
     
     
-    firstView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    firstView.layer.cornerRadius =STACKCORNERRAD;
+    firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     firstView.backgroundColor = YELLOWCOLOR;
     firstView.tag = 64;
     
-    secondView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+44, self.view.frame.size.width, self.view.frame.size.height)];
-    secondView.layer.cornerRadius =STACKCORNERRAD;
+    secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+44, self.view.frame.size.width, self.view.frame.size.height)];
     secondView.backgroundColor = BLUECOLOR;
     secondView.alpha = 0;
     secondView.tag = 65;
     
-    thirdView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+88, self.view.frame.size.width, self.view.frame.size.height)];
-    thirdView.layer.cornerRadius =STACKCORNERRAD;
+    thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+88, self.view.frame.size.width, self.view.frame.size.height)];
     thirdView.backgroundColor = REDCOLOR;
     thirdView.alpha = 0;
     thirdView.tag = 66;
