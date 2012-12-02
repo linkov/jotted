@@ -14,6 +14,8 @@
 
 @interface ISKSimpleStackViewController () {
     
+    UIScrollView *pagingScrollView;
+    
     UISwipeGestureRecognizer *clearGR;
     UISwipeGestureRecognizer *flipGR;
     UISwipeGestureRecognizer *revealGR;
@@ -109,9 +111,30 @@
     [switchViewGR2 release];
     
     
-    [self.view addSubview:firstView];
-    [self.view insertSubview:secondView belowSubview:firstView];
-    [self.view insertSubview:thirdView belowSubview:secondView];
+    // setup paging scroll
+    CGRect scrollFrame;
+    scrollFrame.origin.x = 0;
+    scrollFrame.origin.y = 0;
+    scrollFrame.size.height = 480;
+    scrollFrame.size.width = PAGERPAGEWIDTH;
+    
+    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
+    pagingScrollView.pagingEnabled = YES;
+    pagingScrollView.scrollEnabled = YES;
+    pagingScrollView.directionalLockEnabled = YES;
+    pagingScrollView.bounces = YES;
+    pagingScrollView.delegate = self;
+    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+    
+    
+    [pagingScrollView addSubview:firstView];
+    [pagingScrollView insertSubview:secondView belowSubview:firstView];
+    [pagingScrollView insertSubview:thirdView belowSubview:secondView];
+    
+    [self.view addSubview:pagingScrollView];
+    
+    
+    
     [firstView release];
     [secondView release];
     [thirdView release];
