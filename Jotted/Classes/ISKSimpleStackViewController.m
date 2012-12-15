@@ -60,7 +60,13 @@
 -(void)loadView
 {
     
-    self.view = [[[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
+    self.view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
+    
+    
+    ISKRootView *simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    simpleNotepadStack.backgroundColor = [UIColor greenColor];
+    
+    
     
     flipGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showFlipside)];
     flipGR.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -81,26 +87,26 @@
     switchViewGR2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
     switchViewGR2.numberOfTapsRequired = 1;
     
-    [self.view addGestureRecognizer:clearGR];
-    [self.view addGestureRecognizer:flipGR];
-    [self.view addGestureRecognizer:revealGR];
-    [self.view addGestureRecognizer:hideGR];
+    [simpleNotepadStack addGestureRecognizer:clearGR];
+    [simpleNotepadStack addGestureRecognizer:flipGR];
+    [simpleNotepadStack addGestureRecognizer:revealGR];
+    [simpleNotepadStack addGestureRecognizer:hideGR];
     [clearGR release];
     [flipGR release];
     [revealGR release];
     [hideGR release];
     
     
-    firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     firstView.backgroundColor = YELLOWCOLOR;
     firstView.tag = 64;
     
-    secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+44, self.view.frame.size.width, self.view.frame.size.height)];
+    secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height)];
     secondView.backgroundColor = BLUECOLOR;
     secondView.alpha = 0;
     secondView.tag = 65;
     
-    thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+88, self.view.frame.size.width, self.view.frame.size.height)];
+    thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height)];
     thirdView.backgroundColor = REDCOLOR;
     thirdView.alpha = 0;
     thirdView.tag = 66;
@@ -118,20 +124,25 @@
     scrollFrame.size.height = 480;
     scrollFrame.size.width = PAGERPAGEWIDTH;
     
-    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
-    pagingScrollView.pagingEnabled = YES;
-    pagingScrollView.scrollEnabled = YES;
-    pagingScrollView.directionalLockEnabled = YES;
-    pagingScrollView.bounces = YES;
-    pagingScrollView.delegate = self;
-    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+//    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
+//    pagingScrollView.pagingEnabled = YES;
+//    pagingScrollView.scrollEnabled = YES;
+//    pagingScrollView.canCancelContentTouches = NO;
+//    pagingScrollView.directionalLockEnabled = YES;
+//    pagingScrollView.bounces = YES;
+//    pagingScrollView.delegate = self;
+//    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+//    pagingScrollView.backgroundColor = [UIColor redColor];
+
+   // UIView *checklistNotepadStack = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x+PAGERPAGEWIDTH, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     
+    [simpleNotepadStack addSubview:firstView];
+    [simpleNotepadStack insertSubview:secondView belowSubview:firstView];
+    [simpleNotepadStack insertSubview:thirdView belowSubview:secondView];
     
-    [pagingScrollView addSubview:firstView];
-    [pagingScrollView insertSubview:secondView belowSubview:firstView];
-    [pagingScrollView insertSubview:thirdView belowSubview:secondView];
-    
-    [self.view addSubview:pagingScrollView];
+  //  [pagingScrollView  addSubview:simpleNotepadStack];
+  //  [pagingScrollView addSubview:checklistNotepadStack];
+    [self.view addSubview:simpleNotepadStack];
     
     
     
@@ -145,7 +156,7 @@
     //noteText.
     
     noteText.delegate = self;
-    [self.view addSubview:noteText];
+    [simpleNotepadStack addSubview:noteText];
     [noteText release];
     
     doneButton = [[UIButton alloc]initWithFrame:CGRectMake(255, 10, 55, 44)];
