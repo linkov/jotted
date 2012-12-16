@@ -223,6 +223,7 @@
     [self setupShadow];
     
     [self animateUp];
+   
     //[self setupPageControl];
     
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
@@ -426,7 +427,8 @@
         hideGR.enabled = YES;
         noteText.editable = NO;
         noteText.userInteractionEnabled = NO;
-        parent.pageControl.alpha =1;
+        
+        if(self.isVisible) parent.pageControl.alpha =1;
         
     }];
     

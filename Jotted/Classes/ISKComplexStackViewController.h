@@ -13,4 +13,5 @@
 @interface ISKComplexStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,retain) ISKRootView *complexNotepadStack;
+@property BOOL isVisible;
 @end

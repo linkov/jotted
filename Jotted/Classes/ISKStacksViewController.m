@@ -52,7 +52,8 @@
     [simpleStack didMoveToParentViewController:self];
     
     complexStack = [[ISKComplexStackViewController alloc]init];
-    [self addChildViewController:simpleStack];
+    complexStack.isVisible = NO;
+    [self addChildViewController:complexStack];
     [complexStack didMoveToParentViewController:self];
     
     
@@ -89,6 +90,11 @@
         CGFloat pageWidth = pagingScrollView.frame.size.width;
         int page = floor((pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         pageControl.currentPage = page;
+    
+    if (page == 1) {
+        
+        complexStack.isVisible = YES;
+    }
     
 }
 
