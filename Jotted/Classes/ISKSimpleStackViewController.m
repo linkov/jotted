@@ -9,13 +9,15 @@
 #define TRANSITION_Y_AXIS 88
 #define TRANSFORM_WH 25
 
-#include "ISKNoteView.h"
+#import "ISKNoteView.h"
 #import "ISKSimpleStackViewController.h"
 #import "ISKRootView.h"
+#import "StyledPageControl.h"
 
 @interface ISKSimpleStackViewController () {
     
     UIScrollView *pagingScrollView;
+    StyledPageControl* pageControl;
     
     UISwipeGestureRecognizer *clearGR;
     UISwipeGestureRecognizer *flipGR;
@@ -212,6 +214,7 @@
     [self toggleArrows:noteText];
     
     [self setupShadow];
+    [self setupPageControl];
     
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
     noteText.contentSize = paddedSize;
@@ -384,24 +387,33 @@
 }
 
 -(void)animateUp  {
-    [UIView beginAnimations:nil context:NULL];
-    CGPoint p = simpleNotepadStack.center;
-    p.y -= TRANSITION_Y_AXIS;
-    simpleNotepadStack.center = p;
-    secondView.alpha = 1;
-    thirdView.alpha = 1;
-    [self squeezeStack];
-    [self addShadow];
-    [UIView commitAnimations];
+
     
-    pagingScrollView.pagingEnabled = YES;
-    pagingScrollView.scrollEnabled = YES;
-    clearGR.enabled = NO;
-    flipGR.enabled= NO;
-    revealGR.enabled = NO;
-    hideGR.enabled = YES;
-    noteText.editable = NO;
-    noteText.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        CGPoint p = simpleNotepadStack.center;
+        p.y -= TRANSITION_Y_AXIS;
+        simpleNotepadStack.center = p;
+        secondView.alpha = 1;
+        thirdView.alpha = 1;
+        [self squeezeStack];
+        [self addShadow];
+        
+    } completion:^(BOOL finished) {
+        
+        pagingScrollView.pagingEnabled = YES;
+        pagingScrollView.scrollEnabled = YES;
+        clearGR.enabled = NO;
+        flipGR.enabled= NO;
+        revealGR.enabled = NO;
+        hideGR.enabled = YES;
+        noteText.editable = NO;
+        noteText.userInteractionEnabled = NO;
+        pageControl.alpha =1;
+        
+    }];
+    
+
 }
 
 
@@ -425,6 +437,7 @@
     
     noteText.editable = YES;
     noteText.userInteractionEnabled = YES;
+    pageControl.alpha = 0;
 }
 
 -(void)setupShadow {
@@ -468,6 +481,7 @@
 
 }
 
+
 -(void)addShadow {
     
     overlay.alpha = 0.3;
@@ -477,6 +491,26 @@
     
     overlay.alpha = 0;
 }
+
+-(void)setupPageControl {
+    
+    pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, 448, 100, 13)];
+    //pageControl.backgroundColor = [UIColor redColor];
+    [pageControl setPageControlStyle:PageControlStyleDefault];
+     //   pageControl.strokeNormalColor = UIColorFromRGB(0xF1EBEB);
+     //   pageControl.strokeSelectedColor = [UIColor lightGrayColor];
+     //   pageControl.coreNormalColor = UIColorFromRGB(0xF1EBEB);
+     //   pageControl.coreSelectedColor = [UIColor lightGrayColor];
+    
+
+        pageControl.diameter = 6;
+    
+    pageControl.numberOfPages = 2;
+    pageControl.currentPage = 0;
+    pageControl.alpha = 0;
+    [self.view addSubview:pageControl];
+}
+
 
 -(void)updateAppSettings  {
     
@@ -542,18 +576,6 @@
 
 
 
-
-#pragma mark - TextView
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-   
-    [self toggleArrows:scrollView];
-    
-   
-
-
-}
 
 //-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
 //    
@@ -679,7 +701,27 @@
     
 }
 
+#pragma mark - UIScrollView delegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if ([scrollView.superview isKindOfClass:[UITextView class]]) {
+        
+         [self toggleArrows:scrollView];
+
+    }
+    else {
+        
+        // Update the page when more than 50% of the previous/next page is visible
+        CGFloat pageWidth = pagingScrollView.frame.size.width;
+        int page = floor((pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        pageControl.currentPage = page;
+        
+        
+    }
+
+    
+}
 
 #pragma mark - Flipside View
 

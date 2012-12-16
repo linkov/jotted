@@ -33,6 +33,7 @@
 		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
 		C3E76E0F15F4DD480062AF30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0E15F4DD480062AF30 /* Default@2x.png */; };
 		C3E76E1115F4DD4B0062AF30 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E1015F4DD4B0062AF30 /* Default.png */; };
+		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C3E76E0E15F4DD480062AF30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C3E76E1015F4DD4B0062AF30 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
+		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,7 @@
 				C3E76E0815F36A620062AF30 /* Settings.bundle */,
 				C3E76DE315F2DB460062AF30 /* Icon.png */,
 				C3E76DE015F2DB420062AF30 /* Icon@2x.png */,
+				F113EC6D167DC41A0077B6D1 /* vendor */,
 				844B90C61669AAE800935AB8 /* Jotted */,
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
 				C3BA32CF15F2691600EF7DA4 /* Products */,
@@ -171,6 +175,23 @@
 				C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F113EC6D167DC41A0077B6D1 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F113EC6E167DC41A0077B6D1 /* StyledPageControl */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		F113EC6E167DC41A0077B6D1 /* StyledPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */,
+				F113EC70167DC41A0077B6D1 /* StyledPageControl.m */,
+			);
+			path = StyledPageControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +278,7 @@
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
+				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,8 +303,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -297,8 +319,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "A98E7160-E06E-41EA-A0D1-3D87371BD449";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -310,8 +332,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -320,8 +342,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "A98E7160-E06E-41EA-A0D1-3D87371BD449";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -330,14 +352,14 @@
 		C3BA32F315F2691600EF7DA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -345,14 +367,14 @@
 		C3BA32F415F2691600EF7DA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (2G9CV2C6CJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1554DF26-43F3-4815-8BE0-4C5E1995D1BE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
