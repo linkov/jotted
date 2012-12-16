@@ -26,7 +26,7 @@
     // Allow these views to receive press events.  All other views will get ignored
     for( UIView *foundView in self.subviews )
     {
-        if( foundView.tag == 66 ||foundView.tag == 65 )
+        if( foundView.tag == 66 ||foundView.tag == 65 || foundView.tag == 68 ||foundView.tag == 69 )
         {
             return YES;
         }

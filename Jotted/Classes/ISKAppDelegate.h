@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISKStacksViewController.h"
 
 @class ISKSimpleStackViewController;
 
@@ -14,6 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ISKSimpleStackViewController *mainViewController;
+@property (strong, nonatomic) ISKStacksViewController *mainViewController;
 
 @end

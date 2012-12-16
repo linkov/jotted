@@ -8,7 +8,7 @@
 
 #import "ISKAppDelegate.h"
 
-#import "ISKSimpleStackViewController.h"
+
 
 @implementation ISKAppDelegate
 
@@ -25,7 +25,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:NO];
     
-    self.mainViewController = [[ISKSimpleStackViewController new] autorelease];
+    self.mainViewController = [[ISKStacksViewController new] autorelease];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     

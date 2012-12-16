@@ -34,6 +34,8 @@
 		C3E76E0F15F4DD480062AF30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0E15F4DD480062AF30 /* Default@2x.png */; };
 		C3E76E1115F4DD4B0062AF30 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E1015F4DD4B0062AF30 /* Default.png */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
+		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
+		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,10 @@
 		C3E76E1015F4DD4B0062AF30 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
+		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
+		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
+		F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKComplexStackViewController.h; sourceTree = "<group>"; };
+		F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKComplexStackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +138,12 @@
 				844B90D51669AAE800935AB8 /* ISKMacros.h */,
 				844B90D61669AAE800935AB8 /* ISKRootView.h */,
 				844B90D71669AAE800935AB8 /* ISKRootView.m */,
+				F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */,
+				F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */,
 				84738D141669CE95006501CE /* ISKSimpleStackViewController.h */,
 				844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */,
+				F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */,
+				F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */,
 				84738D101669CE2C006501CE /* ISKMainViewController.h */,
 				84738D111669CE2C006501CE /* ISKMainViewController.m */,
 				84738D031669BCBB006501CE /* ISKNoteView.h */,
@@ -279,6 +289,8 @@
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
 				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
+				F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */,
+				F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
