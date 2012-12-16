@@ -7,6 +7,7 @@
 //
 
 #define TRANSITION_Y_AXIS 88
+#define TRANSFORM_WH 25
 
 #include "ISKNoteView.h"
 #import "ISKSimpleStackViewController.h"
@@ -23,9 +24,12 @@
     UITapGestureRecognizer *switchViewGR;
     UITapGestureRecognizer *switchViewGR2;
     
+    ISKRootView *simpleNotepadStack;
     ISKNoteView *firstView;
     ISKNoteView *secondView;
     ISKNoteView *thirdView;
+    
+    UIView *overlay;
     
     UIImageView *pencil;
     UIImageView *upArrow;
@@ -63,8 +67,8 @@
     self.view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
     
     
-    ISKRootView *simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
-    simpleNotepadStack.backgroundColor = [UIColor greenColor];
+    simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    //simpleNotepadStack.backgroundColor = [UIColor greenColor];
     
     
     
@@ -90,7 +94,7 @@
     [simpleNotepadStack addGestureRecognizer:clearGR];
     [simpleNotepadStack addGestureRecognizer:flipGR];
     [simpleNotepadStack addGestureRecognizer:revealGR];
-    [simpleNotepadStack addGestureRecognizer:hideGR];
+    [self.view addGestureRecognizer:hideGR];
     [clearGR release];
     [flipGR release];
     [revealGR release];
@@ -124,25 +128,25 @@
     scrollFrame.size.height = 480;
     scrollFrame.size.width = PAGERPAGEWIDTH;
     
-//    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
-//    pagingScrollView.pagingEnabled = YES;
-//    pagingScrollView.scrollEnabled = YES;
-//    pagingScrollView.canCancelContentTouches = NO;
-//    pagingScrollView.directionalLockEnabled = YES;
-//    pagingScrollView.bounces = YES;
-//    pagingScrollView.delegate = self;
-//    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
-//    pagingScrollView.backgroundColor = [UIColor redColor];
-
+    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
+    pagingScrollView.pagingEnabled = NO;
+    pagingScrollView.scrollEnabled = NO;
+    pagingScrollView.canCancelContentTouches = NO;
+    pagingScrollView.directionalLockEnabled = YES;
+    pagingScrollView.bounces = YES;
+    pagingScrollView.delegate = self;
+    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+    pagingScrollView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    
    // UIView *checklistNotepadStack = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x+PAGERPAGEWIDTH, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     
     [simpleNotepadStack addSubview:firstView];
     [simpleNotepadStack insertSubview:secondView belowSubview:firstView];
     [simpleNotepadStack insertSubview:thirdView belowSubview:secondView];
     
-  //  [pagingScrollView  addSubview:simpleNotepadStack];
-  //  [pagingScrollView addSubview:checklistNotepadStack];
-    [self.view addSubview:simpleNotepadStack];
+    [pagingScrollView  addSubview:simpleNotepadStack];
+   // [pagingScrollView addSubview:checklistNotepadStack];
+    [self.view addSubview:pagingScrollView];
     
     
     
@@ -206,6 +210,8 @@
     [self checkDrawings];
     
     [self toggleArrows:noteText];
+    
+    [self setupShadow];
     
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
     noteText.contentSize = paddedSize;
@@ -336,16 +342,60 @@
     }
 }
 
+-(void)squeezeStack {
+    
+    
+    for (ISKNoteView *v  in simpleNotepadStack.subviews) {
+        
+        CGRect newFrame = v.frame;
+        newFrame.size.height -= TRANSFORM_WH;
+        newFrame.size.width -= TRANSFORM_WH;
+        newFrame.origin.x +=TRANSFORM_WH/2;
+        newFrame.origin.y +=TRANSFORM_WH/2;
+        v.frame = newFrame;
+        if (![v.class isSubclassOfClass:[UITextView class]]) {
+        [v.layer setMasksToBounds:NO ];
+        [v.layer setShadowColor:[[UIColor blackColor ] CGColor ] ];
+        [v.layer setShadowOpacity:0.65 ];
+        [v.layer setShadowRadius:6.0 ];
+        [v.layer setShadowOffset:CGSizeMake( 0 , 0 ) ];
+        [v.layer setShouldRasterize:YES ];
+        }
+        
+    }
+    
+}
+
+-(void)expandStack {
+    
+    for (ISKNoteView *v  in simpleNotepadStack.subviews) {
+        
+        CGRect newFrame = v.frame;
+        newFrame.size.height += TRANSFORM_WH;
+        newFrame.size.width += TRANSFORM_WH;
+        newFrame.origin.x -=TRANSFORM_WH/2;
+        newFrame.origin.y -=TRANSFORM_WH/2;
+        v.frame = newFrame;
+        
+        [v.layer setShadowOpacity:0];
+        
+    }
+    
+}
 
 -(void)animateUp  {
     [UIView beginAnimations:nil context:NULL];
-    CGPoint p = self.view.center;
+    CGPoint p = simpleNotepadStack.center;
     p.y -= TRANSITION_Y_AXIS;
-    self.view.center = p;
+    simpleNotepadStack.center = p;
     secondView.alpha = 1;
     thirdView.alpha = 1;
+    [self squeezeStack];
+    [self addShadow];
     [UIView commitAnimations];
     
+    pagingScrollView.pagingEnabled = YES;
+    pagingScrollView.scrollEnabled = YES;
     clearGR.enabled = NO;
     flipGR.enabled= NO;
     revealGR.enabled = NO;
@@ -357,13 +407,17 @@
 
 -(void)animateDown  {
     [UIView beginAnimations:nil context:NULL];
-    CGPoint p = self.view.center;
+    CGPoint p = simpleNotepadStack.center;
     p.y += TRANSITION_Y_AXIS;
-    self.view.center = p;
+    simpleNotepadStack.center = p;
     secondView.alpha = 0;
     thirdView.alpha = 0;
+    [self expandStack];
+    [self hideShadow];
     [UIView commitAnimations];
     
+    pagingScrollView.pagingEnabled = NO;
+    pagingScrollView.scrollEnabled = NO;
     flipGR.enabled= YES;
     revealGR.enabled = YES;
     clearGR.enabled = YES;
@@ -373,7 +427,56 @@
     noteText.userInteractionEnabled = YES;
 }
 
+-(void)setupShadow {
+    
+    overlay = [[UIView alloc]initWithFrame:self.view.frame];
+    overlay.alpha = 0;
+    overlay.backgroundColor = [UIColor blackColor];
+    [overlay setUserInteractionEnabled: NO];
+    //overlay.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:overlay];
+    
+    
+//        int radius = 200;
+//        CAShapeLayer *circle = [CAShapeLayer layer];
+//        circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0*radius, 2.0*radius)
+//                                                 cornerRadius:radius].CGPath;
+//        // Center the shape in self.view
+//        circle.position = CGPointMake(CGRectGetMidX(self.view.frame)-radius,
+//                                      CGRectGetMidY(self.view.frame)-radius);
+//        circle.fillColor = [UIColor clearColor].CGColor;
+//        circle.strokeColor = [UIColor blackColor].CGColor;
+//        circle.lineWidth = 5;
+//            [circle setMasksToBounds:NO ];
+//            [circle setShadowColor:[[UIColor blackColor ] CGColor ] ];
+//            [circle setShadowOpacity:0.65 ];
+//            [circle setShadowRadius:300.0 ];
+//            [circle setShadowOffset:CGSizeMake(0 ,0 ) ];
+//            [circle setShouldRasterize:YES ];
+//            [circle setShadowPath:circle.path];
+//    
+//        [overlay.layer addSublayer:circle];
+    
+//        [overlay.layer setMasksToBounds:NO ];
+//        [overlay.layer setShadowColor:[[UIColor blackColor ] CGColor ] ];
+//        [overlay.layer setShadowOpacity:0.65 ];
+//        [overlay.layer setShadowRadius:16.0 ];
+//        [overlay.layer setShadowOffset:CGSizeMake( 0 , 0 ) ];
+//        [overlay.layer setShouldRasterize:YES ];
+//        [overlay.layer setShadowPath:[[UIBezierPath bezierPathWithRect:self.view.frame ] CGPath ] ];
+    //
 
+}
+
+-(void)addShadow {
+    
+    overlay.alpha = 0.3;
+}
+
+-(void)hideShadow {
+    
+    overlay.alpha = 0;
+}
 
 -(void)updateAppSettings  {
     
