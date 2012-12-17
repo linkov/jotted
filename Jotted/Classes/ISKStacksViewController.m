@@ -44,7 +44,7 @@
     pagingScrollView.bounces = YES;
     pagingScrollView.delegate = self;
     pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
-    pagingScrollView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    pagingScrollView.backgroundColor = [UIColor blackColor];
     
     
     simpleStack = [[ISKSimpleStackViewController alloc]init];

@@ -218,7 +218,7 @@
     
     [self toggleArrows:noteText];
     
-    [self setupShadow];
+    [self setupOverlay];
     //[self setupPageControl];
     
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
@@ -363,14 +363,14 @@
             newFrame.origin.x +=TRANSFORM_WH/2;
             newFrame.origin.y +=TRANSFORM_WH/2;
             v.frame = newFrame;
-            if (![v.class isSubclassOfClass:[UITextView class]]) {
-                [v.layer setMasksToBounds:NO ];
-                [v.layer setShadowColor:[[UIColor blackColor ] CGColor ] ];
-                [v.layer setShadowOpacity:0.65 ];
-                [v.layer setShadowRadius:6.0 ];
-                [v.layer setShadowOffset:CGSizeMake( 0 , 0 ) ];
-                [v.layer setShouldRasterize:YES ];
-            }
+//            if (![v.class isSubclassOfClass:[UITextView class]]) {
+//                [v.layer setMasksToBounds:NO ];
+//                [v.layer setShadowColor:[[UIColor blackColor ] CGColor ] ];
+//                [v.layer setShadowOpacity:0.65 ];
+//                [v.layer setShadowRadius:6.0 ];
+//                [v.layer setShadowOffset:CGSizeMake( 0 , 0 ) ];
+//                [v.layer setShouldRasterize:YES ];
+//            }
 
             
         }
@@ -393,7 +393,7 @@
         newFrame.origin.y -=TRANSFORM_WH/2;
         v.frame = newFrame;
         
-        [v.layer setShadowOpacity:0];
+        //[v.layer setShadowOpacity:0];
         }
     }
     
@@ -410,7 +410,7 @@
         secondView.alpha = 1;
         thirdView.alpha = 1;
         [self squeezeStack];
-        [self addShadow];
+        [self addOverlay];
         
     } completion:^(BOOL finished) {
         
@@ -432,6 +432,8 @@
 
 -(void)animateDown  {
     
+    parent.pageControl.alpha = 0;
+    
     [UIView animateWithDuration:0.2 animations:^{
        
         CGPoint p = simpleNotepadStack.center;
@@ -440,7 +442,7 @@
         secondView.alpha = 0;
         thirdView.alpha = 0;
         [self expandStack];
-        [self hideShadow];
+        [self hideOverlay];
 
         
     } completion:^(BOOL finished) {
@@ -454,34 +456,14 @@
         
         noteText.editable = YES;
         noteText.userInteractionEnabled = YES;
-        parent.pageControl.alpha = 0;
+        
 
         
     }];
     
-//    [UIView beginAnimations:nil context:NULL];
-//    CGPoint p = simpleNotepadStack.center;
-//    p.y += TRANSITION_Y_AXIS;
-//    simpleNotepadStack.center = p;
-//    secondView.alpha = 0;
-//    thirdView.alpha = 0;
-//    [self expandStack];
-//    [self hideShadow];
-//    [UIView commitAnimations];
-//    
-//    parent.pagingScrollView.pagingEnabled = NO;
-//    parent.pagingScrollView.scrollEnabled = NO;
-//    flipGR.enabled= YES;
-//    revealGR.enabled = YES;
-//    clearGR.enabled = YES;
-//    hideGR.enabled = NO;
-//    
-//    noteText.editable = YES;
-//    noteText.userInteractionEnabled = YES;
-//    parent.pageControl.alpha = 0;
 }
 
--(void)setupShadow {
+-(void)setupOverlay {
     
     overlay = [[UIView alloc]initWithFrame:self.view.frame];
     overlay.alpha = 0;
@@ -494,12 +476,12 @@
 }
 
 
--(void)addShadow {
+-(void)addOverlay {
     
     overlay.alpha = 0.3;
 }
 
--(void)hideShadow {
+-(void)hideOverlay {
     
     overlay.alpha = 0;
 }
