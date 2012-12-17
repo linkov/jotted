@@ -39,6 +39,7 @@
     self.pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
     pagingScrollView.pagingEnabled = NO;
     pagingScrollView.scrollEnabled = NO;
+    pagingScrollView.showsHorizontalScrollIndicator = NO;
     pagingScrollView.canCancelContentTouches = NO;
     pagingScrollView.directionalLockEnabled = YES;
     pagingScrollView.bounces = YES;

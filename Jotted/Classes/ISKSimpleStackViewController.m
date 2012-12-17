@@ -469,7 +469,6 @@
     overlay.alpha = 0;
     overlay.backgroundColor = [UIColor blackColor];
     [overlay setUserInteractionEnabled: NO];
-    //overlay.backgroundColor = [UIColor blackColor];
     [self.view addSubview:overlay];
 
 

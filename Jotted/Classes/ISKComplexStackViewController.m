@@ -419,8 +419,6 @@
         
     } completion:^(BOOL finished) {
         
-        parent.pagingScrollView.pagingEnabled = YES;
-        parent.pagingScrollView.scrollEnabled = YES;
         clearGR.enabled = NO;
         flipGR.enabled= NO;
         revealGR.enabled = NO;
@@ -428,7 +426,11 @@
         noteText.editable = NO;
         noteText.userInteractionEnabled = NO;
         
-        if(self.isVisible) parent.pageControl.alpha =1;
+        if (self.isVisible) {
+            parent.pageControl.alpha =1;
+            parent.pagingScrollView.pagingEnabled = YES;
+            parent.pagingScrollView.scrollEnabled = YES;
+        }
         
     }];
     
