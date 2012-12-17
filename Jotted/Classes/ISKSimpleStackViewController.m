@@ -355,7 +355,7 @@
     
     for (ISKNoteView *v  in simpleNotepadStack.subviews) {
         
-        if (![v.class isSubclassOfClass:[UIImageView class] ]) {
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
             
             CGRect newFrame = v.frame;
             newFrame.size.height -= TRANSFORM_WH;
@@ -384,7 +384,7 @@
     
     for (ISKNoteView *v  in simpleNotepadStack.subviews) {
      
-        if (![v.class isSubclassOfClass:[UIImageView class] ]) {
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
             
         CGRect newFrame = v.frame;
         newFrame.size.height += TRANSFORM_WH;
@@ -431,26 +431,54 @@
 
 
 -(void)animateDown  {
-    [UIView beginAnimations:nil context:NULL];
-    CGPoint p = simpleNotepadStack.center;
-    p.y += TRANSITION_Y_AXIS;
-    simpleNotepadStack.center = p;
-    secondView.alpha = 0;
-    thirdView.alpha = 0;
-    [self expandStack];
-    [self hideShadow];
-    [UIView commitAnimations];
     
-    parent.pagingScrollView.pagingEnabled = NO;
-    parent.pagingScrollView.scrollEnabled = NO;
-    flipGR.enabled= YES;
-    revealGR.enabled = YES;
-    clearGR.enabled = YES;
-    hideGR.enabled = NO;
+    [UIView animateWithDuration:0.2 animations:^{
+       
+        CGPoint p = simpleNotepadStack.center;
+        p.y += TRANSITION_Y_AXIS;
+        simpleNotepadStack.center = p;
+        secondView.alpha = 0;
+        thirdView.alpha = 0;
+        [self expandStack];
+        [self hideShadow];
+
+        
+    } completion:^(BOOL finished) {
+        
+        parent.pagingScrollView.pagingEnabled = NO;
+        parent.pagingScrollView.scrollEnabled = NO;
+        flipGR.enabled= YES;
+        revealGR.enabled = YES;
+        clearGR.enabled = YES;
+        hideGR.enabled = NO;
+        
+        noteText.editable = YES;
+        noteText.userInteractionEnabled = YES;
+        parent.pageControl.alpha = 0;
+
+        
+    }];
     
-    noteText.editable = YES;
-    noteText.userInteractionEnabled = YES;
-    parent.pageControl.alpha = 0;
+//    [UIView beginAnimations:nil context:NULL];
+//    CGPoint p = simpleNotepadStack.center;
+//    p.y += TRANSITION_Y_AXIS;
+//    simpleNotepadStack.center = p;
+//    secondView.alpha = 0;
+//    thirdView.alpha = 0;
+//    [self expandStack];
+//    [self hideShadow];
+//    [UIView commitAnimations];
+//    
+//    parent.pagingScrollView.pagingEnabled = NO;
+//    parent.pagingScrollView.scrollEnabled = NO;
+//    flipGR.enabled= YES;
+//    revealGR.enabled = YES;
+//    clearGR.enabled = YES;
+//    hideGR.enabled = NO;
+//    
+//    noteText.editable = YES;
+//    noteText.userInteractionEnabled = YES;
+//    parent.pageControl.alpha = 0;
 }
 
 -(void)setupShadow {

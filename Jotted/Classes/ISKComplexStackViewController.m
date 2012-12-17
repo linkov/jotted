@@ -360,7 +360,7 @@
     
     for (ISKNoteView *v  in complexNotepadStack.subviews) {
         
-        if (![v.class isSubclassOfClass:[UIImageView class] ]) {
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
             
             CGRect newFrame = v.frame;
             newFrame.size.height -= TRANSFORM_WH;
@@ -389,7 +389,7 @@
     
     for (ISKNoteView *v  in complexNotepadStack.subviews) {
         
-        if (![v.class isSubclassOfClass:[UIImageView class] ]) {
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
             
             CGRect newFrame = v.frame;
             newFrame.size.height += TRANSFORM_WH;
