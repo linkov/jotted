@@ -693,11 +693,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if ([scrollView.superview isKindOfClass:[UITextView class]]) {
+  //  if ([scrollView.superview isKindOfClass:[UITextView class]]) {
         
          [self toggleArrows:scrollView];
 
-    }
+ //   }
 //    else {
 //        
 //        // Update the page when more than 50% of the previous/next page is visible
