@@ -201,7 +201,7 @@
     [simpleNotepadStack addSubview:downArrow];
     [downArrow release];
     
-    [self toggleArrows:noteText];
+    //[self toggleArrows:noteText];
     
     pencil = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-7, 15, 15, 15)];
     pencil.image = [UIImage imageNamed:@"blackPencil"];
@@ -216,15 +216,20 @@
     
     [self checkDrawings];
     
-    [self toggleArrows:noteText];
+    
     
     [self setupOverlay];
     //[self setupPageControl];
     
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    //CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
     //noteText.contentOffset = CGPointMake(0, 18);
+    
+    
+    [self toggleArrows:noteText];
+    
     }
 
 
@@ -308,7 +313,8 @@
     }
     
     noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+   // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     
     [self toggleArrows:noteText];
@@ -530,7 +536,8 @@
     }
     
     
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+   // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     [self toggleArrows:noteText];
     
@@ -575,7 +582,7 @@
 -(void)toggleArrows:(UIScrollView*)scroll {
     
     
-
+    // 18 for big text
     if (scroll.contentOffset.y >18) {
         
         upArrow.alpha = 1;
@@ -583,10 +590,15 @@
     else {
         upArrow.alpha = 0;
     }
-    
-    if ( (scroll.contentOffset.y+scroll.frame.size.height < scroll.contentSize.height)) {
+    //-24 for big text
+    //if ( (scroll.contentSize.height-6 > scroll.frame.size.height+(scroll.contentOffset.y == 16 ? 0 : scroll.contentOffset.y ) )) {
+    if ( (scroll.contentSize.height-8 > scroll.frame.size.height+scroll.contentOffset.y )) {
         
-        downArrow.alpha = 1;
+//        NSLog(@" scroll.contentOffset.y = %f",scroll.contentOffset.y);
+//        NSLog(@" scroll.frame.size.height = %f",scroll.frame.size.height);
+//        NSLog(@" scroll.contentSize.height = %f",scroll.contentSize.height);
+        
+         downArrow.alpha = 1;
         
 
     
@@ -594,9 +606,17 @@
     else {
         
         downArrow.alpha = 0;
+        
 
     }
-    
+//    if (downArrow.alpha == 0 && upArrow.alpha == 0) {
+//        
+//        scroll.scrollEnabled = NO;
+//    }
+//    else {
+//        
+//        scroll.scrollEnabled = YES;
+//    }
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
@@ -682,7 +702,8 @@
     noteText.frame = viewFrame;
     
     keyboardShown = NO;
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    //CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     
     [self toggleArrows:noteText];
