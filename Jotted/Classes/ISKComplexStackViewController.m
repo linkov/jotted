@@ -73,8 +73,9 @@
     
     self.view = [[[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
     parent = (ISKStacksViewController*)self.parentViewController;
-    
-    self.complexNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    ISKRootView *rv =  [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    self.complexNotepadStack = rv;
+    [rv release];
     //complexNotepadStack.backgroundColor = [UIColor greenColor];
     
     
@@ -755,7 +756,7 @@
     [firstView release];
     [secondView release];
     [thirdView release];
-    
+    [complexNotepadStack release];
     [noteText release];
     [doneButton release];
     

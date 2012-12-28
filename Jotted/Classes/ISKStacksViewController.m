@@ -26,8 +26,9 @@
 -(void)loadView {
     
     //[self manageFirstLaunch];
-    
-    self.view = [UIView new];
+    UIView *v = [UIView new];
+    self.view = v;
+    [v release];
     
     // setup paging scroll
     CGRect scrollFrame;
@@ -35,8 +36,10 @@
     scrollFrame.origin.y = 0;
     scrollFrame.size.height = 480;
     scrollFrame.size.width = PAGERPAGEWIDTH;
+    UIScrollView *sv = [[UIScrollView alloc]initWithFrame:scrollFrame];
+    self.pagingScrollView =sv;
+    [sv release];
     
-    self.pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
     pagingScrollView.pagingEnabled = NO;
     pagingScrollView.scrollEnabled = NO;
     pagingScrollView.showsHorizontalScrollIndicator = NO;
