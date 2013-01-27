@@ -417,7 +417,7 @@
         secondView.alpha = 1;
         thirdView.alpha = 1;
         [self squeezeStack];
-        [self addOverlay];
+       // [self addOverlay];
         
     } completion:^(BOOL finished) {
         
@@ -449,7 +449,7 @@
         secondView.alpha = 0;
         thirdView.alpha = 0;
         [self expandStack];
-        [self hideOverlay];
+       // [self hideOverlay];
 
         
     } completion:^(BOOL finished) {
