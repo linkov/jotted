@@ -36,6 +36,7 @@
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
+		F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
 		F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKComplexStackViewController.h; sourceTree = "<group>"; };
 		F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKComplexStackViewController.m; sourceTree = "<group>"; };
+		F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
+				F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +182,7 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */,
 				C3BA330515F271E800EF7DA4 /* QuartzCore.framework */,
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
 				C3BA32D415F2691600EF7DA4 /* Foundation.framework */,
@@ -214,6 +218,7 @@
 				C3BA32CA15F2691600EF7DA4 /* Sources */,
 				C3BA32CB15F2691600EF7DA4 /* Frameworks */,
 				C3BA32CC15F2691600EF7DA4 /* Resources */,
+				F14A9DB816CAE59700739A0E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -274,6 +279,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F14A9DB816CAE59700739A0E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 7afe2a1f919e83706ec88df871b173b4faf5c453";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3BA32CA15F2691600EF7DA4 /* Sources */ = {
@@ -366,6 +387,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
@@ -381,6 +406,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
