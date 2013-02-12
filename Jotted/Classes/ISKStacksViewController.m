@@ -34,7 +34,7 @@
     CGRect scrollFrame;
     scrollFrame.origin.x = 0;
     scrollFrame.origin.y = 0;
-    scrollFrame.size.height = 480;
+    scrollFrame.size.height =[[UIScreen mainScreen] bounds].size.height;
     scrollFrame.size.width = PAGERPAGEWIDTH;
     UIScrollView *sv = [[UIScrollView alloc]initWithFrame:scrollFrame];
     self.pagingScrollView =sv;
@@ -47,7 +47,7 @@
     pagingScrollView.directionalLockEnabled = YES;
     pagingScrollView.bounces = YES;
     pagingScrollView.delegate = self;
-    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, [[UIScreen mainScreen] bounds].size.height);
     pagingScrollView.backgroundColor = [UIColor blackColor];
     
     
@@ -73,7 +73,7 @@
 
 -(void)setupPageControl {
     
-    pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, 448, 100, 13)];
+    pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
     [pageControl setPageControlStyle:PageControlStyleDefault];
     pageControl.diameter = 6;
     
