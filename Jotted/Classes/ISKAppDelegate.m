@@ -7,8 +7,8 @@
 //
 
 #import "ISKAppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 
-#import "ISKStackViewController.h"
 
 @implementation ISKAppDelegate
 
@@ -25,10 +25,11 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:NO];
     
-    self.mainViewController = [[ISKStackViewController new] autorelease];
+    self.mainViewController = [[ISKStacksViewController new] autorelease];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     
+    [Crashlytics startWithAPIKey:@"7afe2a1f919e83706ec88df871b173b4faf5c453"];
     
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

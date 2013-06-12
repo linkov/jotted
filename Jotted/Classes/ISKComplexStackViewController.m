@@ -1,18 +1,27 @@
 //
-//  ISKMainViewController.m
-//  IndexStack
+//  ISKComplexStackViewController.m
+//  Jotted
 //
-//  Created by Alexey Linkov on 9/1/12.
+//  Created by linkov on 12/16/12.
 //  Copyright (c) 2012 Alexey Linkov. All rights reserved.
 //
 
+
+
+
 #define TRANSITION_Y_AXIS 88
+#define TRANSFORM_WH 25
 
-#include "ISKNoteView.h"
-#import "ISKStackViewController.h"
-#import "ISKRootView.h"
+#import "ISKNoteView.h"
+#import "ISKComplexStackViewController.h"
+#import "ISKStacksViewController.h"
 
-@interface ISKStackViewController () {
+
+@interface ISKComplexStackViewController () {
+    
+    ISKStacksViewController *parent;
+    //UIScrollView *pagingScrollView;
+    //StyledPageControl* pageControl;
     
     UISwipeGestureRecognizer *clearGR;
     UISwipeGestureRecognizer *flipGR;
@@ -21,9 +30,12 @@
     UITapGestureRecognizer *switchViewGR;
     UITapGestureRecognizer *switchViewGR2;
     
+    
     ISKNoteView *firstView;
     ISKNoteView *secondView;
     ISKNoteView *thirdView;
+    
+    UIView *overlay;
     
     UIImageView *pencil;
     UIImageView *upArrow;
@@ -53,12 +65,20 @@
 
 @end
 
-@implementation ISKStackViewController
+@implementation ISKComplexStackViewController
+@synthesize complexNotepadStack;
 
 -(void)loadView
 {
     
-    self.view = [[[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
+    self.view = [[[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
+    parent = (ISKStacksViewController*)self.parentViewController;
+    ISKRootView *rv =  [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    self.complexNotepadStack = rv;
+    [rv release];
+    //complexNotepadStack.backgroundColor = [UIColor greenColor];
+    
+    
     
     flipGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showFlipside)];
     flipGR.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -79,9 +99,9 @@
     switchViewGR2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
     switchViewGR2.numberOfTapsRequired = 1;
     
-    [self.view addGestureRecognizer:clearGR];
-    [self.view addGestureRecognizer:flipGR];
-    [self.view addGestureRecognizer:revealGR];
+    [complexNotepadStack addGestureRecognizer:clearGR];
+    [complexNotepadStack addGestureRecognizer:flipGR];
+    [complexNotepadStack addGestureRecognizer:revealGR];
     [self.view addGestureRecognizer:hideGR];
     [clearGR release];
     [flipGR release];
@@ -89,29 +109,57 @@
     [hideGR release];
     
     
-    firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    firstView.backgroundColor = YELLOWCOLOR;
-    firstView.tag = 64;
+    firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    firstView.backgroundColor = CREMECOLOR;
+    firstView.tag = 67;
     
-    secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+44, self.view.frame.size.width, self.view.frame.size.height)];
-    secondView.backgroundColor = BLUECOLOR;
+    secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height)];
+    secondView.backgroundColor = GRASSCOLOR;
     secondView.alpha = 0;
-    secondView.tag = 65;
+    secondView.tag = 68;
     
-    thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y+88, self.view.frame.size.width, self.view.frame.size.height)];
-    thirdView.backgroundColor = REDCOLOR;
+    thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height)];
+    thirdView.backgroundColor = WHITECOLOR;
     thirdView.alpha = 0;
-    thirdView.tag = 66;
+    thirdView.tag = 69;
     
     [secondView addGestureRecognizer:switchViewGR];
     [thirdView addGestureRecognizer:switchViewGR2];
     [switchViewGR release];
     [switchViewGR2 release];
     
+    // pagingScrollView = parent.pagingScrollView;
+    //pageControl = parent.pageControl;
     
-    [self.view addSubview:firstView];
-    [self.view insertSubview:secondView belowSubview:firstView];
-    [self.view insertSubview:thirdView belowSubview:secondView];
+    // setup paging scroll
+    //    CGRect scrollFrame;
+    //    scrollFrame.origin.x = 0;
+    //    scrollFrame.origin.y = 0;
+    //    scrollFrame.size.height = 480;
+    //    scrollFrame.size.width = PAGERPAGEWIDTH;
+    //
+    //    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
+    //    pagingScrollView.pagingEnabled = NO;
+    //    pagingScrollView.scrollEnabled = NO;
+    //    pagingScrollView.canCancelContentTouches = NO;
+    //    pagingScrollView.directionalLockEnabled = YES;
+    //    pagingScrollView.bounces = YES;
+    //    pagingScrollView.delegate = self;
+    //    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
+    //    pagingScrollView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    
+    // UIView *checklistNotepadStack = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x+PAGERPAGEWIDTH, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    
+    [complexNotepadStack addSubview:firstView];
+    [complexNotepadStack insertSubview:secondView belowSubview:firstView];
+    [complexNotepadStack insertSubview:thirdView belowSubview:secondView];
+    
+    //[pagingScrollView  addSubview:complexNotepadStack];
+    // [pagingScrollView addSubview:checklistNotepadStack];
+    [self.view addSubview:complexNotepadStack];
+    
+    
+    
     [firstView release];
     [secondView release];
     [thirdView release];
@@ -122,7 +170,7 @@
     //noteText.
     
     noteText.delegate = self;
-    [self.view addSubview:noteText];
+    [complexNotepadStack addSubview:noteText];
     [noteText release];
     
     doneButton = [[UIButton alloc]initWithFrame:CGRectMake(255, 10, 55, 44)];
@@ -134,26 +182,26 @@
     doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
     [doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
     doneButton.alpha = 0;
-    [self.view addSubview:doneButton];
+    [complexNotepadStack addSubview:doneButton];
     [doneButton release];
     
-    activeView = 64;
+    activeView = 67;
     
     noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
-
+    
     
     upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, 40, 9, 6)];
     upArrow.image = [UIImage imageNamed:@"blackArrowUp"];
     upArrow.alpha = 0;
     
-    [self.view addSubview:upArrow];
+    [complexNotepadStack addSubview:upArrow];
     [upArrow release];
     
     downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, noteText.frame.size.height+65, 9, 6)];
     downArrow.image = [UIImage imageNamed:@"blackArrowDown"];
     downArrow.alpha = 0;
     
-    [self.view addSubview:downArrow];
+    [complexNotepadStack addSubview:downArrow];
     [downArrow release];
     
     [self toggleArrows:noteText];
@@ -162,7 +210,7 @@
     pencil.image = [UIImage imageNamed:@"blackPencil"];
     pencil.alpha = 0;
     
-    [self.view addSubview:pencil];
+    [complexNotepadStack addSubview:pencil];
     [pencil release];
     
     [self manageFirstLaunch];
@@ -173,11 +221,17 @@
     
     [self toggleArrows:noteText];
     
+    [self setupOverlay];
+    
+    [self animateUp];
+   
+    //[self setupPageControl];
+    
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
     //noteText.contentOffset = CGPointMake(0, 18);
-    }
+}
 
 
 -(void)finishEdit {
@@ -190,7 +244,7 @@
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
-       
+        
     }
     else
     {
@@ -203,7 +257,7 @@
         
         [[NSUserDefaults standardUserDefaults] setValue:noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
+        
     }
 }
 
@@ -217,7 +271,7 @@
         [alert release];
     }
     
-
+    
 }
 
 
@@ -227,7 +281,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-         [self toggleArrows:noteText];
+        [self toggleArrows:noteText];
 	}
 }
 
@@ -248,15 +302,15 @@
     firstView.backgroundColor = toColor;
     gr.view.backgroundColor = fromColor;
     
-    if ([firstView.backgroundColor isEqual: YELLOWCOLOR]) {
-        activeView = 64;
+    if ([firstView.backgroundColor isEqual: CREMECOLOR]) {
+        activeView = 67;
     }
-    else if ([firstView.backgroundColor isEqual:BLUECOLOR ]) {
+    else if ([firstView.backgroundColor isEqual:GRASSCOLOR ]) {
         
-        activeView = 65;
+        activeView = 68;
     }
-    else if ([firstView.backgroundColor isEqual: REDCOLOR]) {
-        activeView = 66;
+    else if ([firstView.backgroundColor isEqual: WHITECOLOR]) {
+        activeView = 69;
     }
     
     noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
@@ -266,7 +320,7 @@
     [self toggleArrows:noteText];
     
     [self checkDrawings];
-
+    
     
 }
 
@@ -275,7 +329,7 @@
     
     NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",activeView]];
-
+    
     
     NSData *bezierData = [NSData dataWithContentsOfFile:path];
     
@@ -293,52 +347,168 @@
             }
         }
         else {
-             pencil.alpha = 0;
+            pencil.alpha = 0;
         }
         
     }
     else {
-         pencil.alpha = 0;
+        pencil.alpha = 0;
     }
 }
 
+-(void)squeezeStack {
+    
+    
+    for (ISKNoteView *v  in complexNotepadStack.subviews) {
+        
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
+            
+            CGRect newFrame = v.frame;
+            newFrame.size.height -= TRANSFORM_WH;
+            newFrame.size.width -= TRANSFORM_WH;
+            newFrame.origin.x +=TRANSFORM_WH/2;
+            newFrame.origin.y +=TRANSFORM_WH/2;
+            v.frame = newFrame;
+//            if (![v.class isSubclassOfClass:[UITextView class]]) {
+//                [v.layer setMasksToBounds:NO ];
+//                [v.layer setShadowColor:[[UIColor blackColor ] CGColor ] ];
+//                [v.layer setShadowOpacity:0.65 ];
+//                [v.layer setShadowRadius:6.0 ];
+//                [v.layer setShadowOffset:CGSizeMake( 0 , 0 ) ];
+//                [v.layer setShouldRasterize:YES ];
+//            }
+            
+            
+        }
+        
+        
+    }
+    
+}
+
+-(void)expandStack {
+    
+    for (ISKNoteView *v  in complexNotepadStack.subviews) {
+        
+        if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
+            
+            CGRect newFrame = v.frame;
+            newFrame.size.height += TRANSFORM_WH;
+            newFrame.size.width += TRANSFORM_WH;
+            newFrame.origin.x -=TRANSFORM_WH/2;
+            newFrame.origin.y -=TRANSFORM_WH/2;
+            v.frame = newFrame;
+            
+            //[v.layer setShadowOpacity:0];
+        }
+    }
+    
+}
 
 -(void)animateUp  {
-    [UIView beginAnimations:nil context:NULL];
-    CGPoint p = self.view.center;
-    p.y -= TRANSITION_Y_AXIS;
-    self.view.center = p;
-    secondView.alpha = 1;
-    thirdView.alpha = 1;
-    [UIView commitAnimations];
     
-    clearGR.enabled = NO;
-    flipGR.enabled= NO;
-    revealGR.enabled = NO;
-    hideGR.enabled = YES;
-    noteText.editable = NO;
-    noteText.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        CGPoint p = complexNotepadStack.center;
+        p.y -= TRANSITION_Y_AXIS;
+        complexNotepadStack.center = p;
+        secondView.alpha = 1;
+        thirdView.alpha = 1;
+        [self squeezeStack];
+        [self addOverlay];
+        
+    } completion:^(BOOL finished) {
+        
+        clearGR.enabled = NO;
+        flipGR.enabled= NO;
+        revealGR.enabled = NO;
+        hideGR.enabled = YES;
+        noteText.editable = NO;
+        noteText.userInteractionEnabled = NO;
+        
+        if (self.isVisible) {
+            parent.pageControl.alpha =1;
+            parent.pagingScrollView.pagingEnabled = YES;
+            parent.pagingScrollView.scrollEnabled = YES;
+        }
+        
+    }];
+    
+    
 }
 
 
 -(void)animateDown  {
-    [UIView beginAnimations:nil context:NULL];
-    CGPoint p = self.view.center;
-    p.y += TRANSITION_Y_AXIS;
-    self.view.center = p;
-    secondView.alpha = 0;
-    thirdView.alpha = 0;
-    [UIView commitAnimations];
     
-    flipGR.enabled= YES;
-    revealGR.enabled = YES;
-    clearGR.enabled = YES;
-    hideGR.enabled = NO;
+    parent.pageControl.alpha = 0;
     
-    noteText.editable = YES;
-    noteText.userInteractionEnabled = YES;
+    [UIView animateWithDuration:0.2 animations:^{
+        
+        CGPoint p = complexNotepadStack.center;
+        p.y += TRANSITION_Y_AXIS;
+        complexNotepadStack.center = p;
+        secondView.alpha = 0;
+        thirdView.alpha = 0;
+        [self expandStack];
+        [self hideOverlay];
+        
+        
+    } completion:^(BOOL finished) {
+        
+        parent.pagingScrollView.pagingEnabled = NO;
+        parent.pagingScrollView.scrollEnabled = NO;
+        flipGR.enabled= YES;
+        revealGR.enabled = YES;
+        clearGR.enabled = YES;
+        hideGR.enabled = NO;
+        
+        noteText.editable = YES;
+        noteText.userInteractionEnabled = YES;
+        
+        
+        
+    }];
+    
 }
 
+
+-(void)setupOverlay{
+    
+    overlay = [[UIView alloc]initWithFrame:self.view.frame];
+    overlay.alpha = 0;
+    overlay.backgroundColor = [UIColor blackColor];
+    [overlay setUserInteractionEnabled: NO];
+    //overlay.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:overlay];
+    
+    
+}
+
+
+-(void)addOverlay {
+    
+    overlay.alpha = 0.3;
+}
+
+-(void)hideOverlay {
+    
+    overlay.alpha = 0;
+}
+
+-(void)setupPageControl {
+    
+    //    pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, 448, 100, 13)];
+    //    [pageControl setPageControlStyle:PageControlStyleDefault];
+    //    pageControl.diameter = 6;
+    //
+    //    pageControl.numberOfPages = 2;
+    //    pageControl.currentPage = 0;
+    //    pageControl.alpha = 0;
+    //    [self.view addSubview:pageControl];
+    
+    
+}
 
 
 -(void)updateAppSettings  {
@@ -362,12 +532,12 @@
     if (smallFont == YES) {
         
         noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
-
+        
     }
     else {
         
         noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
-
+        
     }
     
     
@@ -393,7 +563,7 @@
                                              selector:@selector(updateAppSettings)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
-
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -406,20 +576,8 @@
 
 
 
-#pragma mark - TextView
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-   
-    [self toggleArrows:scrollView];
-    
-   
-
-
-}
-
 //-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-//    
+//
 //    CGSize paddedSize = CGSizeMake(scrollView.contentSize.width, scrollView.contentSize.height-18);
 //    scrollView.contentSize = paddedSize;
 //}
@@ -428,7 +586,7 @@
 -(void)toggleArrows:(UIScrollView*)scroll {
     
     
-
+    
     if (scroll.contentOffset.y >18) {
         
         upArrow.alpha = 1;
@@ -441,13 +599,13 @@
         
         downArrow.alpha = 1;
         
-
-    
+        
+        
     }
     else {
         
         downArrow.alpha = 0;
-
+        
     }
     
 }
@@ -460,7 +618,7 @@
     doneButton.alpha = 0.7;
     downArrow.alpha = 0;
     return YES;
-
+    
 }
 
 - (void)textViewDidEndEditing:(UITextView *)tView {
@@ -477,8 +635,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
-
-   // [self toggleArrows:tView];
+    
+    // [self toggleArrows:tView];
     
 }
 
@@ -508,18 +666,18 @@
     
     // Resize the scroll view (which is the root view of the window)
     CGRect viewFrame = [noteText frame];
- 
+    
     viewFrame.size.height -= keyboardSize.height-42+2;
-   
-   noteText.frame = viewFrame;
-
+    
+    noteText.frame = viewFrame;
+    
     
     // Scroll the active text field into view.
     //CGRect textFieldRect = [activeField frame];
     [noteText scrollRectToVisible:viewFrame animated:YES];
     
     keyboardShown = YES;
-
+    
 }
 
 -(void)keyboardWasHidden:(NSNotification*)aNotification {
@@ -529,7 +687,7 @@
     
     // Reset the height of the scroll view to its original value
     CGRect viewFrame = [noteText frame];
-
+    
     viewFrame.size.height += keyboardSize.height-42+2;
     
     noteText.frame = viewFrame;
@@ -542,7 +700,27 @@
     
 }
 
+#pragma mark - UIScrollView delegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+  //  if ([scrollView.superview isKindOfClass:[UITextView class]]) {
+        
+        [self toggleArrows:scrollView];
+        
+ //   }
+    //    else {
+    //
+    //        // Update the page when more than 50% of the previous/next page is visible
+    //        CGFloat pageWidth = pagingScrollView.frame.size.width;
+    //        int page = floor((pagingScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    //        pageControl.currentPage = page;
+    //
+    //
+    //    }
+    
+    
+}
 
 #pragma mark - Flipside View
 
@@ -555,7 +733,7 @@
 }
 
 - (void)showFlipside
-{    
+{
     ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
     controller.delegate = self;
     controller.activeNote = activeView;
@@ -578,7 +756,7 @@
     [firstView release];
     [secondView release];
     [thirdView release];
-    
+    [complexNotepadStack release];
     [noteText release];
     [doneButton release];
     
