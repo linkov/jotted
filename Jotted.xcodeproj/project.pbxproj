@@ -17,11 +17,12 @@
 		844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D21669AAE800935AB8 /* ISKDrawingView.m */; };
 		844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D41669AAE800935AB8 /* ISKFlipsideViewController.m */; };
 		844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D71669AAE800935AB8 /* ISKRootView.m */; };
-		844B90E91669AAE800935AB8 /* ISKStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D91669AAE800935AB8 /* ISKStackViewController.m */; };
+		844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */; };
 		844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DA1669AAE800935AB8 /* InfoPlist.strings */; };
 		844B90EB1669AAE800935AB8 /* Jotted-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DC1669AAE800935AB8 /* Jotted-Info.plist */; };
 		844B90EC1669AAE800935AB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
 		84738D051669BCBB006501CE /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
+		84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D111669CE2C006501CE /* ISKMainViewController.m */; };
 		84C06115160258350059F8BD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C06114160258350059F8BD /* Default-568h@2x.png */; };
 		C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D215F2691600EF7DA4 /* UIKit.framework */; };
 		C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
@@ -32,6 +33,10 @@
 		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
 		C3E76E0F15F4DD480062AF30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0E15F4DD480062AF30 /* Default@2x.png */; };
 		C3E76E1115F4DD4B0062AF30 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E1015F4DD4B0062AF30 /* Default.png */; };
+		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
+		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
+		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
+		F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +55,7 @@
 		844B90D51669AAE800935AB8 /* ISKMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMacros.h; sourceTree = "<group>"; };
 		844B90D61669AAE800935AB8 /* ISKRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKRootView.h; sourceTree = "<group>"; };
 		844B90D71669AAE800935AB8 /* ISKRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKRootView.m; sourceTree = "<group>"; };
-		844B90D81669AAE800935AB8 /* ISKStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStackViewController.h; sourceTree = "<group>"; };
-		844B90D91669AAE800935AB8 /* ISKStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStackViewController.m; sourceTree = "<group>"; };
+		844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKSimpleStackViewController.m; sourceTree = "<group>"; };
 		844B90DB1669AAE800935AB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		844B90DC1669AAE800935AB8 /* Jotted-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Jotted-Info.plist"; sourceTree = "<group>"; };
 		844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Jotted-Prefix.pch"; sourceTree = "<group>"; };
@@ -59,6 +63,9 @@
 		84738D031669BCBB006501CE /* ISKNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKNoteView.h; sourceTree = "<group>"; };
 		84738D041669BCBB006501CE /* ISKNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKNoteView.m; sourceTree = "<group>"; };
 		84738D071669BCDC006501CE /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		84738D101669CE2C006501CE /* ISKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMainViewController.h; sourceTree = "<group>"; };
+		84738D111669CE2C006501CE /* ISKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKMainViewController.m; sourceTree = "<group>"; };
+		84738D141669CE95006501CE /* ISKSimpleStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKSimpleStackViewController.h; sourceTree = "<group>"; };
 		84C06114160258350059F8BD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3BA32CE15F2691600EF7DA4 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BA32D215F2691600EF7DA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +77,13 @@
 		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C3E76E0E15F4DD480062AF30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C3E76E1015F4DD4B0062AF30 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
+		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
+		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
+		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
+		F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKComplexStackViewController.h; sourceTree = "<group>"; };
+		F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKComplexStackViewController.m; sourceTree = "<group>"; };
+		F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,7 @@
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
+				F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +141,14 @@
 				844B90D51669AAE800935AB8 /* ISKMacros.h */,
 				844B90D61669AAE800935AB8 /* ISKRootView.h */,
 				844B90D71669AAE800935AB8 /* ISKRootView.m */,
-				844B90D81669AAE800935AB8 /* ISKStackViewController.h */,
-				844B90D91669AAE800935AB8 /* ISKStackViewController.m */,
+				F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */,
+				F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */,
+				84738D141669CE95006501CE /* ISKSimpleStackViewController.h */,
+				844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */,
+				F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */,
+				F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */,
+				84738D101669CE2C006501CE /* ISKMainViewController.h */,
+				84738D111669CE2C006501CE /* ISKMainViewController.m */,
 				84738D031669BCBB006501CE /* ISKNoteView.h */,
 				84738D041669BCBB006501CE /* ISKNoteView.m */,
 			);
@@ -143,6 +164,7 @@
 				C3E76E0815F36A620062AF30 /* Settings.bundle */,
 				C3E76DE315F2DB460062AF30 /* Icon.png */,
 				C3E76DE015F2DB420062AF30 /* Icon@2x.png */,
+				F113EC6D167DC41A0077B6D1 /* vendor */,
 				844B90C61669AAE800935AB8 /* Jotted */,
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
 				C3BA32CF15F2691600EF7DA4 /* Products */,
@@ -160,12 +182,30 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */,
 				C3BA330515F271E800EF7DA4 /* QuartzCore.framework */,
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
 				C3BA32D415F2691600EF7DA4 /* Foundation.framework */,
 				C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F113EC6D167DC41A0077B6D1 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F113EC6E167DC41A0077B6D1 /* StyledPageControl */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		F113EC6E167DC41A0077B6D1 /* StyledPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */,
+				F113EC70167DC41A0077B6D1 /* StyledPageControl.m */,
+			);
+			path = StyledPageControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +218,7 @@
 				C3BA32CA15F2691600EF7DA4 /* Sources */,
 				C3BA32CB15F2691600EF7DA4 /* Frameworks */,
 				C3BA32CC15F2691600EF7DA4 /* Resources */,
+				F14A9DB816CAE59700739A0E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -239,6 +280,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F14A9DB816CAE59700739A0E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 7afe2a1f919e83706ec88df871b173b4faf5c453";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3BA32CA15F2691600EF7DA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -248,9 +305,13 @@
 				844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
-				844B90E91669AAE800935AB8 /* ISKStackViewController.m in Sources */,
+				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
+				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
+				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
+				F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */,
+				F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +336,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -291,8 +352,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -304,8 +365,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -314,8 +375,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -324,14 +385,18 @@
 		C3BA32F315F2691600EF7DA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -339,14 +404,18 @@
 		C3BA32F415F2691600EF7DA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "4445CA33-A0ED-4E2D-86FE-A43261154056";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4445CA33-A0ED-4E2D-86FE-A43261154056";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
