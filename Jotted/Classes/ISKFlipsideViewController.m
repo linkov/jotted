@@ -84,17 +84,17 @@
     
     [self.view addSubview:self.drawScreen];
     
-    UIButton *doneButton = [[UIButton alloc]initWithFrame:CGRectMake(255, 10, 55, 44)];
-    doneButton.layer.cornerRadius = STACKCORNERRAD;
-    doneButton.layer.borderWidth = 1;
-    doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
+    UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    doneButton.frame = CGRectMake(255, 10, 55, 44);
+   // doneButton.layer.cornerRadius = STACKCORNERRAD;
+   // doneButton.layer.borderWidth = 1;
+   // doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
     [doneButton setTitle:@"done" forState:UIControlStateNormal];
-    [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
-    doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
+  //  [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+  //  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
     [doneButton addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
-    doneButton.alpha = 0.7;
+  //  doneButton.alpha = 0.7;
     [self.view addSubview:doneButton];
-    [doneButton release];
     
     
     

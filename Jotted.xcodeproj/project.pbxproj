@@ -27,15 +27,12 @@
 		C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
 		C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */; };
 		C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA330515F271E800EF7DA4 /* QuartzCore.framework */; };
-		C3E76DE115F2DB420062AF30 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76DE015F2DB420062AF30 /* Icon@2x.png */; };
-		C3E76DE415F2DB460062AF30 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76DE315F2DB460062AF30 /* Icon.png */; };
 		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
-		C3E76E0F15F4DD480062AF30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0E15F4DD480062AF30 /* Default@2x.png */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
 		F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */; };
-		F1BD8C3A176921D000849CA3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BD8C39176921D000849CA3 /* Default-568h@2x.png */; };
+		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +67,7 @@
 		C3BA32D415F2691600EF7DA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C3BA330515F271E800EF7DA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C3E76DE015F2DB420062AF30 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		C3E76DE315F2DB460062AF30 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		C3E76E0E15F4DD480062AF30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
@@ -81,7 +75,7 @@
 		F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKComplexStackViewController.h; sourceTree = "<group>"; };
 		F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKComplexStackViewController.m; sourceTree = "<group>"; };
 		F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		F1BD8C39176921D000849CA3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,11 +150,8 @@
 		C3BA32C315F2691600EF7DA4 = {
 			isa = PBXGroup;
 			children = (
-				C3E76E0E15F4DD480062AF30 /* Default@2x.png */,
-				F1BD8C39176921D000849CA3 /* Default-568h@2x.png */,
+				F1A670EC176923DC00665F19 /* Media.xcassets */,
 				C3E76E0815F36A620062AF30 /* Settings.bundle */,
-				C3E76DE315F2DB460062AF30 /* Icon.png */,
-				C3E76DE015F2DB420062AF30 /* Icon@2x.png */,
 				F113EC6D167DC41A0077B6D1 /* vendor */,
 				844B90C61669AAE800935AB8 /* Jotted */,
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
@@ -235,6 +226,11 @@
 				CLASSPREFIX = ISK;
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Alexey Linkov";
+				TargetAttributes = {
+					C3BA32CD15F2691600EF7DA4 = {
+						DevelopmentTeam = 43R88X5B35;
+					};
+				};
 			};
 			buildConfigurationList = C3BA32C815F2691600EF7DA4 /* Build configuration list for PBXProject "Jotted" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -258,10 +254,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E76DE115F2DB420062AF30 /* Icon@2x.png in Resources */,
-				C3E76DE415F2DB460062AF30 /* Icon.png in Resources */,
+				F1A670ED176923DC00665F19 /* Media.xcassets in Resources */,
 				C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */,
-				C3E76E0F15F4DD480062AF30 /* Default@2x.png in Resources */,
 				844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */,
 				844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */,
 				844B90E11669AAE800935AB8 /* blackArrowUp.png in Resources */,
@@ -270,7 +264,6 @@
 				844B90E41669AAE800935AB8 /* blackPencil@2x.png in Resources */,
 				844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */,
 				844B90EB1669AAE800935AB8 /* Jotted-Info.plist in Resources */,
-				F1BD8C3A176921D000849CA3 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +374,8 @@
 		C3BA32F315F2691600EF7DA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -400,6 +395,8 @@
 		C3BA32F415F2691600EF7DA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

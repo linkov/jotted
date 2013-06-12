@@ -9,7 +9,7 @@
 
 
 
-#define TRANSITION_Y_AXIS 88
+#define TRANSITION_Y_AXIS 108
 #define TRANSFORM_WH 25
 
 #import "ISKNoteView.h"
@@ -71,7 +71,7 @@
 -(void)loadView
 {
     
-    self.view = [[[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)]autorelease];
+    self.view = [[[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, [[UIScreen mainScreen] bounds].size.height)]autorelease];
     parent = (ISKStacksViewController*)self.parentViewController;
     ISKRootView *rv =  [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     self.complexNotepadStack = rv;
@@ -173,17 +173,18 @@
     [complexNotepadStack addSubview:noteText];
     [noteText release];
     
-    doneButton = [[UIButton alloc]initWithFrame:CGRectMake(255, 10, 55, 44)];
-    doneButton.layer.cornerRadius = STACKCORNERRAD;
-    doneButton.layer.borderWidth = 1;
-    doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
+    
+    doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    doneButton.frame = CGRectMake(255, 10, 55, 44);
+   // doneButton.layer.cornerRadius = STACKCORNERRAD;
+   // doneButton.layer.borderWidth = 1;
+   // doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
     [doneButton setTitle:@"done" forState:UIControlStateNormal];
-    [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
-    doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
+  //  [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+  //  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
     [doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
     doneButton.alpha = 0;
     [complexNotepadStack addSubview:doneButton];
-    [doneButton release];
     
     activeView = 67;
     
