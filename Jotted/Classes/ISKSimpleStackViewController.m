@@ -13,6 +13,7 @@
 #import "ISKNoteView.h"
 #import "ISKSimpleStackViewController.h"
 #import "ISKStacksViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 
 @interface ISKSimpleStackViewController () {
@@ -253,7 +254,7 @@
         
         
         
-        noteText.text = @"Swipe up to reveal all notes\nYou can doole on the flip side of a note\nYou can clean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n";
+        noteText.text = @"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n";
         
         [[NSUserDefaults standardUserDefaults] setValue:noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -744,13 +745,16 @@
 }
 
 - (void)showFlipside
-{    
+{
+    
     ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
     controller.delegate = self;
     controller.activeNote = activeView;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:controller animated:YES];
     [controller release];
+    
+    
 }
 
 -(void)dealloc {

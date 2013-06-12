@@ -30,8 +30,19 @@
         
         self.view.backgroundColor =BLUECOLOR;
     }
-    else if (self.activeNote =66) {
+    else if (self.activeNote == 66) {
         self.view.backgroundColor = REDCOLOR;
+    }
+    
+    else if (self.activeNote == 67) {
+        
+        self.view.backgroundColor =CREMECOLOR;
+    }
+    else if (self.activeNote == 68) {
+        self.view.backgroundColor = GRASSCOLOR;
+    }
+    else if (self.activeNote == 69) {
+        self.view.backgroundColor = WHITECOLOR;
     }
 
 

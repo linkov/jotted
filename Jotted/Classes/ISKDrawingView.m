@@ -23,6 +23,7 @@
         mainPath.miterLimit=0;
         mainPath.lineWidth=2;
         
+        
         UITapGestureRecognizer *deleteTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clearPath)];
         deleteTap.numberOfTouchesRequired = 2;
         deleteTap.numberOfTapsRequired = 1;
