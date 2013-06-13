@@ -52,14 +52,14 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
+    UITouch *mytouch=[touches allObjects][0];
     [mainPath moveToPoint:[mytouch locationInView:self]];
     
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
+    UITouch *mytouch=[touches allObjects][0];
     [mainPath addLineToPoint:[mytouch locationInView:self]];
     [self setNeedsDisplay];
     

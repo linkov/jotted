@@ -9,7 +9,7 @@
 #import "ISKFlipsideViewController.h"
 #import "ISKRootView.h"
 
-@interface ISKSimpleStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate>
+@interface ISKSimpleStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,UICollisionBehaviorDelegate>
 
 
 @property (nonatomic,retain) ISKRootView *simpleNotepadStack;

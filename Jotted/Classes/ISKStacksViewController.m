@@ -30,6 +30,8 @@
     self.view = v;
     [v release];
     
+    self.view.tintColor = [UIColor redColor];
+    
     // setup paging scroll
     CGRect scrollFrame;
     scrollFrame.origin.x = 0;

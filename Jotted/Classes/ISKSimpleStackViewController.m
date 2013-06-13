@@ -29,6 +29,8 @@
     UITapGestureRecognizer *switchViewGR;
     UITapGestureRecognizer *switchViewGR2;
     
+  
+    
     
     ISKNoteView *firstView;
     ISKNoteView *secondView;
@@ -47,6 +49,8 @@
     BOOL keyboardShown;
     CGSize keyboardSize;
 }
+
+@property(retain)  UIDynamicAnimator *stackAnimator;
 
 -(void)toggleArrows:(UIScrollView*)scroll;
 -(void)finishEdit;
@@ -77,6 +81,8 @@
     [rv release];
     //simpleNotepadStack.backgroundColor = [UIColor greenColor];
     
+    
+
     
     
     flipGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showFlipside)];
@@ -126,6 +132,9 @@
     [thirdView addGestureRecognizer:switchViewGR2];
     [switchViewGR release];
     [switchViewGR2 release];
+    
+    
+
     
    // pagingScrollView = parent.pagingScrollView;
     //pageControl = parent.pageControl;
@@ -210,6 +219,14 @@
     pencil.image = [UIImage imageNamed:@"blackPencil"];
     pencil.alpha = 0;
     
+    
+    UIInterpolatingMotionEffect *mF = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"alpha" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    
+    [pencil addMotionEffect:mF];
+    [mF release];
+    
+    
+    
     [simpleNotepadStack addSubview:pencil];
     [pencil release];
     
@@ -228,10 +245,16 @@
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
+    [noteText.layoutManager setUsesFontLeading:YES];
+    
+    NSLog(@"textContainer = %@",noteText.textContainer);
+    NSLog(@"layoutManager = %@",noteText.layoutManager);
     //noteText.contentOffset = CGPointMake(0, 18);
     
     
     [self toggleArrows:noteText];
+    
+
     
     }
 
@@ -240,6 +263,7 @@
     
     [noteText resignFirstResponder];
 }
+
 
 
 -(void)manageFirstLaunch {
@@ -409,7 +433,10 @@
 }
 
 -(void)animateUp  {
-
+    
+    // not responding
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
     
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -433,13 +460,69 @@
         noteText.userInteractionEnabled = NO;
         parent.pageControl.alpha =1;
         
+        [self applyDynamics];
+        
     }];
     
 
 }
 
 
+-(void)applyDynamics  {
+    
+    
+    
+    //UIDynamicItemBehavior *b1 = [[UIDynamicItemBehavior alloc]initWithItems:@[@""]];
+    UIGravityBehavior *gravity = [[UIGravityBehavior alloc]initWithItems:@[secondView]];
+    gravity.yComponent = -0.1;
+    
+    //    UIAttachmentBehavior *at = [[UIAttachmentBehavior alloc]initWithItem:noteText attachedToAnchor:CGPointMake(30, 20)];
+    //    [at setFrequency:4.0];
+    //    [at setDamping:0.5];
+    //
+    UICollisionBehavior *collision = [[UICollisionBehavior alloc]initWithItems:@[secondView]];
+    collision.collisionMode = UICollisionBehaviorModeBoundaries;
+    [collision setTranslatesReferenceBoundsIntoBoundary:YES];
+    collision.collisionDelegate = self;
+    
+    
+    _stackAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:simpleNotepadStack];
+    [_stackAnimator addBehavior:gravity];
+    [_stackAnimator addBehavior:collision];
+    // [_stackAnimator addBehavior:at];
+    [gravity release];
+    [collision release];
+    // [at release];
+}
+
+
+
+-(void)collisionBehavior:(UICollisionBehavior *)behavior endedContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier {
+    
+    NSLog(@"item = %@",item);
+    
+    UIDynamicItemBehavior *itemB = [[[UIDynamicItemBehavior alloc]initWithItems:@[item]] autorelease];
+    itemB.angularResistance = 0.2;
+    
+    UIPushBehavior *push = [[[UIPushBehavior alloc]initWithItems:@[item] mode:UIPushBehaviorModeContinuous
+                             ] autorelease];
+    [push setTargetPoint:CGPointMake(10, 5) forItem:item];
+    [push setXComponent:-0.9 yComponent:-0.5];
+    
+    
+    
+    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, 330)] autorelease];
+    [s setDamping:0.5];
+    [self.stackAnimator removeAllBehaviors];
+    [self.stackAnimator addBehavior:s];
+    [self.stackAnimator addBehavior:itemB];
+}
+
+
 -(void)animateDown  {
+    
+    // not responding
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     parent.pageControl.alpha = 0;
     
@@ -673,7 +756,7 @@
     NSDictionary *info = [aNotification userInfo];
     
     // Get the size of the keyboard.
-    NSValue *aValue = [info objectForKey:UIKeyboardFrameBeginUserInfoKey];
+    NSValue *aValue = info[UIKeyboardFrameBeginUserInfoKey];
     keyboardSize = [aValue CGRectValue].size;
     
     // Resize the scroll view (which is the root view of the window)
@@ -747,7 +830,7 @@
 
 - (void)showFlipside
 {
-    
+   
     ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
     controller.delegate = self;
     controller.activeNote = activeView;

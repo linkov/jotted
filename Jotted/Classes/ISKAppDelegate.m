@@ -23,9 +23,12 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:NO];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:NO];
     
     self.mainViewController = [[ISKStacksViewController new] autorelease];
+    //self.mainViewController.edgesForExtendedLayout = UIExtendedEdgeBottom;
+    //self.mainViewController.view.frame = CGRectOffset(self.mainViewController.view.frame, 0, 22);
+    
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     
@@ -33,8 +36,7 @@
     
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"YES"
-                                                            forKey:@"enableBlueInk"];
+    NSDictionary *appDefaults = @{@"enableBlueInk": @"YES"};
     [defaults registerDefaults:appDefaults];
     [defaults synchronize];
     

@@ -662,7 +662,7 @@
     NSDictionary *info = [aNotification userInfo];
     
     // Get the size of the keyboard.
-    NSValue *aValue = [info objectForKey:UIKeyboardFrameBeginUserInfoKey];
+    NSValue *aValue = info[UIKeyboardFrameBeginUserInfoKey];
     keyboardSize = [aValue CGRectValue].size;
     
     // Resize the scroll view (which is the root view of the window)
