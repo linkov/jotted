@@ -68,8 +68,38 @@
 @implementation ISKComplexStackViewController
 @synthesize complexNotepadStack;
 
+-(void)preferredContentSizeChanged:(NSNotification *)note {
+    
+    NSLog(@"note info = %@",note.userInfo);
+    
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryXXXL"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:30];
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryXXL"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:28];
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryXL"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:26];
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryL"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
+
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryM"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryS"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:16];
+    
+    if([note.userInfo[UIContentSizeCategoryNewValueKey] isEqualToString:@"UICTContentSizeCategoryXS"])
+        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:14];
+    
+}
+
 -(void)loadView
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     self.view = [[[UIView alloc]initWithFrame:CGRectMake(320, 0, 320, [[UIScreen mainScreen] bounds].size.height)]autorelease];
     parent = (ISKStacksViewController*)self.parentViewController;
@@ -179,7 +209,7 @@
    // doneButton.layer.cornerRadius = STACKCORNERRAD;
    // doneButton.layer.borderWidth = 1;
    // doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
-    [doneButton setTitle:@"done" forState:UIControlStateNormal];
+    [doneButton setTitle:@"Done" forState:UIControlStateNormal];
   //  [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
   //  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
     [doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
@@ -208,7 +238,7 @@
     [self toggleArrows:noteText];
     
     pencil = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-7, 15, 15, 15)];
-    pencil.image = [UIImage imageNamed:@"blackPencil"];
+    pencil.image = [[UIImage imageNamed:@"blackPencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     pencil.alpha = 0;
     
     [complexNotepadStack addSubview:pencil];
@@ -231,7 +261,8 @@
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
-    //noteText.contentOffset = CGPointMake(0, 18);
+
+    [noteText.layoutManager setUsesFontLeading:NO];
 }
 
 
@@ -344,7 +375,7 @@
                 pencil.alpha = 0;
             }
             else {
-                pencil.alpha = 0.6;
+                pencil.alpha = 1.0;
             }
         }
         else {

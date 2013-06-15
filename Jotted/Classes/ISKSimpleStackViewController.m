@@ -14,7 +14,8 @@
 #import "ISKSimpleStackViewController.h"
 #import "ISKStacksViewController.h"
 #import <Crashlytics/Crashlytics.h>
-
+#import "ISKTiltRevealMotionEffect.h"
+#import "ISKGravityCollisionBehavior.h"
 
 @interface ISKSimpleStackViewController () {
     
@@ -187,7 +188,7 @@
    // doneButton.layer.cornerRadius = STACKCORNERRAD;
   //  doneButton.layer.borderWidth = 1;
    // doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
-    [doneButton setTitle:@"done" forState:UIControlStateNormal];
+    [doneButton setTitle:@"Done" forState:UIControlStateNormal];
    // [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
   //  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
     [doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
@@ -215,15 +216,11 @@
     
     //[self toggleArrows:noteText];
     
-    pencil = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-7, 15, 15, 15)];
-    pencil.image = [UIImage imageNamed:@"blackPencil"];
+    pencil = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-7, 25, 15, 15)];
+    pencil.image = [[UIImage imageNamed:@"blackPencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     pencil.alpha = 0;
     
-    
-    UIInterpolatingMotionEffect *mF = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"alpha" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    
-    [pencil addMotionEffect:mF];
-    [mF release];
+
     
     
     
@@ -239,22 +236,38 @@
     
     
     [self setupOverlay];
-    //[self setupPageControl];
-    
-    //CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
+
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
-    [noteText.layoutManager setUsesFontLeading:YES];
     
+    // TextKit stuff
+    [noteText.layoutManager setUsesFontLeading:YES];
     NSLog(@"textContainer = %@",noteText.textContainer);
     NSLog(@"layoutManager = %@",noteText.layoutManager);
-    //noteText.contentOffset = CGPointMake(0, 18);
+   // noteText.layoutManager
+    // text tight trait
+    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragrahStyle setLineSpacing:2];
     
-    
+    [noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [noteText.text length])];
+    [paragrahStyle release];
     [self toggleArrows:noteText];
     
-
+//    UIInterpolatingMotionEffect *mFV = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+//    UIInterpolatingMotionEffect *mFH = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+//    [mFV setMaximumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(30.4, 11.2)]];
+//    [mFV setMinimumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(3.4, 1.2)]];
+//    [mFH setMaximumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(30.4, 11.2)]];
+//    [mFH setMinimumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(3.4, 1.2)]];
+//    
+//    [noteText addMotionEffect:mFV];
+//    [noteText addMotionEffect:mFH];
+//    [mFH release];
+//    [mFV release];
+    
+    //pencil.alpha = 0;
+        [pencil addMotionEffect:[[ISKTiltRevealMotionEffect new] autorelease]];
     
     }
 
@@ -370,7 +383,7 @@
                 pencil.alpha = 0;
             }
             else {
-                pencil.alpha = 0.6;
+                pencil.alpha = 1.0;
             }
         }
         else {
@@ -434,14 +447,14 @@
 
 -(void)animateUp  {
     
-    // not responding
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    
-    
+
+    // TODO: check out animateWithDuration damping velocity when this is added to iOS7 API seed
     [UIView animateWithDuration:0.2 animations:^{
         
         CGPoint p = simpleNotepadStack.center;
         p.y -= TRANSITION_Y_AXIS;
+        
         simpleNotepadStack.center = p;
         secondView.alpha = 1;
         thirdView.alpha = 1;
@@ -464,6 +477,7 @@
         
     }];
     
+    
 
 }
 
@@ -471,27 +485,35 @@
 -(void)applyDynamics  {
     
     
+    ISKGravityCollisionBehavior *gravCol = [[ISKGravityCollisionBehavior alloc]initWithItems:@[secondView] collisionDelegate:self];
     
-    //UIDynamicItemBehavior *b1 = [[UIDynamicItemBehavior alloc]initWithItems:@[@""]];
-    UIGravityBehavior *gravity = [[UIGravityBehavior alloc]initWithItems:@[secondView]];
-    gravity.yComponent = -0.1;
+   // UIGravityBehavior *gravity = [[UIGravityBehavior alloc]initWithItems:@[secondView]];
+   // gravity.yComponent = -0.1;
     
     //    UIAttachmentBehavior *at = [[UIAttachmentBehavior alloc]initWithItem:noteText attachedToAnchor:CGPointMake(30, 20)];
     //    [at setFrequency:4.0];
     //    [at setDamping:0.5];
     //
-    UICollisionBehavior *collision = [[UICollisionBehavior alloc]initWithItems:@[secondView]];
-    collision.collisionMode = UICollisionBehaviorModeBoundaries;
-    [collision setTranslatesReferenceBoundsIntoBoundary:YES];
-    collision.collisionDelegate = self;
+   // UICollisionBehavior *collision = [[UICollisionBehavior alloc]initWithItems:@[secondView]];
+   // collision.collisionMode = UICollisionBehaviorModeBoundaries;
+   // [collision setTranslatesReferenceBoundsIntoBoundary:YES];
+   // collision.collisionDelegate = self;
     
+    
+//    UIDynamicItemBehavior *elast = [[UIDynamicItemBehavior alloc]initWithItems:@[secondView]];
+//    elast.elasticity = 0.1;
+//    elast.friction = 1.0;
+//    [gravCol addChildBehavior:elast];
+//    [elast release];
     
     _stackAnimator = [[UIDynamicAnimator alloc]initWithReferenceView:simpleNotepadStack];
-    [_stackAnimator addBehavior:gravity];
-    [_stackAnimator addBehavior:collision];
+    [_stackAnimator addBehavior:gravCol];
+    [gravCol release];
+//    [_stackAnimator addBehavior:gravity];
+//    [_stackAnimator addBehavior:collision];
     // [_stackAnimator addBehavior:at];
-    [gravity release];
-    [collision release];
+//    [gravity release];
+//    [collision release];
     // [at release];
 }
 
@@ -513,15 +535,16 @@
     
     UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, 330)] autorelease];
     [s setDamping:0.5];
+   
+    
     [self.stackAnimator removeAllBehaviors];
     [self.stackAnimator addBehavior:s];
-    [self.stackAnimator addBehavior:itemB];
+  //  [self.stackAnimator addBehavior:itemB];
 }
 
 
 -(void)animateDown  {
     
-    // not responding
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     parent.pageControl.alpha = 0;
@@ -605,21 +628,25 @@
         noteText.textColor = [UIColor blackColor];
     }
     
+    UIFontDescriptor *helNeueFamily = [UIFontDescriptor fontDescriptorWithFontAttributes:@{UIFontDescriptorFamilyAttribute:@"Helvetica Neue"}];
+    
+    NSLog(@"%@",[helNeueFamily matchingFontDescriptorsWithMandatoryKeys:nil]);
+    
+    noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
     
     
-    
-    BOOL smallFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableSmallerFont"];
-    
-    if (smallFont == YES) {
-        
-        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
-
-    }
-    else {
-        
-        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
-
-    }
+//    BOOL smallFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableSmallerFont"];
+//    
+//    if (smallFont == YES) {
+//        
+//        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+//
+//    }
+//    else {
+//        
+//        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
+//
+//    }
     
     
    // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
@@ -822,7 +849,10 @@
 
 - (void)flipsideViewControllerDidFinishWithView:(int)aView
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    }];
+   
     activeView = aView;
     
     [self checkDrawings];
@@ -830,12 +860,12 @@
 
 - (void)showFlipside
 {
-   
+   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
     controller.delegate = self;
     controller.activeNote = activeView;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:nil];
     [controller release];
     
     

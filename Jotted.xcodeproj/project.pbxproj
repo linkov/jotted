@@ -32,7 +32,9 @@
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
 		F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */; };
+		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
+		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +77,11 @@
 		F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKComplexStackViewController.h; sourceTree = "<group>"; };
 		F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKComplexStackViewController.m; sourceTree = "<group>"; };
 		F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
+		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
 		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
+		F1AA7395176A5E71004A6787 /* ISKTiltRevealMotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKTiltRevealMotionEffect.h; sourceTree = "<group>"; };
+		F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKTiltRevealMotionEffect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				844B90CF1669AAE800935AB8 /* ISKAppDelegate.h */,
+				F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */,
+				F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */,
+				F1AA7395176A5E71004A6787 /* ISKTiltRevealMotionEffect.h */,
+				F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */,
 				844B90D01669AAE800935AB8 /* ISKAppDelegate.m */,
 				844B90D11669AAE800935AB8 /* ISKDrawingView.h */,
 				844B90D21669AAE800935AB8 /* ISKDrawingView.m */,
@@ -292,12 +302,14 @@
 			files = (
 				844B90E51669AAE800935AB8 /* ISKAppDelegate.m in Sources */,
 				844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */,
+				F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
+				F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */,
 				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
 				F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */,
 				F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */,
