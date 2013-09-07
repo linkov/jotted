@@ -447,8 +447,7 @@
 
 -(void)animateUp  {
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-
+  
     // TODO: check out animateWithDuration damping velocity when this is added to iOS7 API seed
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -528,8 +527,10 @@
     
     UIPushBehavior *push = [[[UIPushBehavior alloc]initWithItems:@[item] mode:UIPushBehaviorModeContinuous
                              ] autorelease];
-    [push setTargetPoint:CGPointMake(10, 5) forItem:item];
-    [push setXComponent:-0.9 yComponent:-0.5];
+    //[push setTargetPoint:CGPointMake(10, 5) forItem:item];
+    //[push setTargetOffsetFromCenter:UIOffsetMake(0, 0) forItem:item];
+   // [push setXComponent:-0.9 yComponent:-0.5];
+    [push setPushDirection:CGVectorMake(-0.9, -0.5)];
     
     
     
@@ -545,7 +546,6 @@
 
 -(void)animateDown  {
     
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     parent.pageControl.alpha = 0;
     
@@ -850,7 +850,7 @@
 - (void)flipsideViewControllerDidFinishWithView:(int)aView
 {
     [self dismissViewControllerAnimated:YES completion:^{
-         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        // [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     }];
    
     activeView = aView;
@@ -860,7 +860,7 @@
 
 - (void)showFlipside
 {
-   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+  // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
     controller.delegate = self;
     controller.activeNote = activeView;

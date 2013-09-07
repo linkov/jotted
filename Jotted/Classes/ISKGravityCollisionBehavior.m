@@ -18,11 +18,14 @@
         UIGravityBehavior *g = [[UIGravityBehavior alloc]initWithItems:items];
         UICollisionBehavior *c = [[UICollisionBehavior alloc]initWithItems:items];
         c.translatesReferenceBoundsIntoBoundary = YES;
-        g.yComponent = -0.1;
+        //g.yComponent = -0.1;
+        [g setGravityDirection:CGVectorMake(0, -0.1)];
         c.collisionDelegate = delegate;
         c.collisionMode = UICollisionBehaviorModeBoundaries;
         [self addChildBehavior:g];
         [self addChildBehavior:c];
+        [g release];
+        [c release];
     }
     return self;
 }
