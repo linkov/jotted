@@ -7,6 +7,12 @@
 //
 #import "ISKDrawingView.h"
 
+@interface ISKDrawingView () {
+    
+    CGPoint previousPoint;
+}
+
+@end
 
 @implementation ISKDrawingView
 @synthesize mainPath,brush;
@@ -29,6 +35,11 @@
         deleteTap.numberOfTapsRequired = 1;
         [self addGestureRecognizer:deleteTap];
         [deleteTap release];
+        
+        // Capture touches
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+        pan.maximumNumberOfTouches = pan.minimumNumberOfTouches = 1;
+        [self addGestureRecognizer:pan];
 
         
     }
@@ -48,26 +59,27 @@
     [mainPath strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];
 }
 
-#pragma mark - Touch Methods
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)pan:(UIPanGestureRecognizer *)pan {
+    CGPoint currentPoint = [pan locationInView:self];
+    CGPoint midPoint = midpoint(previousPoint, currentPoint);
     
-    UITouch *mytouch=[touches allObjects][0];
-    [mainPath moveToPoint:[mytouch locationInView:self]];
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        [mainPath moveToPoint:currentPoint];
+    } else if (pan.state == UIGestureRecognizerStateChanged) {
+        [mainPath addQuadCurveToPoint:midPoint controlPoint:previousPoint];
+    }
     
-}
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
+    previousPoint = currentPoint;
     
-    UITouch *mytouch=[touches allObjects][0];
-    [mainPath addLineToPoint:[mytouch locationInView:self]];
     [self setNeedsDisplay];
-    
 }
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    
+
+
+static CGPoint midpoint(CGPoint p0, CGPoint p1) {
+    return (CGPoint) {
+        (p0.x + p1.x) / 2.0,
+        (p0.y + p1.y) / 2.0
+    };
 }
 
 - (void)dealloc

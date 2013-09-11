@@ -14,4 +14,5 @@
     #import "ISKMacros.h"
     #import <QuartzCore/QuartzCore.h>
     #import "Const.h"
+#import "UIView+XYWHChange.h"
 #endif

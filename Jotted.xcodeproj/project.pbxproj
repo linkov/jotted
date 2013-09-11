@@ -23,10 +23,19 @@
 		844B90EC1669AAE800935AB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
 		84738D051669BCBB006501CE /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
 		84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D111669CE2C006501CE /* ISKMainViewController.m */; };
+		C378240217E06ADE00ABB5CE /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C378240117E06ADE00ABB5CE /* Reveal.framework */; };
+		C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C378240317E06B0E00ABB5CE /* CFNetwork.framework */; };
+		C378240717E0DBE600ABB5CE /* UIView+XYWHChange.m in Sources */ = {isa = PBXBuildFile; fileRef = C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */; };
+		C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A17F7F17DF81A0009AAC5D /* ISKStackVC.m */; };
 		C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D215F2691600EF7DA4 /* UIKit.framework */; };
 		C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
 		C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */; };
 		C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA330515F271E800EF7DA4 /* QuartzCore.framework */; };
+		C3CCE24017E0F5C9005C21E2 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE23F17E0F5C9005C21E2 /* ArchitectsDaughter.ttf */; };
+		C3CCE24417E0F5D4005C21E2 /* daniel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24117E0F5D4005C21E2 /* daniel.ttf */; };
+		C3CCE24517E0F5D4005C21E2 /* danielbd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */; };
+		C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */; };
+		C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */; };
 		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
@@ -64,11 +73,22 @@
 		84738D101669CE2C006501CE /* ISKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMainViewController.h; sourceTree = "<group>"; };
 		84738D111669CE2C006501CE /* ISKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKMainViewController.m; sourceTree = "<group>"; };
 		84738D141669CE95006501CE /* ISKSimpleStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKSimpleStackViewController.h; sourceTree = "<group>"; };
+		C378240117E06ADE00ABB5CE /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		C378240317E06B0E00ABB5CE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C378240517E0DBE600ABB5CE /* UIView+XYWHChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XYWHChange.h"; sourceTree = "<group>"; };
+		C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XYWHChange.m"; sourceTree = "<group>"; };
+		C3A17F7E17DF81A0009AAC5D /* ISKStackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStackVC.h; sourceTree = "<group>"; };
+		C3A17F7F17DF81A0009AAC5D /* ISKStackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStackVC.m; sourceTree = "<group>"; };
 		C3BA32CE15F2691600EF7DA4 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BA32D215F2691600EF7DA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3BA32D415F2691600EF7DA4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C3BA330515F271E800EF7DA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C3CCE23F17E0F5C9005C21E2 /* ArchitectsDaughter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArchitectsDaughter.ttf; sourceTree = "<group>"; };
+		C3CCE24117E0F5D4005C21E2 /* daniel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = daniel.ttf; sourceTree = "<group>"; };
+		C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = danielbd.ttf; sourceTree = "<group>"; };
+		C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = danielbk.ttf; sourceTree = "<group>"; };
+		C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xiomara-Script.ttf"; sourceTree = "<group>"; };
 		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
@@ -89,9 +109,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
 				C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */,
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
+				C378240217E06ADE00ABB5CE /* Reveal.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
 				F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */,
 			);
@@ -106,10 +128,16 @@
 				844B90C71669AAE800935AB8 /* Assets */,
 				844B90CE1669AAE800935AB8 /* Classes */,
 				844B90DA1669AAE800935AB8 /* InfoPlist.strings */,
+				C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */,
+				C3CCE24117E0F5D4005C21E2 /* daniel.ttf */,
+				C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */,
+				C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */,
+				C3CCE23F17E0F5C9005C21E2 /* ArchitectsDaughter.ttf */,
 				844B90DC1669AAE800935AB8 /* Jotted-Info.plist */,
 				844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */,
 				844B90DE1669AAE800935AB8 /* main.m */,
 				84738D071669BCDC006501CE /* Const.h */,
+				C378240117E06ADE00ABB5CE /* Reveal.framework */,
 			);
 			path = Jotted;
 			sourceTree = "<group>";
@@ -130,6 +158,8 @@
 		844B90CE1669AAE800935AB8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C378240517E0DBE600ABB5CE /* UIView+XYWHChange.h */,
+				C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */,
 				844B90CF1669AAE800935AB8 /* ISKAppDelegate.h */,
 				F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */,
 				F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */,
@@ -145,6 +175,8 @@
 				844B90D71669AAE800935AB8 /* ISKRootView.m */,
 				F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */,
 				F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */,
+				C3A17F7E17DF81A0009AAC5D /* ISKStackVC.h */,
+				C3A17F7F17DF81A0009AAC5D /* ISKStackVC.m */,
 				84738D141669CE95006501CE /* ISKSimpleStackViewController.h */,
 				844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */,
 				F113EC76167DEBC40077B6D1 /* ISKComplexStackViewController.h */,
@@ -180,6 +212,7 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C378240317E06B0E00ABB5CE /* CFNetwork.framework */,
 				F14A9DB916CAE5BF00739A0E /* Crashlytics.framework */,
 				C3BA330515F271E800EF7DA4 /* QuartzCore.framework */,
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
@@ -268,11 +301,16 @@
 				C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */,
 				844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */,
 				844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */,
+				C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */,
 				844B90E11669AAE800935AB8 /* blackArrowUp.png in Resources */,
+				C3CCE24017E0F5C9005C21E2 /* ArchitectsDaughter.ttf in Resources */,
 				844B90E21669AAE800935AB8 /* blackArrowUp@2x.png in Resources */,
+				C3CCE24417E0F5D4005C21E2 /* daniel.ttf in Resources */,
 				844B90E31669AAE800935AB8 /* blackPencil.png in Resources */,
+				C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */,
 				844B90E41669AAE800935AB8 /* blackPencil@2x.png in Resources */,
 				844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */,
+				C3CCE24517E0F5D4005C21E2 /* danielbd.ttf in Resources */,
 				844B90EB1669AAE800935AB8 /* Jotted-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,9 +340,11 @@
 			files = (
 				844B90E51669AAE800935AB8 /* ISKAppDelegate.m in Sources */,
 				844B90E61669AAE800935AB8 /* ISKDrawingView.m in Sources */,
+				C378240717E0DBE600ABB5CE /* UIView+XYWHChange.m in Sources */,
 				F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
+				C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
@@ -393,7 +433,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/toyota8/sdwr/jotted/Jotted,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
@@ -401,6 +442,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -419,7 +461,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/toyota8/sdwr/jotted/Jotted,
 				);
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -428,6 +471,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

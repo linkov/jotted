@@ -42,6 +42,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>daniel.ttf</string>
+		<string>ArchitectsDaughter.ttf</string>
+		<string>Xiomara-Script.ttf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

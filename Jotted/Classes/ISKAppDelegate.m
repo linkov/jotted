@@ -28,7 +28,7 @@
     self.mainViewController = [[ISKStacksViewController new] autorelease];
     //self.mainViewController.edgesForExtendedLayout = UIExtendedEdgeBottom;
     //self.mainViewController.view.frame = CGRectOffset(self.mainViewController.view.frame, 0, 22);
-    self.window.tintColor = [UIColor blackColor];
+    self.window.tintColor =UIColorFromRGB(0x102855);
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     

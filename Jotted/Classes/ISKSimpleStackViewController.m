@@ -12,14 +12,14 @@
 
 #import "ISKNoteView.h"
 #import "ISKSimpleStackViewController.h"
-#import "ISKStacksViewController.h"
+
 #import <Crashlytics/Crashlytics.h>
 #import "ISKTiltRevealMotionEffect.h"
+#import "ISKStacksViewController.h"
 #import "ISKGravityCollisionBehavior.h"
 
 @interface ISKSimpleStackViewController () {
     
-    ISKStacksViewController *parent;
     //UIScrollView *pagingScrollView;
     //StyledPageControl* pageControl;
     
@@ -48,10 +48,14 @@
     int activeView;
     
     BOOL keyboardShown;
+    BOOL isFirstScreen;
     CGSize keyboardSize;
 }
-
 @property(retain)  UIDynamicAnimator *stackAnimator;
+@property(retain)  NSArray *viewTags;
+@property(assign)  ISKStacksViewController *delegate;
+@property (retain) UIButton *shareButton;
+@property (retain) UIImage *noteSnapShot;
 
 -(void)toggleArrows:(UIScrollView*)scroll;
 -(void)finishEdit;
@@ -72,19 +76,28 @@
 @implementation ISKSimpleStackViewController
 @synthesize simpleNotepadStack;
 
+
+- (id)initWithTags:(NSArray *)viewTags delegate:(ISKStacksViewController *)delegate
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _viewTags = [viewTags retain];
+        _delegate = delegate;
+    }
+    return self;
+}
+
 -(void)loadView
 {
     
     self.view = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height)]autorelease];
-    parent = (ISKStacksViewController*)self.parentViewController;
+    
     ISKRootView *rv = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
     self.simpleNotepadStack = rv;
     [rv release];
     //simpleNotepadStack.backgroundColor = [UIColor greenColor];
     
-    
 
-    
     
     flipGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showFlipside)];
     flipGR.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -117,17 +130,17 @@
     
     firstView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     firstView.backgroundColor = YELLOWCOLOR;
-    firstView.tag = 64;
+    firstView.tag = [self.viewTags[0] intValue];
     
     secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height)];
     secondView.backgroundColor = BLUECOLOR;
     secondView.alpha = 0;
-    secondView.tag = 65;
+    secondView.tag = [self.viewTags[1] intValue];
     
     thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height)];
     thirdView.backgroundColor = REDCOLOR;
     thirdView.alpha = 0;
-    thirdView.tag = 66;
+    thirdView.tag = [self.viewTags[2] intValue];
     
     [secondView addGestureRecognizer:switchViewGR];
     [thirdView addGestureRecognizer:switchViewGR2];
@@ -137,8 +150,8 @@
     
 
     
-   // pagingScrollView = parent.pagingScrollView;
-    //pageControl = parent.pageControl;
+   // pagingScrollView = self.delegate.pagingScrollView;
+    //pageControl = self.delegate.pageControl;
     
     // setup paging scroll
 //    CGRect scrollFrame;
@@ -195,7 +208,7 @@
     doneButton.alpha = 0;
     [simpleNotepadStack addSubview:doneButton];
     
-    activeView = 64;
+    activeView = firstView.tag;
     
     noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
 
@@ -237,6 +250,7 @@
     
     [self setupOverlay];
 
+
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
     noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
@@ -269,8 +283,36 @@
     //pencil.alpha = 0;
         [pencil addMotionEffect:[[ISKTiltRevealMotionEffect new] autorelease]];
     
+    
+    
+    
+    self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
+
+    _shareButton.frame = CGRectMake(320/2-60/2, -34, 60, 34);
+    [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
+    _shareButton.layer.cornerRadius = STACKCORNERRAD;
+   // _shareButton.layer.borderColor = [UIColor blackColor].CGColor;
+  //  _shareButton.layer.borderWidth = 1;
+    _shareButton.backgroundColor = [UIColor whiteColor];
+    _shareButton.alpha = 0.9;
+    [_shareButton addTarget:self action:@selector(shareNote) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.shareButton];
+    
     }
 
+
+-(void)shareNote {
+    
+
+
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteSnapShot] applicationActivities:nil];
+    activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact,UIActivityTypeCopyToPasteboard];
+
+    [self presentViewController:activityController animated:YES completion:nil];
+    [activityController release];
+}
 
 -(void)finishEdit {
     
@@ -342,21 +384,25 @@
     gr.view.backgroundColor = fromColor;
     
     if ([firstView.backgroundColor isEqual: YELLOWCOLOR]) {
-        activeView = 64;
+        activeView = [self.viewTags[0] intValue];
+        NSLog(@"First view YELLOW");
     }
     else if ([firstView.backgroundColor isEqual:BLUECOLOR ]) {
         
-        activeView = 65;
+        activeView = [self.viewTags[1] intValue];
+         NSLog(@"First view BLUE");
     }
     else if ([firstView.backgroundColor isEqual: REDCOLOR]) {
-        activeView = 66;
+        activeView = [self.viewTags[2] intValue];
+        NSLog(@"First view RED");
     }
     
     noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+    
    // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
     CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
     noteText.contentSize = paddedSize;
-    
+    /// [noteText scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self toggleArrows:noteText];
     
     [self checkDrawings];
@@ -445,9 +491,21 @@
     
 }
 
+
 -(void)animateUp  {
     
-  
+    if (self.delegate.activeStack ==self) {
+     
+        CGRect rect = [self.view bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,NO,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.view.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        self.noteSnapShot = capturedImage;
+    }
+    
     // TODO: check out animateWithDuration damping velocity when this is added to iOS7 API seed
     [UIView animateWithDuration:0.2 animations:^{
         
@@ -457,20 +515,26 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 1;
         thirdView.alpha = 1;
+        self.shareButton.y += 30;
         [self squeezeStack];
        // [self addOverlay];
         
     } completion:^(BOOL finished) {
         
-        parent.pagingScrollView.pagingEnabled = YES;
-        parent.pagingScrollView.scrollEnabled = YES;
         clearGR.enabled = NO;
         flipGR.enabled= NO;
         revealGR.enabled = NO;
         hideGR.enabled = YES;
         noteText.editable = NO;
         noteText.userInteractionEnabled = NO;
-        parent.pageControl.alpha =1;
+        
+        if (self.delegate.activeStack ==self) {
+            
+            self.delegate.pageControl.alpha =1;
+            self.delegate.pagingScrollView.pagingEnabled = YES;
+            self.delegate.pagingScrollView.scrollEnabled = YES;
+        }
+
         
         [self applyDynamics];
         
@@ -480,6 +544,10 @@
 
 }
 
+-(NSString *)description {
+    
+    return [self.viewTags componentsJoinedByString:@", "];
+}
 
 -(void)applyDynamics  {
     
@@ -547,7 +615,7 @@
 -(void)animateDown  {
     
     
-    parent.pageControl.alpha = 0;
+    self.delegate.pageControl.alpha = 0;
     
     [UIView animateWithDuration:0.2 animations:^{
        
@@ -556,14 +624,15 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 0;
         thirdView.alpha = 0;
+        self.shareButton.y -= 30;
         [self expandStack];
        // [self hideOverlay];
 
         
     } completion:^(BOOL finished) {
         
-        parent.pagingScrollView.pagingEnabled = NO;
-        parent.pagingScrollView.scrollEnabled = NO;
+        self.delegate.pagingScrollView.pagingEnabled = NO;
+        self.delegate.pagingScrollView.scrollEnabled = NO;
         flipGR.enabled= YES;
         revealGR.enabled = YES;
         clearGR.enabled = YES;
@@ -571,6 +640,7 @@
         
         noteText.editable = YES;
         noteText.userInteractionEnabled = YES;
+       
         
 
         
@@ -672,6 +742,8 @@
                                              selector:@selector(updateAppSettings)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
+    
+    
 
 }
 
