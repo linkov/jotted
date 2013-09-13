@@ -8,18 +8,6 @@
 
 #import "ISKStacksViewController.h"
 
-#import "ISKComplexStackViewController.h"
-
-@interface ISKStacksViewController () {
-    
-    
-    ISKSimpleStackViewController *simpleStack;
-    ISKComplexStackViewController *complexStack;
-    
-}
-
-
-@end
 
 @implementation ISKStacksViewController
 

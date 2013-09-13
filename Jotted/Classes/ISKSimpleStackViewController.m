@@ -337,29 +337,20 @@
 
 -(void)shareNoteText {
     
-    [SVProgressHUD show];
-    
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteSnapShot] applicationActivities:nil];
     activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact,UIActivityTypeCopyToPasteboard];
     
-    [self presentViewController:activityController animated:YES completion:^{
-        
-        [SVProgressHUD dismiss];
-    }];
+    [self presentViewController:activityController animated:YES completion:nil];
     [activityController release];
 }
 
 -(void)shareNoteDrawing {
     
-    [SVProgressHUD show];
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteDrawingSnapShot] applicationActivities:nil];
     activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact,UIActivityTypeCopyToPasteboard];
     
-    [self presentViewController:activityController animated:YES completion:^{
-        
-        [SVProgressHUD dismiss];
-    }];
+    [self presentViewController:activityController animated:YES completion:nil];
     [activityController release];
 }
 
