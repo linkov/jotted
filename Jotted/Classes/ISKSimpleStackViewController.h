@@ -10,7 +10,7 @@
 #import "ISKRootView.h"
 @class ISKStacksViewController;
 
-@interface ISKSimpleStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,UICollisionBehaviorDelegate>
+@interface ISKSimpleStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,UICollisionBehaviorDelegate,UIActionSheetDelegate>
 
 - (id)initWithTags:(NSArray *)viewTags delegate:(ISKStacksViewController *)delegate;
 -(void)animateUp;

@@ -36,6 +36,7 @@
 		C3CCE24517E0F5D4005C21E2 /* danielbd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */; };
 		C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */; };
 		C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */; };
+		C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
@@ -89,6 +90,8 @@
 		C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = danielbd.ttf; sourceTree = "<group>"; };
 		C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = danielbk.ttf; sourceTree = "<group>"; };
 		C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xiomara-Script.ttf"; sourceTree = "<group>"; };
+		C3E4A96717E353270001CC6B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C3E4A96817E353270001CC6B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
@@ -222,9 +225,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C3E4A96617E353270001CC6B /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4A96717E353270001CC6B /* SVProgressHUD.h */,
+				C3E4A96817E353270001CC6B /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		F113EC6D167DC41A0077B6D1 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C3E4A96617E353270001CC6B /* SVProgressHUD */,
 				F113EC6E167DC41A0077B6D1 /* StyledPageControl */,
 			);
 			path = vendor;
@@ -347,6 +360,7 @@
 				C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
+				C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
 				F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */,

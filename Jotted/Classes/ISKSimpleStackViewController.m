@@ -18,6 +18,8 @@
 #import "ISKStacksViewController.h"
 #import "ISKGravityCollisionBehavior.h"
 
+#import "ISKDrawingView.h"
+
 @interface ISKSimpleStackViewController () {
     
     //UIScrollView *pagingScrollView;
@@ -42,7 +44,7 @@
     UIImageView *pencil;
     UIImageView *upArrow;
     UIImageView *downArrow;
-    UITextView *noteText;
+    
     UIButton *doneButton;
     
     int activeView;
@@ -52,10 +54,12 @@
     CGSize keyboardSize;
 }
 @property(retain)  UIDynamicAnimator *stackAnimator;
+@property(retain)  UITextView *noteText;
 @property(retain)  NSArray *viewTags;
 @property(assign)  ISKStacksViewController *delegate;
 @property (retain) UIButton *shareButton;
 @property (retain) UIImage *noteSnapShot;
+@property (retain) UIImage *noteDrawingSnapShot;
 
 -(void)toggleArrows:(UIScrollView*)scroll;
 -(void)finishEdit;
@@ -186,14 +190,13 @@
     [secondView release];
     [thirdView release];
     
-    noteText = [[UITextView alloc]initWithFrame:CGRectMake(10, 55, 300, [[UIScreen mainScreen] bounds].size.height-20-(40+55)+2-15 )];
-    noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
-    noteText.backgroundColor = [UIColor clearColor];
+    _noteText = [[UITextView alloc]initWithFrame:CGRectMake(10, 55, 300, [[UIScreen mainScreen] bounds].size.height-20-(40+55)+2-15 )];
+    self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
+    self.noteText.backgroundColor = [UIColor clearColor];
     //noteText.
     
-    noteText.delegate = self;
-    [simpleNotepadStack addSubview:noteText];
-    [noteText release];
+    self.noteText.delegate = self;
+    [simpleNotepadStack addSubview:self.noteText];
     
     doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
     doneButton.frame = CGRectMake(255, 10, 55, 44);
@@ -210,7 +213,7 @@
     
     activeView = firstView.tag;
     
-    noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+    self.noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
 
     
     upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, 40, 9, 6)];
@@ -220,7 +223,7 @@
     [simpleNotepadStack addSubview:upArrow];
     [upArrow release];
     
-    downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, noteText.frame.size.height+65, 9, 6)];
+    downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, self.noteText.frame.size.height+65, 9, 6)];
     downArrow.image = [UIImage imageNamed:@"blackArrowDown"];
     downArrow.alpha = 0;
     
@@ -251,22 +254,20 @@
     [self setupOverlay];
 
 
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
-    noteText.contentSize = paddedSize;
-    noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
+    self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
     
     // TextKit stuff
-    [noteText.layoutManager setUsesFontLeading:YES];
-    NSLog(@"textContainer = %@",noteText.textContainer);
-    NSLog(@"layoutManager = %@",noteText.layoutManager);
+    [self.noteText.layoutManager setUsesFontLeading:YES];
+//    NSLog(@"textContainer = %@",noteText.textContainer);
+//    NSLog(@"layoutManager = %@",noteText.layoutManager);
    // noteText.layoutManager
     // text tight trait
     NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
     [paragrahStyle setLineSpacing:2];
     
-    [noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [noteText.text length])];
+    [self.noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [self.noteText.text length])];
     [paragrahStyle release];
-    [self toggleArrows:noteText];
+    [self toggleArrows:self.noteText];
     
 //    UIInterpolatingMotionEffect *mFV = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
 //    UIInterpolatingMotionEffect *mFH = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
@@ -281,7 +282,7 @@
 //    [mFV release];
     
     //pencil.alpha = 0;
-        [pencil addMotionEffect:[[ISKTiltRevealMotionEffect new] autorelease]];
+    //    [pencil addMotionEffect:[[ISKTiltRevealMotionEffect new] autorelease]];
     
     
     
@@ -304,19 +305,69 @@
 
 -(void)shareNote {
     
+    if (pencil.alpha == 1 && self.noteText.text.length >0) {
+        
+       UIActionSheet  *sheet = [[UIActionSheet alloc] initWithTitle:@"Share"
+                                            delegate:self
+                                   cancelButtonTitle:@"Cancel"
+                              destructiveButtonTitle:nil
+                                   otherButtonTitles:@"Note image",@"Note text", nil];
+        
+        // Show the sheet
+        [sheet showInView:self.view];
+        [sheet release];
+    }
+    else if (pencil.alpha != 1 && self.noteText.text.length >0){
+        
+        [self shareNoteText];
+    }
+    
+    else if  (pencil.alpha == 1 && self.noteText.text.length ==0){
+        
+        [self shareNoteDrawing];
+    }
 
 
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0) [self shareNoteDrawing];
+    if (buttonIndex == 1) [self shareNoteText];
+}
+
+-(void)shareNoteText {
+    
+    [SVProgressHUD show];
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteSnapShot] applicationActivities:nil];
     activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact,UIActivityTypeCopyToPasteboard];
-
-    [self presentViewController:activityController animated:YES completion:nil];
+    
+    [self presentViewController:activityController animated:YES completion:^{
+        
+        [SVProgressHUD dismiss];
+    }];
     [activityController release];
 }
 
+-(void)shareNoteDrawing {
+    
+    [SVProgressHUD show];
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteDrawingSnapShot] applicationActivities:nil];
+    activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact,UIActivityTypeCopyToPasteboard];
+    
+    [self presentViewController:activityController animated:YES completion:^{
+        
+        [SVProgressHUD dismiss];
+    }];
+    [activityController release];
+}
+
+
 -(void)finishEdit {
     
-    [noteText resignFirstResponder];
+    [self.noteText resignFirstResponder];
+    NSLog(@"NOTETEXT LENGTH = %i",self.noteText.text.length);
 }
 
 
@@ -334,9 +385,9 @@
         
         
         
-        noteText.text = @"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n";
+        self.noteText.text = @"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n";
         
-        [[NSUserDefaults standardUserDefaults] setValue:noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+        [[NSUserDefaults standardUserDefaults] setValue:self.noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
     }
@@ -345,7 +396,7 @@
 
 -(void)clearNote {
     
-    if (noteText.text.length >0) {
+    if (self.noteText.text.length >0) {
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Clear all text?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear",nil];
         [alert show];
@@ -358,11 +409,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex != 0) {
-        noteText.text = @"";
-        [[NSUserDefaults standardUserDefaults] setValue:noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+        self.noteText.text = @"";
+        [[NSUserDefaults standardUserDefaults] setValue:self.noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-         [self toggleArrows:noteText];
+         [self toggleArrows:self.noteText];
 	}
 }
 
@@ -397,13 +448,11 @@
         NSLog(@"First view RED");
     }
     
-    noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+    self.noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
     
-   // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
-    noteText.contentSize = paddedSize;
+
     /// [noteText scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-    [self toggleArrows:noteText];
+    [self toggleArrows:self.noteText];
     
     [self checkDrawings];
 
@@ -494,17 +543,96 @@
 
 -(void)animateUp  {
     
-    if (self.delegate.activeStack ==self) {
+    if (self.noteText.text.length>0) {
+        
+        UIView *snapShotView = [[UIView alloc]initWithFrame:self.view.frame];
+        
+        UIView *snapFirst = [[UIView alloc]initWithFrame:firstView.frame];
+        snapFirst.backgroundColor = firstView.backgroundColor;
+        snapFirst.layer.cornerRadius = firstView.layer.cornerRadius;
+        [snapShotView addSubview:snapFirst];
+        
+        UILabel *snapText = [[UILabel alloc]initWithFrame:self.noteText.frame];
+        snapText.font = self.noteText.font;
+        snapText.text = self.noteText.text;
+        snapText.lineBreakMode = NSLineBreakByWordWrapping;
+        snapText.numberOfLines = 0;
+        
+        
+        snapText.backgroundColor = self.noteText.backgroundColor;
+        
+    snapText.textColor = UIColorFromRGB(0x102855);
+    
+        [snapFirst addSubview:snapText];
+        
+        
+       // if(noteText.contentSize.height > noteText.height)  {
+            
+            NSDictionary *fontdict= [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Noteworthy-Light" size:20], NSFontAttributeName, nil];
+            CGRect textFrame = [snapText.text boundingRectWithSize:CGSizeMake(self.noteText.width, CGFLOAT_MAX) options: NSStringDrawingUsesLineFragmentOrigin attributes:fontdict context:nil];
+            snapText.height = textFrame.size.height;
+            snapShotView.height =  snapText.height + 100;
+            snapFirst.height = snapText.height +100;
+           // [downArrow setHidden:YES];
+       // }
      
-        CGRect rect = [self.view bounds];
+        CGRect rect = [snapShotView bounds];
         UIGraphicsBeginImageContextWithOptions(rect.size,NO,0.0f);
         CGContextRef context = UIGraphicsGetCurrentContext();
-        [self.view.layer renderInContext:context];
+        [snapShotView.layer renderInContext:context];
         UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
+        [snapText release];
+        [snapFirst release];
+        [snapShotView release];
+        
         self.noteSnapShot = capturedImage;
     }
+    
+    if (pencil.alpha == 1) {
+        
+
+        
+        UIView *snapShotView = [[UIView alloc]initWithFrame:self.view.frame];
+        snapShotView.backgroundColor = firstView.backgroundColor;
+        snapShotView.layer.cornerRadius = firstView.layer.cornerRadius;
+        
+        ISKDrawingView *snapFirst = [[ISKDrawingView alloc]initWithFrame:firstView.frame];
+        snapFirst.brush =  UIColorFromRGB(0x102855);
+        
+        
+        NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",activeView]];
+        
+        NSData *bezierData = [NSData dataWithContentsOfFile:path];
+        
+        if (bezierData) {
+            
+            UIBezierPath *bezierPath = [NSKeyedUnarchiver unarchiveObjectWithData:bezierData];
+            
+            if (bezierPath) {
+                
+                snapFirst.mainPath = bezierPath;
+            }
+        }
+
+        
+        [snapShotView addSubview:snapFirst];
+
+        CGRect rect = [snapShotView bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,NO,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [snapShotView.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [snapFirst release];
+        [snapShotView release];
+        
+        self.noteDrawingSnapShot = capturedImage;
+    }
+
     
     // TODO: check out animateWithDuration damping velocity when this is added to iOS7 API seed
     [UIView animateWithDuration:0.2 animations:^{
@@ -515,7 +643,8 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 1;
         thirdView.alpha = 1;
-        self.shareButton.y += 30;
+         NSLog(@"NOTETEXT LENGTH in AMIMATE = %i",self.noteText.text.length);
+       if (self.noteText.text.length>0 ||  pencil.alpha == 1.0) self.shareButton.y += 30;
         [self squeezeStack];
        // [self addOverlay];
         
@@ -525,8 +654,8 @@
         flipGR.enabled= NO;
         revealGR.enabled = NO;
         hideGR.enabled = YES;
-        noteText.editable = NO;
-        noteText.userInteractionEnabled = NO;
+        self.noteText.editable = NO;
+        self.noteText.userInteractionEnabled = NO;
         
         if (self.delegate.activeStack ==self) {
             
@@ -624,7 +753,7 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 0;
         thirdView.alpha = 0;
-        self.shareButton.y -= 30;
+       if (self.noteText.text.length>0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
         [self expandStack];
        // [self hideOverlay];
 
@@ -638,8 +767,8 @@
         clearGR.enabled = YES;
         hideGR.enabled = NO;
         
-        noteText.editable = YES;
-        noteText.userInteractionEnabled = YES;
+        self.noteText.editable = YES;
+        self.noteText.userInteractionEnabled = YES;
        
         
 
@@ -691,18 +820,18 @@
     
     if (blackInk == YES) {
         
-        noteText.textColor = UIColorFromRGB(0x102855);
+        self.noteText.textColor = UIColorFromRGB(0x102855);
     }
     else {
         
-        noteText.textColor = [UIColor blackColor];
+        self.noteText.textColor = [UIColor blackColor];
     }
     
     UIFontDescriptor *helNeueFamily = [UIFontDescriptor fontDescriptorWithFontAttributes:@{UIFontDescriptorFamilyAttribute:@"Helvetica Neue"}];
     
     NSLog(@"%@",[helNeueFamily matchingFontDescriptorsWithMandatoryKeys:nil]);
     
-    noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+    self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
     
     
 //    BOOL smallFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableSmallerFont"];
@@ -719,10 +848,8 @@
 //    }
     
     
-   // CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
-    noteText.contentSize = paddedSize;
-    [self toggleArrows:noteText];
+
+    [self toggleArrows:self.noteText];
     
 }
 
@@ -859,16 +986,16 @@
     keyboardSize = [aValue CGRectValue].size;
     
     // Resize the scroll view (which is the root view of the window)
-    CGRect viewFrame = [noteText frame];
+    CGRect viewFrame = [self.noteText frame];
  
     viewFrame.size.height -= keyboardSize.height-42+2;
    
-   noteText.frame = viewFrame;
+   self.noteText.frame = viewFrame;
 
     
     // Scroll the active text field into view.
     //CGRect textFieldRect = [activeField frame];
-    [noteText scrollRectToVisible:viewFrame animated:YES];
+    [self.noteText scrollRectToVisible:viewFrame animated:YES];
     
     keyboardShown = YES;
 
@@ -880,18 +1007,16 @@
     }
     
     // Reset the height of the scroll view to its original value
-    CGRect viewFrame = [noteText frame];
+    CGRect viewFrame = [self.noteText frame];
 
     viewFrame.size.height += keyboardSize.height-42+2;
     
-    noteText.frame = viewFrame;
+    self.noteText.frame = viewFrame;
     
     keyboardShown = NO;
-    //CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height-10);
-    CGSize paddedSize = CGSizeMake(noteText.contentSize.width, noteText.contentSize.height);
-    noteText.contentSize = paddedSize;
+
     
-    [self toggleArrows:noteText];
+    [self toggleArrows:self.noteText];
     
 }
 
@@ -958,7 +1083,8 @@
     [secondView release];
     [thirdView release];
     [simpleNotepadStack release];
-    [noteText release];
+    [_noteText release];
+    [_noteDrawingSnapShot release];
     [doneButton release];
     
     [super dealloc];
