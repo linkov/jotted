@@ -63,16 +63,7 @@
     self.drawScreen = ds;
     [ds release];
     
-    BOOL blackInk = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableBlueInk"];
-    
-    if (blackInk == YES) {
-        
-        self.drawScreen.brush = UIColorFromRGB(0x102855);
-    }
-    else {
-        
-        self.drawScreen.brush = [UIColor blackColor];
-    }
+    self.drawScreen.brush = UIColorFromRGB(0x102855);
     
     
     NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];

@@ -815,17 +815,9 @@
 
 
 -(void)updateAppSettings  {
-    
-    BOOL blackInk = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableBlueInk"];
-    
-    if (blackInk == YES) {
-        
-        self.noteText.textColor = UIColorFromRGB(0x102855);
-    }
-    else {
-        
-        self.noteText.textColor = [UIColor blackColor];
-    }
+  
+    self.noteText.textColor = UIColorFromRGB(0x102855);
+  
     
     UIFontDescriptor *helNeueFamily = [UIFontDescriptor fontDescriptorWithFontAttributes:@{UIFontDescriptorFamilyAttribute:@"Helvetica Neue"}];
     

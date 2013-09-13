@@ -545,17 +545,9 @@
 
 -(void)updateAppSettings  {
     
-    BOOL blackInk = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableBlueInk"];
-    
-    if (blackInk == YES) {
-        
-        noteText.textColor = UIColorFromRGB(0x102855);
-    }
-    else {
-        
-        noteText.textColor = [UIColor blackColor];
-    }
-    
+
+    noteText.textColor = UIColorFromRGB(0x102855);
+
     
     
     

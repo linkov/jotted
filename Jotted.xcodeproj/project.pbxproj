@@ -23,7 +23,6 @@
 		844B90EC1669AAE800935AB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
 		84738D051669BCBB006501CE /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
 		84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D111669CE2C006501CE /* ISKMainViewController.m */; };
-		C378240217E06ADE00ABB5CE /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C378240117E06ADE00ABB5CE /* Reveal.framework */; };
 		C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C378240317E06B0E00ABB5CE /* CFNetwork.framework */; };
 		C378240717E0DBE600ABB5CE /* UIView+XYWHChange.m in Sources */ = {isa = PBXBuildFile; fileRef = C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */; };
 		C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A17F7F17DF81A0009AAC5D /* ISKStackVC.m */; };
@@ -37,7 +36,6 @@
 		C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */; };
 		C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */; };
 		C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C3E76E0815F36A620062AF30 /* Settings.bundle */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F113EC78167DEBC40077B6D1 /* ISKComplexStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC77167DEBC40077B6D1 /* ISKComplexStackViewController.m */; };
@@ -74,7 +72,6 @@
 		84738D101669CE2C006501CE /* ISKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMainViewController.h; sourceTree = "<group>"; };
 		84738D111669CE2C006501CE /* ISKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKMainViewController.m; sourceTree = "<group>"; };
 		84738D141669CE95006501CE /* ISKSimpleStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKSimpleStackViewController.h; sourceTree = "<group>"; };
-		C378240117E06ADE00ABB5CE /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		C378240317E06B0E00ABB5CE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C378240517E0DBE600ABB5CE /* UIView+XYWHChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XYWHChange.h"; sourceTree = "<group>"; };
 		C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XYWHChange.m"; sourceTree = "<group>"; };
@@ -92,7 +89,6 @@
 		C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xiomara-Script.ttf"; sourceTree = "<group>"; };
 		C3E4A96717E353270001CC6B /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		C3E4A96817E353270001CC6B /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		C3E76E0815F36A620062AF30 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F113EC6F167DC41A0077B6D1 /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
@@ -116,7 +112,6 @@
 				C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */,
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
-				C378240217E06ADE00ABB5CE /* Reveal.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
 				F14A9DBA16CAE5BF00739A0E /* Crashlytics.framework in Frameworks */,
 			);
@@ -140,7 +135,6 @@
 				844B90DD1669AAE800935AB8 /* Jotted-Prefix.pch */,
 				844B90DE1669AAE800935AB8 /* main.m */,
 				84738D071669BCDC006501CE /* Const.h */,
-				C378240117E06ADE00ABB5CE /* Reveal.framework */,
 			);
 			path = Jotted;
 			sourceTree = "<group>";
@@ -196,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				F1A670EC176923DC00665F19 /* Media.xcassets */,
-				C3E76E0815F36A620062AF30 /* Settings.bundle */,
 				F113EC6D167DC41A0077B6D1 /* vendor */,
 				844B90C61669AAE800935AB8 /* Jotted */,
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
@@ -311,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A670ED176923DC00665F19 /* Media.xcassets in Resources */,
-				C3E76E0915F36A620062AF30 /* Settings.bundle in Resources */,
 				844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */,
 				844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */,
 				C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */,
