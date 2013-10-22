@@ -13,7 +13,6 @@
 #import "ISKNoteView.h"
 #import "ISKSimpleStackViewController.h"
 
-#import <Crashlytics/Crashlytics.h>
 #import "ISKTiltRevealMotionEffect.h"
 #import "ISKStacksViewController.h"
 #import "ISKGravityCollisionBehavior.h"
@@ -722,7 +721,7 @@
     
     
     
-    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, 330)] autorelease];
+    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, [[ UIScreen mainScreen ] bounds ].size.height-200)] autorelease];
     [s setDamping:0.5];
    
     

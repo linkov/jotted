@@ -7,7 +7,6 @@
 //
 
 #import "ISKAppDelegate.h"
-#import <Crashlytics/Crashlytics.h>
 
 
 @implementation ISKAppDelegate
@@ -32,7 +31,6 @@
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     
-    [Crashlytics startWithAPIKey:@"7afe2a1f919e83706ec88df871b173b4faf5c453"];
     
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
