@@ -721,9 +721,13 @@
     
     
     
-    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, [[ UIScreen mainScreen ] bounds ].size.height-200)] autorelease];
+//    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, [[ UIScreen mainScreen ] bounds ].size.height-200)] autorelease];
+//    [s setDamping:0.5];
+//   
+    
+    UISnapBehavior *s = [[[UISnapBehavior alloc]initWithItem:item snapToPoint:CGPointMake(159.5, IS_WIDESCREEN == 1 ? 330 : 280)] autorelease];
     [s setDamping:0.5];
-   
+    
     
     [self.stackAnimator removeAllBehaviors];
     [self.stackAnimator addBehavior:s];
