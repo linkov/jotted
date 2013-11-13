@@ -27,7 +27,7 @@
     UISwipeGestureRecognizer *clearGR;
     UISwipeGestureRecognizer *flipGR;
     UISwipeGestureRecognizer *revealGR;
-    UISwipeGestureRecognizer *hideGR;
+    UITapGestureRecognizer *hideGR;
     UITapGestureRecognizer *switchViewGR;
     UITapGestureRecognizer *switchViewGR2;
     
@@ -111,8 +111,8 @@
     revealGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(animateUp)];
     revealGR.direction = UISwipeGestureRecognizerDirectionUp;
     
-    hideGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(animateDown)];
-    hideGR.direction = UISwipeGestureRecognizerDirectionDown;
+    hideGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(animateDown)];
+//    hideGR.direction = UISwipeGestureRecognizerDirectionDown;
     hideGR.enabled = NO;
     
     switchViewGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
@@ -150,31 +150,7 @@
     [switchViewGR release];
     [switchViewGR2 release];
     
-    
 
-    
-   // pagingScrollView = self.delegate.pagingScrollView;
-    //pageControl = self.delegate.pageControl;
-    
-    // setup paging scroll
-//    CGRect scrollFrame;
-//    scrollFrame.origin.x = 0;
-//    scrollFrame.origin.y = 0;
-//    scrollFrame.size.height = 480;
-//    scrollFrame.size.width = PAGERPAGEWIDTH;
-//    
-//    pagingScrollView = [[UIScrollView alloc]initWithFrame:scrollFrame];
-//    pagingScrollView.pagingEnabled = NO;
-//    pagingScrollView.scrollEnabled = NO;
-//    pagingScrollView.canCancelContentTouches = NO;
-//    pagingScrollView.directionalLockEnabled = YES;
-//    pagingScrollView.bounces = YES;
-//    pagingScrollView.delegate = self;
-//    pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*2, 480);
-//    pagingScrollView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
-    
-   // UIView *checklistNotepadStack = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x+PAGERPAGEWIDTH, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    
     [simpleNotepadStack addSubview:firstView];
     [simpleNotepadStack insertSubview:secondView belowSubview:firstView];
     [simpleNotepadStack insertSubview:thirdView belowSubview:secondView];
@@ -257,33 +233,18 @@
     
     // TextKit stuff
     [self.noteText.layoutManager setUsesFontLeading:YES];
-//    NSLog(@"textContainer = %@",noteText.textContainer);
-//    NSLog(@"layoutManager = %@",noteText.layoutManager);
-   // noteText.layoutManager
+
+    
     // text tight trait
-    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragrahStyle setLineSpacing:2];
-    
-    [self.noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [self.noteText.text length])];
-    [paragrahStyle release];
-    [self toggleArrows:self.noteText];
-    
-//    UIInterpolatingMotionEffect *mFV = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-//    UIInterpolatingMotionEffect *mFH = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-//    [mFV setMaximumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(30.4, 11.2)]];
-//    [mFV setMinimumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(3.4, 1.2)]];
-//    [mFH setMaximumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(30.4, 11.2)]];
-//    [mFH setMinimumRelativeValue:[NSValue valueWithCGPoint:CGPointMake(3.4, 1.2)]];
+//    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+//    [paragrahStyle setLineSpacing:2];
+//    [paragrahStyle setLineHeightMultiple:0.75];
 //    
-//    [noteText addMotionEffect:mFV];
-//    [noteText addMotionEffect:mFH];
-//    [mFH release];
-//    [mFV release];
+//    [self.noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [self.noteText.text length])];
+//    [paragrahStyle release];
     
-    //pencil.alpha = 0;
-    //    [pencil addMotionEffect:[[ISKTiltRevealMotionEffect new] autorelease]];
-    
-    
+    [self toggleArrows:self.noteText];
+
     
     
     self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -441,7 +402,7 @@
     self.noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
     
 
-    /// [noteText scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+
     [self toggleArrows:self.noteText];
     
     [self checkDrawings];
@@ -764,8 +725,6 @@
         self.noteText.editable = YES;
         self.noteText.userInteractionEnabled = YES;
        
-        
-
         
     }];
     
