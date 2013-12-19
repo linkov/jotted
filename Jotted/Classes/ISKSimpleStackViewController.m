@@ -21,6 +21,8 @@
 static const NSUInteger ktextViewSideOffset = 10;
 static const NSUInteger ktextViewTopOffset = 55;
 static const NSUInteger ktextViewBottomOffset = 74;
+static const NSUInteger kTextViewKeyboardOffset = 142;
+static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 @interface ISKSimpleStackViewController () {
     
@@ -953,16 +955,9 @@ static const NSUInteger ktextViewBottomOffset = 74;
         return;
     }
     
-    NSDictionary *info = [aNotification userInfo];
-    
-    // Get the size of the keyboard.
-    NSValue *aValue = info[UIKeyboardFrameBeginUserInfoKey];
-    keyboardSize = [aValue CGRectValue].size;
-    
-    // Resize the scroll view (which is the root view of the window)
     CGRect viewFrame = [self.noteText frame];
  
-    viewFrame.size.height -= keyboardSize.height-42+2-34;
+    viewFrame.size.height -= self.noteText.contentSize.height>kTextViewKeyboardOffsetActivateHeight ? kTextViewKeyboardOffset : 0;
    
    self.noteText.frame = viewFrame;
 
@@ -983,7 +978,7 @@ static const NSUInteger ktextViewBottomOffset = 74;
     // Reset the height of the scroll view to its original value
     CGRect viewFrame = [self.noteText frame];
     
-    viewFrame.size.height += keyboardSize.height-42+2-34;
+    viewFrame.size.height += self.noteText.contentSize.height>kTextViewKeyboardOffsetActivateHeight ? kTextViewKeyboardOffset : 0;;
     
     self.noteText.frame = viewFrame;
     
