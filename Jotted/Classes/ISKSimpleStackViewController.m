@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Alexey Linkov. All rights reserved.
 //
 
-
 #define TRANSITION_Y_AXIS 108
 #define TRANSFORM_WH 25
 
@@ -18,6 +17,10 @@
 #import "ISKGravityCollisionBehavior.h"
 
 #import "ISKDrawingView.h"
+
+static const NSUInteger ktextViewSideOffset = 10;
+static const NSUInteger ktextViewTopOffset = 55;
+static const NSUInteger ktextViewBottomOffset = 74;
 
 @interface ISKSimpleStackViewController () {
     
@@ -71,7 +74,7 @@
 -(void)updateAppSettings;
 -(void)showFlipside;
 
--(void)keyboardWasHidden:(NSNotification*)aNotification;
+//-(void)keyboardWasHidden:(NSNotification*)aNotification;
 -(void)keyboardWasShown:(NSNotification*)aNotification;
 
 @end
@@ -160,12 +163,11 @@
     [self.view addSubview:simpleNotepadStack];
     
     
-    
     [firstView release];
     [secondView release];
     [thirdView release];
     
-    _noteText = [[UITextView alloc]initWithFrame:CGRectMake(10, 55, 300, [[UIScreen mainScreen] bounds].size.height-20-(40+55)+2-15 )];
+    _noteText = [[UITextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset*2, [[UIScreen mainScreen] bounds].size.height-ktextViewBottomOffset-ktextViewTopOffset)];
     self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
     self.noteText.backgroundColor = [UIColor clearColor];
     //noteText.
@@ -188,8 +190,7 @@
     
     activeView = firstView.tag;
     
-    self.noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
-
+    [self updateTextViewText:[[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]] ? : @""];
     
     upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(320/2-9/2, 40, 9, 6)];
     upArrow.image = [UIImage imageNamed:@"blackArrowUp"];
@@ -244,8 +245,6 @@
 //    [paragrahStyle release];
     
     [self toggleArrows:self.noteText];
-
-    
     
     self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
 
@@ -265,7 +264,7 @@
 
 -(void)shareNote {
     
-    if (pencil.alpha == 1 && self.noteText.text.length >0) {
+    if (pencil.alpha == 1 && self.noteText.attributedText.length >0) {
         
        UIActionSheet  *sheet = [[UIActionSheet alloc] initWithTitle:@"Share"
                                             delegate:self
@@ -277,12 +276,12 @@
         [sheet showInView:self.view];
         [sheet release];
     }
-    else if (pencil.alpha != 1 && self.noteText.text.length >0){
+    else if (pencil.alpha != 1 && self.noteText.attributedText.length >0){
         
         [self shareNoteText];
     }
     
-    else if  (pencil.alpha == 1 && self.noteText.text.length ==0){
+    else if  (pencil.alpha == 1 && self.noteText.attributedText.length ==0){
         
         [self shareNoteDrawing];
     }
@@ -318,7 +317,7 @@
 -(void)finishEdit {
     
     [self.noteText resignFirstResponder];
-    NSLog(@"NOTETEXT LENGTH = %i",self.noteText.text.length);
+    NSLog(@"NOTETEXT LENGTH = %i",self.noteText.attributedText.length);
 }
 
 
@@ -335,10 +334,9 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         
+        [self updateTextViewText:@"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n"];
         
-        self.noteText.text = @"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n";
-        
-        [[NSUserDefaults standardUserDefaults] setValue:self.noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+        [[NSUserDefaults standardUserDefaults] setValue:@"Swipe up to reveal all notes\nDoodle on the flip side of a note\nClean flip side with 2 finger tap\nSwipe left to flip this note\nSwipe right to delete this text\n" forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
     }
@@ -347,7 +345,7 @@
 
 -(void)clearNote {
     
-    if (self.noteText.text.length >0) {
+    if (self.noteText.attributedText.length >0) {
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Clear all text?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear",nil];
         [alert show];
@@ -360,8 +358,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex != 0) {
-        self.noteText.text = @"";
-        [[NSUserDefaults standardUserDefaults] setValue:self.noteText.text forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
+        [self updateTextViewText:@""];
+        [[NSUserDefaults standardUserDefaults] setValue:[self.noteText.attributedText string] forKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
          [self toggleArrows:self.noteText];
@@ -399,8 +397,7 @@
         NSLog(@"First view RED");
     }
     
-    self.noteText.text =  [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]];
-    
+    [self updateTextViewText:[[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i",activeView]]];
 
 
     [self toggleArrows:self.noteText];
@@ -494,7 +491,7 @@
 
 -(void)animateUp  {
     
-    if (self.noteText.text.length>0) {
+    if (self.noteText.attributedText.length>0) {
         
         UIView *snapShotView = [[UIView alloc]initWithFrame:self.view.frame];
         
@@ -505,7 +502,7 @@
         
         UILabel *snapText = [[UILabel alloc]initWithFrame:self.noteText.frame];
         snapText.font = self.noteText.font;
-        snapText.text = self.noteText.text;
+        snapText.attributedText = self.noteText.attributedText;
         snapText.lineBreakMode = NSLineBreakByWordWrapping;
         snapText.numberOfLines = 0;
         
@@ -594,8 +591,8 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 1;
         thirdView.alpha = 1;
-         NSLog(@"NOTETEXT LENGTH in AMIMATE = %i",self.noteText.text.length);
-       if (self.noteText.text.length>0 ||  pencil.alpha == 1.0) self.shareButton.y += 30;
+         NSLog(@"NOTETEXT LENGTH in AMIMATE = %i",self.noteText.attributedText.length);
+       if (self.noteText.attributedText.length>0 ||  pencil.alpha == 1.0) self.shareButton.y += 30;
         [self squeezeStack];
        // [self addOverlay];
         
@@ -695,6 +692,18 @@
   //  [self.stackAnimator addBehavior:itemB];
 }
 
+-(void)updateTextViewText:(NSString *)textString {
+    NSMutableAttributedString *modifiedText = [[NSMutableAttributedString alloc]initWithString:textString ?: @""];
+    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+  //  [paragrahStyle setLineSpacing:0];
+ //   [paragrahStyle setLineHeightMultiple:1];
+  //  [paragrahStyle setHyphenationFactor:0.8];
+    [modifiedText addAttributes:@{NSParagraphStyleAttributeName: paragrahStyle,NSFontAttributeName:[UIFont fontWithName:@"Noteworthy-Light" size:20],NSForegroundColorAttributeName:UIColorFromRGB(0x102855) } range:NSMakeRange(0, [modifiedText length])];
+    //[modifiedText addAttributes:@{NSParagraphStyleAttributeName: paragrahStyle } range:NSMakeRange(0, [modifiedText length])];
+    self.noteText.attributedText = modifiedText;
+    [paragrahStyle release];
+    [modifiedText release];
+}
 
 -(void)animateDown  {
     
@@ -708,7 +717,7 @@
         simpleNotepadStack.center = p;
         secondView.alpha = 0;
         thirdView.alpha = 0;
-       if (self.noteText.text.length>0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
+       if (self.noteText.attributedText.length>0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
         [self expandStack];
        // [self hideOverlay];
 
@@ -724,6 +733,8 @@
         
         self.noteText.editable = YES;
         self.noteText.userInteractionEnabled = YES;
+        [self.noteText setContentOffset:CGPointMake(0, 0)];
+        [self toggleArrows:self.noteText];
        
         
     }];
@@ -806,9 +817,14 @@
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
     
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWasHidden:)
+//                                                 name:UIKeyboardDidHideNotification object:nil];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasHidden:)
-                                                 name:UIKeyboardDidHideNotification object:nil];
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateAppSettings)
@@ -835,6 +851,17 @@
 //    scrollView.contentSize = paddedSize;
 //}
 
+- (CGSize)text:(NSString *)text sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
+{
+    CGRect frame = [text boundingRectWithSize:size
+                                          options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                       attributes:@{NSFontAttributeName:font}
+                                          context:nil];
+        return frame.size;
+
+}
+
+
 
 -(void)toggleArrows:(UIScrollView*)scroll {
     
@@ -847,18 +874,15 @@
     else {
         upArrow.alpha = 0;
     }
+    
+    CGFloat contentHeight = [self text:[self.noteText.attributedText string] sizeWithFont:self.noteText.font constrainedToSize:CGSizeMake(self.noteText.frame.size.width, MAXFLOAT) ].height;
+    
     //-24 for big text
     //if ( (scroll.contentSize.height-6 > scroll.frame.size.height+(scroll.contentOffset.y == 16 ? 0 : scroll.contentOffset.y ) )) {
-    if ( (scroll.contentSize.height-8 > scroll.frame.size.height+scroll.contentOffset.y )) {
-        
-//        NSLog(@" scroll.contentOffset.y = %f",scroll.contentOffset.y);
-//        NSLog(@" scroll.frame.size.height = %f",scroll.frame.size.height);
-//        NSLog(@" scroll.contentSize.height = %f",scroll.contentSize.height);
+    if ( (contentHeight-8 > scroll.frame.size.height+scroll.contentOffset.y )) {
         
          downArrow.alpha = 1;
         
-
-    
     }
     else {
         
@@ -866,6 +890,11 @@
         
 
     }
+    
+            NSLog(@" scroll.contentOffset.y = %f",scroll.contentOffset.y);
+            NSLog(@" scroll.frame.size.height = %f",scroll.frame.size.height);
+            NSLog(@" scroll.contentSize.height = %f",contentHeight);
+    
 //    if (downArrow.alpha == 0 && upArrow.alpha == 0) {
 //        
 //        scroll.scrollEnabled = NO;
@@ -933,7 +962,7 @@
     // Resize the scroll view (which is the root view of the window)
     CGRect viewFrame = [self.noteText frame];
  
-    viewFrame.size.height -= keyboardSize.height-42+2;
+    viewFrame.size.height -= keyboardSize.height-42+2-34;
    
    self.noteText.frame = viewFrame;
 
@@ -946,24 +975,44 @@
 
 }
 
--(void)keyboardWasHidden:(NSNotification*)aNotification {
+-(void)keyboardWillHide:(NSNotification*)aNotification {
     if(!keyboardShown) {
         return;
     }
     
     // Reset the height of the scroll view to its original value
     CGRect viewFrame = [self.noteText frame];
-
-    viewFrame.size.height += keyboardSize.height-42+2;
+    
+    viewFrame.size.height += keyboardSize.height-42+2-34;
     
     self.noteText.frame = viewFrame;
     
     keyboardShown = NO;
-
+    
     
     [self toggleArrows:self.noteText];
     
 }
+
+
+//-(void)keyboardWasHidden:(NSNotification*)aNotification {
+//    if(!keyboardShown) {
+//        return;
+//    }
+//    
+//    // Reset the height of the scroll view to its original value
+//    CGRect viewFrame = [self.noteText frame];
+//
+//    viewFrame.size.height += keyboardSize.height-42+2-34;
+//    
+//    self.noteText.frame = viewFrame;
+//    
+//    keyboardShown = NO;
+//
+//    
+//    [self toggleArrows:self.noteText];
+//    
+//}
 
 #pragma mark - UIScrollView delegate
 

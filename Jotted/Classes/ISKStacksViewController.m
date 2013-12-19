@@ -132,14 +132,9 @@
         realPage = page;
     }
     
-       self.activeStack = self.stacks[realPage];
-    NSLog(@"ACTIVE STACK = %@",self.activeStack);
-//
-//    if (page == 1) {
-//        
-//        complexStack.isVisible = YES;
-//    }
-    
+
+    if (realPage<3)   self.activeStack = self.stacks[realPage];
+
 }
 
 
