@@ -735,7 +735,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
         
         self.noteText.editable = YES;
         self.noteText.userInteractionEnabled = YES;
-        [self.noteText setContentOffset:CGPointMake(0, 0)];
+      //  [self.noteText setContentOffset:CGPointMake(0, 0)];
         [self toggleArrows:self.noteText];
        
         
