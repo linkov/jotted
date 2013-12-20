@@ -38,7 +38,6 @@
 		C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
-		F13FDB2818628C6500AC6DA3 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13FDB2718628C6500AC6DA3 /* Reveal.framework */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
 		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
@@ -92,7 +91,6 @@
 		F113EC70167DC41A0077B6D1 /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
 		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
-		F13FDB2718628C6500AC6DA3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
 		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
 		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
 				C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */,
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
-				F13FDB2818628C6500AC6DA3 /* Reveal.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -203,7 +200,6 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F13FDB2718628C6500AC6DA3 /* Reveal.framework */,
 				C378240317E06B0E00ABB5CE /* CFNetwork.framework */,
 				C3BA330515F271E800EF7DA4 /* QuartzCore.framework */,
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
@@ -412,8 +408,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -428,8 +424,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "93D5A60E-10D0-4EB4-86EE-D7F6C681E501";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "93D5A60E-10D0-4EB4-86EE-D7F6C681E501";
+				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -441,8 +437,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -458,8 +454,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "93D5A60E-10D0-4EB4-86EE-D7F6C681E501";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "93D5A60E-10D0-4EB4-86EE-D7F6C681E501";
+				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -33,8 +33,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     UISwipeGestureRecognizer *flipGR;
     UISwipeGestureRecognizer *revealGR;
     UITapGestureRecognizer *hideGR;
-    UITapGestureRecognizer *switchViewGR;
-    UITapGestureRecognizer *switchViewGR2;
+
     
   
     
@@ -64,6 +63,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 @property (retain) UIButton *shareButton;
 @property (retain) UIImage *noteSnapShot;
 @property (retain) UIImage *noteDrawingSnapShot;
+
+@property (retain) UITapGestureRecognizer *switchViewGR;
+@property (retain) UITapGestureRecognizer *switchViewGR2;
 
 -(void)toggleArrows:(UIScrollView*)scroll;
 -(void)finishEdit;
@@ -120,11 +122,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 //    hideGR.direction = UISwipeGestureRecognizerDirectionDown;
     hideGR.enabled = NO;
     
-    switchViewGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
-    switchViewGR.numberOfTapsRequired = 1;
+    _switchViewGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
+    self.switchViewGR.numberOfTapsRequired = 1;
     
-    switchViewGR2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
-    switchViewGR2.numberOfTapsRequired = 1;
+    _switchViewGR2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(switchToView:)];
+    self.switchViewGR2.numberOfTapsRequired = 1;
     
     [simpleNotepadStack addGestureRecognizer:clearGR];
     [simpleNotepadStack addGestureRecognizer:flipGR];
@@ -150,10 +152,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     thirdView.alpha = 0;
     thirdView.tag = [self.viewTags[2] intValue];
     
-    [secondView addGestureRecognizer:switchViewGR];
-    [thirdView addGestureRecognizer:switchViewGR2];
-    [switchViewGR release];
-    [switchViewGR2 release];
+    [secondView addGestureRecognizer:self.switchViewGR];
+    [thirdView addGestureRecognizer:self.switchViewGR2];
+
     
 
     [simpleNotepadStack addSubview:firstView];
@@ -275,7 +276,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
                                    otherButtonTitles:@"Note image",@"Note text", nil];
         
         // Show the sheet
-        [sheet showInView:self.view];
+        [sheet showInView:self.simpleNotepadStack];
         [sheet release];
     }
     else if (pencil.alpha != 1 && self.noteText.attributedText.length >0){
@@ -369,9 +370,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 
 
--(void)switchToView:(UIGestureRecognizer*)gr{
+-(void)switchToView:(UITapGestureRecognizer*)gr{
     
-    
+    gr.enabled = NO;
+    self.switchViewGR.enabled = NO;
+    self.switchViewGR2.enabled = NO;
     
     downArrow.alpha = 0;
     upArrow.alpha = 0;
@@ -709,37 +712,43 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 -(void)animateDown  {
     
+    if (simpleNotepadStack.center.y <= 176) {
+        
+        self.delegate.pageControl.alpha = 0;
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            
+            CGPoint p = simpleNotepadStack.center;
+            p.y += TRANSITION_Y_AXIS;
+            simpleNotepadStack.center = p;
+            secondView.alpha = 0;
+            thirdView.alpha = 0;
+            if (self.noteText.attributedText.length>0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
+            [self expandStack];
+            // [self hideOverlay];
+            
+            
+        } completion:^(BOOL finished) {
+            
+            self.delegate.pagingScrollView.pagingEnabled = NO;
+            self.delegate.pagingScrollView.scrollEnabled = NO;
+            flipGR.enabled= YES;
+            revealGR.enabled = YES;
+            clearGR.enabled = YES;
+            hideGR.enabled = NO;
+            self.switchViewGR.enabled = YES;
+            self.switchViewGR2.enabled = YES;
+            
+            self.noteText.editable = YES;
+            self.noteText.userInteractionEnabled = YES;
+            //  [self.noteText setContentOffset:CGPointMake(0, 0)];
+            [self toggleArrows:self.noteText];
+            
+            
+        }];
+    }
     
-    self.delegate.pageControl.alpha = 0;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-       
-        CGPoint p = simpleNotepadStack.center;
-        p.y += TRANSITION_Y_AXIS;
-        simpleNotepadStack.center = p;
-        secondView.alpha = 0;
-        thirdView.alpha = 0;
-       if (self.noteText.attributedText.length>0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
-        [self expandStack];
-       // [self hideOverlay];
 
-        
-    } completion:^(BOOL finished) {
-        
-        self.delegate.pagingScrollView.pagingEnabled = NO;
-        self.delegate.pagingScrollView.scrollEnabled = NO;
-        flipGR.enabled= YES;
-        revealGR.enabled = YES;
-        clearGR.enabled = YES;
-        hideGR.enabled = NO;
-        
-        self.noteText.editable = YES;
-        self.noteText.userInteractionEnabled = YES;
-      //  [self.noteText setContentOffset:CGPointMake(0, 0)];
-        [self toggleArrows:self.noteText];
-       
-        
-    }];
     
 }
 
@@ -1058,14 +1067,13 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 
 -(void)dealloc {
-    
+    [_switchViewGR release];
+    [_switchViewGR2 release];
     [pencil release];
     [clearGR release];
     [flipGR release];
     [revealGR release];
     [hideGR release];
-    [switchViewGR release];
-    [switchViewGR2 release];
     [upArrow release];
     [downArrow release];
     [firstView release];
