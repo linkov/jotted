@@ -75,11 +75,16 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
             NSLog(@"add stack");
             
             NSMutableArray *stackPages = [NSMutableArray arrayWithCapacity:3];
-            for (int i = initialAvaivablePage+1; i<=lastStackPage; i++) {
-                [stackPages addObject:[NSString stringWithFormat:@"%i",i]];
+            for (int i = initialAvaivablePage+((k-1)*3)+1; i<=lastStackPage; i++) {
+                [stackPages addObject:[NSNumber numberWithInt:i]];
                 NSLog(@"add tag %i",i);
+                if (stackPages.count == 3) {
+                    break;
+                }
             }
-             
+            
+            continue;
+    
         }
         
 
