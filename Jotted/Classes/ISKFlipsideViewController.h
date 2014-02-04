@@ -17,8 +17,9 @@
 @interface ISKFlipsideViewController : UIViewController
 
 @property (assign, nonatomic) id <ISKFlipsideViewControllerDelegate> delegate;
-@property int activeNote;
 
 - (void)done;
+
+-(id)initWithColor:(UIColor *)color noteTag:(int)noteTag delegate:(id)delegate;
 
 @end

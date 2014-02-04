@@ -16,6 +16,6 @@
 @property (nonatomic,retain) StyledPageControl *pageControl;
 @property (nonatomic,retain) UIScrollView *pagingScrollView;
 @property (nonatomic,retain) ISKSimpleStackViewController *activeStack;
-@property (retain) NSArray *stacks;
+@property (retain) NSMutableArray *stacks;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ISKAppDelegate.h"
-
+#import "TestFlight.h"
 
 @implementation ISKAppDelegate
 
@@ -22,7 +22,7 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:NO];
+     [TestFlight takeOff:@"22b9ee7f-c107-40d5-8e72-d3a91987385d"];
     
     self.mainViewController = [[ISKStacksViewController new] autorelease];
     //self.mainViewController.edgesForExtendedLayout = UIExtendedEdgeBottom;
@@ -30,6 +30,9 @@
     self.window.tintColor =UIColorFromRGB(0x102855);
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
+    
+   // NSURL *storeURL = [NSURL fileURLWithPath:[KGStore applicationDataDirectory]];
+  //  [[KGStore sharedInstance] setupCoreDataStackWithStorePathURL:storeURL];
     
     
     // Set the application defaults

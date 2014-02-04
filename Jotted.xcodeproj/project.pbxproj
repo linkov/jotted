@@ -39,6 +39,9 @@
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
+		F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D618A05D2B00D4D291 /* libTestFlight.a */; };
+		F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
+		F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F69E918A0723200D4D291 /* PSPDFTextView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
 		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 /* End PBXBuildFile section */
@@ -93,6 +96,13 @@
 		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
 		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
 		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
+		F19F69D618A05D2B00D4D291 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		F19F69D818A05D3A00D4D291 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F19F69DA18A05DB900D4D291 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		F19F69DB18A05DB900D4D291 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		F19F69DC18A05DB900D4D291 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		F19F69E818A0723200D4D291 /* PSPDFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPDFTextView.h; sourceTree = "<group>"; };
+		F19F69E918A0723200D4D291 /* PSPDFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFTextView.m; sourceTree = "<group>"; };
 		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
 		F1AA7395176A5E71004A6787 /* ISKTiltRevealMotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKTiltRevealMotionEffect.h; sourceTree = "<group>"; };
 		F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKTiltRevealMotionEffect.m; sourceTree = "<group>"; };
@@ -103,6 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */,
+				F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */,
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
 				C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */,
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
@@ -200,6 +212,7 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F19F69D818A05D3A00D4D291 /* libz.dylib */,
 				C378240317E06B0E00ABB5CE /* CFNetwork.framework */,
 				C3BA330515F271E800EF7DA4 /* QuartzCore.framework */,
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
@@ -221,6 +234,8 @@
 		F113EC6D167DC41A0077B6D1 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F19F69E718A0723200D4D291 /* PSPDFTextView */,
+				F19F69D518A05D2B00D4D291 /* TestFlight */,
 				C3E4A96617E353270001CC6B /* SVProgressHUD */,
 				F113EC6E167DC41A0077B6D1 /* StyledPageControl */,
 			);
@@ -234,6 +249,26 @@
 				F113EC70167DC41A0077B6D1 /* StyledPageControl.m */,
 			);
 			path = StyledPageControl;
+			sourceTree = "<group>";
+		};
+		F19F69D518A05D2B00D4D291 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				F19F69DA18A05DB900D4D291 /* TestFlight.h */,
+				F19F69DB18A05DB900D4D291 /* TestFlight+AsyncLogging.h */,
+				F19F69DC18A05DB900D4D291 /* TestFlight+ManualSessions.h */,
+				F19F69D618A05D2B00D4D291 /* libTestFlight.a */,
+			);
+			path = TestFlight;
+			sourceTree = "<group>";
+		};
+		F19F69E718A0723200D4D291 /* PSPDFTextView */ = {
+			isa = PBXGroup;
+			children = (
+				F19F69E818A0723200D4D291 /* PSPDFTextView.h */,
+				F19F69E918A0723200D4D291 /* PSPDFTextView.m */,
+			);
+			path = PSPDFTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +359,7 @@
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
 				C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */,
+				F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */,
@@ -408,8 +444,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -420,12 +456,16 @@
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/linkov/Documents/sdwr/jotted/vendor/TestFlight,
+				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
+				PROVISIONING_PROFILE = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -437,8 +477,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -450,12 +490,16 @@
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
 				INFOPLIST_FILE = "Jotted/Jotted-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/linkov/Documents/sdwr/jotted/vendor/TestFlight,
+				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
+				PROVISIONING_PROFILE = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -8,6 +8,7 @@
 
 #import "ISKStacksViewController.h"
 
+static const NSUInteger kInitialAvailableNoteTag = 72;
 
 @implementation ISKStacksViewController
 
@@ -53,10 +54,41 @@
     [self addChildViewController:simpleStack3];
     [simpleStack3 didMoveToParentViewController:self];
     
-    self.stacks = @[simpleStack1,simpleStack2,simpleStack3];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"kInitialAvailableNoteTagKey"]) {
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:kInitialAvailableNoteTag] forKey:@"kInitialAvailableNoteTagKey"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else {
+        
+        NSUInteger lastStackPage = [[[NSUserDefaults standardUserDefaults] valueForKey:@"kInitialAvailableNoteTagKey"] integerValue];
+        NSUInteger initialAvaivablePage = kInitialAvailableNoteTag;
+        NSUInteger numberOfPayedStacksAdded = (lastStackPage - initialAvaivablePage)/3;
+        
+        NSLog(@"lastStackPage = %i",lastStackPage);
+        NSLog(@"initialAvaivablePage = %i",initialAvaivablePage);
+        NSLog(@"number of stacks to add = %i",numberOfPayedStacksAdded);
+        
+        
+        for (int k =1; k<=numberOfPayedStacksAdded; k++) {
+            
+            NSLog(@"add stack");
+            
+            NSMutableArray *stackPages = [NSMutableArray arrayWithCapacity:3];
+            for (int i = initialAvaivablePage+1; i<=lastStackPage; i++) {
+                [stackPages addObject:[NSString stringWithFormat:@"%i",i]];
+                NSLog(@"add tag %i",i);
+            }
+             
+        }
+        
+
+    }
+
+
+    self.stacks =[NSMutableArray arrayWithObjects:simpleStack1,simpleStack2,simpleStack3, nil];
     self.activeStack = simpleStack1;
     
-    self.pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*self.stacks.count, [[UIScreen mainScreen] bounds].size.height);
     
     int i = 0;
     for (ISKSimpleStackViewController *ss  in self.stacks) {
@@ -71,10 +103,39 @@
     
     [self.view addSubview:self.pagingScrollView];
     
-    [self setupPageControl];
     
+    _pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
+    [self.view addSubview:self.pageControl];
     
+    [self updatePageControl];
     
+ //   [self addPayedStack];
+    
+}
+
+
+-(void)addPayedStack {
+    
+    NSUInteger startTag =  [[[NSUserDefaults standardUserDefaults] valueForKey:@"kInitialAvailableNoteTagKey"] integerValue];
+    
+    NSString *first = [NSString stringWithFormat:@"%i",startTag+1];
+    NSString *second = [NSString stringWithFormat:@"%i",startTag+2];
+    NSString *third = [NSString stringWithFormat:@"%i",startTag+3];
+    
+    ISKSimpleStackViewController *stack = [[ISKSimpleStackViewController alloc]initWithTags:@[first,second,third] delegate:self];
+    
+    stack.view.frame =CGRectMake(320*self.stacks.count, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+    [self.pagingScrollView addSubview:stack.view];
+    [stack animateUp];
+    
+    [self addChildViewController:stack];
+    [stack didMoveToParentViewController:self];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInteger:startTag+3] forKey:@"kInitialAvailableNoteTagKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.stacks addObject:stack];
+    [self updatePageControl];
 }
 
 //-(void)viewDidLoad {
@@ -99,16 +160,18 @@
 //
 //}
 
--(void)setupPageControl {
+-(void)updatePageControl {
     
-    _pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
+    
+    self.pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*self.stacks.count, [[UIScreen mainScreen] bounds].size.height);
+
     [self.pageControl setPageControlStyle:PageControlStyleDefault];
     self.pageControl.diameter = 6;
     
     self.pageControl.numberOfPages = self.stacks.count;
     self.pageControl.currentPage = 0;
     self.pageControl.alpha = 0;
-    [self.view addSubview:self.pageControl];
+
 }
 
 
@@ -133,7 +196,7 @@
     }
     
 
-    if (realPage<3)   self.activeStack = self.stacks[realPage];
+    if (realPage<=self.stacks.count)   self.activeStack = self.stacks[realPage];
 
 }
 

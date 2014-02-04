@@ -15,7 +15,7 @@
 #import "ISKTiltRevealMotionEffect.h"
 #import "ISKStacksViewController.h"
 #import "ISKGravityCollisionBehavior.h"
-
+#import "PSPDFTextView.h"
 #import "ISKDrawingView.h"
 
 static const NSUInteger ktextViewSideOffset = 10;
@@ -57,7 +57,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     CGSize keyboardSize;
 }
 @property(retain)  UIDynamicAnimator *stackAnimator;
-@property(retain)  UITextView *noteText;
+@property(retain)  PSPDFTextView *noteText;
 @property(retain)  NSArray *viewTags;
 @property(assign)  ISKStacksViewController *delegate;
 @property (retain) UIButton *shareButton;
@@ -75,7 +75,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 -(void)checkDrawings;
 -(void)animateUp;
 -(void)animateDown;
--(void)updateAppSettings;
 -(void)showFlipside;
 
 //-(void)keyboardWasHidden:(NSNotification*)aNotification;
@@ -222,13 +221,13 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     [simpleNotepadStack addSubview:pencil];
     [pencil release];
     
+    
+    self.noteText.textColor = UIColorFromRGB(0x102855);
+    self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+    [self.noteText setScrollEnabled:YES];
+    
     [self manageFirstLaunch];
-    
-    [self updateAppSettings];
-    
     [self checkDrawings];
-    
-    
     
     [self setupOverlay];
 
@@ -789,36 +788,36 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 
 
--(void)updateAppSettings  {
-  
-    self.noteText.textColor = UIColorFromRGB(0x102855);
-  
-    
-    UIFontDescriptor *helNeueFamily = [UIFontDescriptor fontDescriptorWithFontAttributes:@{UIFontDescriptorFamilyAttribute:@"Helvetica Neue"}];
-    
-    NSLog(@"%@",[helNeueFamily matchingFontDescriptorsWithMandatoryKeys:nil]);
-    
-    self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
-    
-    
-//    BOOL smallFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableSmallerFont"];
+//-(void)updateAppSettings  {
+//  
+//    self.noteText.textColor = UIColorFromRGB(0x102855);
+//  
 //    
-//    if (smallFont == YES) {
-//        
-//        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+//    UIFontDescriptor *helNeueFamily = [UIFontDescriptor fontDescriptorWithFontAttributes:@{UIFontDescriptorFamilyAttribute:@"Helvetica Neue"}];
+//    
+//    NSLog(@"%@",[helNeueFamily matchingFontDescriptorsWithMandatoryKeys:nil]);
+//    
+//    self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+//    
+//    
+////    BOOL smallFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableSmallerFont"];
+////    
+////    if (smallFont == YES) {
+////        
+////        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+////
+////    }
+////    else {
+////        
+////        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
+////
+////    }
+//    
+//    
 //
-//    }
-//    else {
-//        
-//        noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:24];
-//
-//    }
-    
-    
-
-    [self toggleArrows:self.noteText];
-    
-}
+//    [self toggleArrows:self.noteText];
+//    
+//}
 
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -828,19 +827,10 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWasHidden:)
-//                                                 name:UIKeyboardDidHideNotification object:nil];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
+   [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateAppSettings)
-                                                 name:NSUserDefaultsDidChangeNotification
-                                               object:nil];
     
     
 
@@ -850,7 +840,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
+ 
 }
 
 
@@ -1056,9 +1046,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 - (void)showFlipside
 {
   // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    ISKFlipsideViewController *controller = [ISKFlipsideViewController new];
-    controller.delegate = self;
-    controller.activeNote = activeView;
+    ISKFlipsideViewController *controller = [[ISKFlipsideViewController alloc]initWithColor:firstView.backgroundColor noteTag:activeView delegate:self];
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:controller animated:YES completion:nil];
     [controller release];

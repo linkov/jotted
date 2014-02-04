@@ -10,11 +10,25 @@
 
 @interface ISKFlipsideViewController ()
 @property (nonatomic, retain) ISKDrawingView *drawScreen;
+
+@property (retain) UIColor *noteColor;
+@property int noteTag;
+
 @end
 
 @implementation ISKFlipsideViewController
-@synthesize activeNote;
 
+-(id)initWithColor:(UIColor *)color noteTag:(int)noteTag delegate:(id)delegate {
+    
+    if (self = [super init]) {
+        
+        self.delegate = delegate;
+        self.noteColor = color;
+        self.noteTag = noteTag;
+    }
+    
+    return self;
+}
 
 -(void)loadView
 {
@@ -22,42 +36,7 @@
     
     self.view = [[UIView new] autorelease];
     [self.view.layer setCornerRadius:STACKCORNERRAD];
-    
-    if (self.activeNote == 64) {
-        self.view.backgroundColor =YELLOWCOLOR;
-    }
-    else if (self.activeNote == 65) {
-        
-        self.view.backgroundColor =BLUECOLOR;
-    }
-    else if (self.activeNote == 66) {
-        self.view.backgroundColor = REDCOLOR;
-    }
-    
-    else if (self.activeNote == 67) {
-        
-        self.view.backgroundColor =YELLOWCOLOR;
-    }
-    else if (self.activeNote == 68) {
-        self.view.backgroundColor = BLUECOLOR;
-    }
-    else if (self.activeNote == 69) {
-        self.view.backgroundColor = REDCOLOR;
-    }
-    
-    else if (self.activeNote == 70) {
-        
-        self.view.backgroundColor =YELLOWCOLOR;
-    }
-    else if (self.activeNote == 71) {
-        self.view.backgroundColor = BLUECOLOR;
-    }
-    else if (self.activeNote == 72) {
-        self.view.backgroundColor = REDCOLOR;
-    }
-
-
-    
+    self.view.backgroundColor = self.noteColor;
     
     ISKDrawingView *ds = [[ISKDrawingView alloc]initWithFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height-20)];
     self.drawScreen = ds;
@@ -67,7 +46,7 @@
     
     
     NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",activeNote]];
+    NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",self.noteTag]];
     
     NSData *bezierData = [NSData dataWithContentsOfFile:path];
     
@@ -111,19 +90,20 @@
 {
     
         NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-        NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",activeNote]];
+        NSString * path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",self.noteTag]];
         
         NSData *bezierData = [NSKeyedArchiver archivedDataWithRootObject:self.drawScreen.mainPath];
         [bezierData writeToFile:path atomically:YES];
    
         
-    [self.delegate flipsideViewControllerDidFinishWithView:activeNote];
+    [self.delegate flipsideViewControllerDidFinishWithView:self.noteTag];
 }
 
 -(void)dealloc
 {
 	_delegate  = nil;
     [_drawScreen release];
+    [_noteColor release];
 	[super dealloc];
 }
 @end
