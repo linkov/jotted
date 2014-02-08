@@ -5,9 +5,9 @@
 //  Created by Alexey Linkov on 9/1/12.
 //  Copyright (c) 2012 Alexey Linkov. All rights reserved.
 //
-
+#import "Flurry.h"
 #import "ISKAppDelegate.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 #import "ISKStackIAPHelper.h"
 
 @implementation ISKAppDelegate
@@ -23,7 +23,13 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-     [TestFlight takeOff:@"22b9ee7f-c107-40d5-8e72-d3a91987385d"];
+    
+    [Flurry setCrashReportingEnabled:YES];
+    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
+    [Flurry startSession:@"HJVR7C4P9PMF9B948MXK"];
+    //your code
+    
+    // [TestFlight takeOff:@"22b9ee7f-c107-40d5-8e72-d3a91987385d"];
     [ISKStackIAPHelper sharedInstance];
     
     self.mainViewController = [[ISKStacksViewController new] autorelease];

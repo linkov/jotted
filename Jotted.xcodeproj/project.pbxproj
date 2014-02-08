@@ -38,16 +38,19 @@
 		C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
-		F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */; };
-		F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8118A58EE900E04BE7 /* ISKStackIAPHelper.m */; };
+		F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8118A58EE900E04BE7 /* ISKStackIAPHelper.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F12D8A8418A5910400E04BE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A8318A5910400E04BE7 /* StoreKit.framework */; };
 		F12D8A8A18A59A5C00E04BE7 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8718A59A5C00E04BE7 /* PDKeychainBindings.m */; };
 		F12D8A8B18A59A5C00E04BE7 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8918A59A5C00E04BE7 /* PDKeychainBindingsController.m */; };
 		F12D8A8D18A5A2F400E04BE7 /* plus1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8C18A5A2F400E04BE7 /* plus1@2x.png */; };
 		F12D8A8F18A5A39B00E04BE7 /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8E18A5A39B00E04BE7 /* plus2@2x.png */; };
 		F12D8A9118A5A4C300E04BE7 /* plus3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A9018A5A4C300E04BE7 /* plus3@2x.png */; };
-		F12D8A9518A5A6E000E04BE7 /* SkyLab.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A9418A5A6E000E04BE7 /* SkyLab.m */; };
+		F12D8A9518A5A6E000E04BE7 /* SkyLab.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A9418A5A6E000E04BE7 /* SkyLab.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F12D8A9718A5AA9E00E04BE7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A9618A5AA9E00E04BE7 /* Reveal.framework */; };
+		F12D8A9D18A5C47600E04BE7 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A9C18A5C47600E04BE7 /* libFlurry_4.3.2.a */; };
+		F12D8A9F18A5C49E00E04BE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */; };
+		F12D8AA118A5C4A400E04BE7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8AA018A5C4A400E04BE7 /* Security.framework */; };
 		F15088FD18A58072005AC150 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F15088FC18A58072005AC150 /* plus@2x.png */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
 		F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D618A05D2B00D4D291 /* libTestFlight.a */; };
@@ -120,6 +123,10 @@
 		F12D8A9318A5A6E000E04BE7 /* SkyLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyLab.h; sourceTree = "<group>"; };
 		F12D8A9418A5A6E000E04BE7 /* SkyLab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyLab.m; sourceTree = "<group>"; };
 		F12D8A9618A5AA9E00E04BE7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		F12D8A9B18A5C47600E04BE7 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		F12D8A9C18A5C47600E04BE7 /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
+		F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F12D8AA018A5C4A400E04BE7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F15088FC18A58072005AC150 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
 		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
@@ -140,7 +147,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12D8AA118A5C4A400E04BE7 /* Security.framework in Frameworks */,
+				F12D8A9F18A5C49E00E04BE7 /* SystemConfiguration.framework in Frameworks */,
 				F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */,
+				F12D8A9D18A5C47600E04BE7 /* libFlurry_4.3.2.a in Frameworks */,
 				F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */,
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
 				F12D8A9718A5AA9E00E04BE7 /* Reveal.framework in Frameworks */,
@@ -247,6 +257,8 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F12D8AA018A5C4A400E04BE7 /* Security.framework */,
+				F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */,
 				F12D8A9618A5AA9E00E04BE7 /* Reveal.framework */,
 				F12D8A8318A5910400E04BE7 /* StoreKit.framework */,
 				F19F69D818A05D3A00D4D291 /* libz.dylib */,
@@ -271,6 +283,7 @@
 		F113EC6D167DC41A0077B6D1 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F12D8A9A18A5C47600E04BE7 /* Flurry */,
 				F12D8A9218A5A6E000E04BE7 /* SkyLab */,
 				F12D8A8518A59A5C00E04BE7 /* KeyChainBindings */,
 				F12D8A7918A58D8700E04BE7 /* IAPHelper */,
@@ -318,6 +331,15 @@
 				F12D8A9418A5A6E000E04BE7 /* SkyLab.m */,
 			);
 			path = SkyLab;
+			sourceTree = "<group>";
+		};
+		F12D8A9A18A5C47600E04BE7 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				F12D8A9B18A5C47600E04BE7 /* Flurry.h */,
+				F12D8A9C18A5C47600E04BE7 /* libFlurry_4.3.2.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		F19F69D518A05D2B00D4D291 /* TestFlight */ = {
@@ -527,8 +549,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -542,12 +564,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/linkov/Documents/sdwr/jotted/vendor/TestFlight,
+					/Users/linkov/Documents/sdwr/jotted/vendor/Flurry,
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
@@ -560,8 +583,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexey Linkov (29U8CN36MC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -576,12 +599,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/linkov/Documents/sdwr/jotted/vendor/TestFlight,
+					/Users/linkov/Documents/sdwr/jotted/vendor/Flurry,
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB4D7D5C-8750-450F-9A5D-EEAABC2CD0FB";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;

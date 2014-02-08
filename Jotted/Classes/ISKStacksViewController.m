@@ -10,7 +10,7 @@
 #import "ISKStackIAPHelper.h"
 #import "PDKeychainBindings.h"
 #import "SkyLab.h"
-#import "TestFlight.h"
+#import "Flurry.h"
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
 
@@ -70,16 +70,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     self.stacks =[NSMutableArray arrayWithObjects:simpleStack1,simpleStack2,simpleStack3, nil];
 
     
-    if (![self lastStackPage]) {
-        
-        [self setLastStackPage:kInitialAvailableNoteTag];
-    }
-    else {
-        
-        [self restorePurchasedStacks];
-    }
-    
-
     self.activeStack = simpleStack1;
     
     
@@ -94,6 +84,18 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
         i++;
     }
     
+    
+    if (![self lastStackPage]) {
+        
+        [self setLastStackPage:kInitialAvailableNoteTag];
+    }
+    else {
+        
+        [self restorePurchasedStacks];
+    }
+    
+
+
     [self.view addSubview:self.pagingScrollView];
     
     [self addPurchaseScreen];
@@ -121,6 +123,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     [self addChildViewController:stack];
     [stack didMoveToParentViewController:self];
+   [stack animateUp];
     
     [self.stacks addObject:stack];
     [self updatePageControl];
@@ -128,22 +131,24 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
 -(void)loadProducts {
     
-    [[ISKStackIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
-            
-            NSLog(@"products = %@",products);
-            _product = [products lastObject];
-            
-            NSLog(@"self.product = %@",self.product);
-        }
-    }];
+
 }
 
 
 -(void)beginIAP {
     
-    [self addPayedStack];
-  //  [[ISKStackIAPHelper sharedInstance] buyProduct:self.product];
+    [SVProgressHUD show];
+    [[ISKStackIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            [SVProgressHUD dismiss];
+            [[ISKStackIAPHelper sharedInstance] buyProduct:[products lastObject]];
+            
+        }else {
+            
+            [SVProgressHUD showErrorWithStatus:@"App Store is not available. Please try again in a minute"];
+        }
+    }];
+   
 }
 
 
@@ -290,15 +295,58 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     buyLabel.textColor = UIColorFromRGB(0xB8E986);
     
     [SkyLab abTestWithName:@"Buy text" A:^{
-        
-      buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
+
+        buyLabel.text =@"More notepads for your notes and drawings";
         self.buyText = buyLabel.text;
         
         
     } B:^{
-       buyLabel.text =@"More notepads for your notes and drawings";
+
+        
+        buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
         self.buyText = buyLabel.text;
     }];
+
+    
+//    [SkyLab multivariateTestWithName:@"Buy Texts" variables:@{
+//                                                             @"Price" : @(0.50),
+//                                                             @"Value" : @(0.50)
+//                                                             } block:^(NSSet *activeVariables) {
+//                                                                 
+//                                                                 if ([activeVariables containsObject:@"Price"]) {
+//                                                                     
+//                                                                     buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
+//                                                                     self.buyText = buyLabel.text;
+//                                                                 }
+//                                                                 
+//                                                                 if ([activeVariables containsObject:@"Value"]) {
+//                                                                     
+//                                                                     buyLabel.text =@"More notepads for your notes and drawings";
+//                                                                     self.buyText = buyLabel.text;
+//                                                                 }
+//                                                                 
+//                                                             }];
+//    
+    
+    
+//    [SkyLab splitTestWithName:@"Buy Texts" choices:@{
+//                                                    @"Price" : @(0.80),
+//                                                    @"Value" : @(0.20)
+//                                                    } block:^(id choice) {
+//                                                        
+//                                                        if ([choice isEqualToString:@"Price"]) {
+//                                                            
+//                                                            buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
+//                                                            self.buyText = buyLabel.text;
+//                                                        }
+//                                                        
+//                                                        if ([choice isEqualToString:@"Value"]) {
+//                                                            
+//                                                            buyLabel.text =@"More notepads for your notes and drawings";
+//                                                            self.buyText = buyLabel.text;
+//                                                        }
+//                                                    }];
+    
     
     [self.payView addSubview:buyButton];
     [self.payView addSubview:buyLabel];
@@ -344,7 +392,8 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 - (void)productPurchased:(NSNotification *)notification {
     
     [self addPayedStack];
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"bought a stack with buy text [%@] ",self.buyText]];
+    [Flurry logEvent:@"Stack_Buy" withParameters:@{@"text":self.buyText}];
+   // [TestFlight passCheckpoint:[NSString stringWithFormat:@"bought a stack with buy text [%@] ",self.buyText]];
 }
 
 
