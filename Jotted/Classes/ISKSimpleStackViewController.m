@@ -169,7 +169,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     [secondView release];
     [thirdView release];
     
-    _noteText = [[UITextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset*2, [[UIScreen mainScreen] bounds].size.height-ktextViewBottomOffset-ktextViewTopOffset)];
+    _noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset*2, [[UIScreen mainScreen] bounds].size.height-ktextViewBottomOffset-ktextViewTopOffset)];
     self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
     self.noteText.backgroundColor = [UIColor clearColor];
     //noteText.

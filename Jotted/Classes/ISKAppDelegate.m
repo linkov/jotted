@@ -8,6 +8,7 @@
 
 #import "ISKAppDelegate.h"
 #import "TestFlight.h"
+#import "ISKStackIAPHelper.h"
 
 @implementation ISKAppDelegate
 
@@ -23,6 +24,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
      [TestFlight takeOff:@"22b9ee7f-c107-40d5-8e72-d3a91987385d"];
+    [ISKStackIAPHelper sharedInstance];
     
     self.mainViewController = [[ISKStacksViewController new] autorelease];
     //self.mainViewController.edgesForExtendedLayout = UIExtendedEdgeBottom;
