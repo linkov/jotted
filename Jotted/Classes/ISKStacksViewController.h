@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "StyledPageControl.h"
+#import "SMPageControl.h"
 #import "ISKSimpleStackViewController.h"
 
 @interface ISKStacksViewController : UIViewController <UIScrollViewDelegate>
 
 
-@property (nonatomic,retain) StyledPageControl *pageControl;
+@property (nonatomic,retain) SMPageControl *pageControl;
 @property (nonatomic,retain) UIScrollView *pagingScrollView;
 @property (nonatomic,retain) ISKSimpleStackViewController *activeStack;
 @property (retain) NSMutableArray *stacks;

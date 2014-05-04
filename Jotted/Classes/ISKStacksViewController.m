@@ -101,7 +101,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     [self addPurchaseScreen];
 
     
-    _pageControl = [[StyledPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
+    _pageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
     [self.view addSubview:self.pageControl];
     
     [self updatePageControl];
@@ -265,13 +265,20 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     self.pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*self.stacks.count+320, [[UIScreen mainScreen] bounds].size.height);
 
-    [self.pageControl setPageControlStyle:PageControlStyleDefault];
-    self.pageControl.diameter = 6;
+   // [self.pageControl setPageControlStyle:PageControlStyleDefault];
+  //  self.pageControl.diameter = 6;
+    self.pageControl.indicatorDiameter = 3;
     
-    self.pageControl.numberOfPages = self.stacks.count;
+    self.pageControl.numberOfPages = self.stacks.count+1;
     self.pageControl.currentPage = 0;
     self.pageControl.alpha = 0;
-
+    
+   // [self.pageControl setImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
+   // [self.pageControl setCurrentImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
+    
+    
+    [self.pageControl setImageMask:[UIImage imageNamed:@"lockMask"] forPage:self.stacks.count];
+   
 }
 
 -(void)addPurchaseScreen {
@@ -294,59 +301,10 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     buyLabel.lineBreakMode = NSLineBreakByWordWrapping;
     buyLabel.textColor = UIColorFromRGB(0xB8E986);
     
-    [SkyLab abTestWithName:@"Buy text" A:^{
 
-        buyLabel.text =@"More notepads for your notes and drawings";
-        self.buyText = buyLabel.text;
-        
-        
-    } B:^{
+    buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
+    self.buyText = buyLabel.text;
 
-        
-        buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
-        self.buyText = buyLabel.text;
-    }];
-
-    
-//    [SkyLab multivariateTestWithName:@"Buy Texts" variables:@{
-//                                                             @"Price" : @(0.50),
-//                                                             @"Value" : @(0.50)
-//                                                             } block:^(NSSet *activeVariables) {
-//                                                                 
-//                                                                 if ([activeVariables containsObject:@"Price"]) {
-//                                                                     
-//                                                                     buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
-//                                                                     self.buyText = buyLabel.text;
-//                                                                 }
-//                                                                 
-//                                                                 if ([activeVariables containsObject:@"Value"]) {
-//                                                                     
-//                                                                     buyLabel.text =@"More notepads for your notes and drawings";
-//                                                                     self.buyText = buyLabel.text;
-//                                                                 }
-//                                                                 
-//                                                             }];
-//    
-    
-    
-//    [SkyLab splitTestWithName:@"Buy Texts" choices:@{
-//                                                    @"Price" : @(0.80),
-//                                                    @"Value" : @(0.20)
-//                                                    } block:^(id choice) {
-//                                                        
-//                                                        if ([choice isEqualToString:@"Price"]) {
-//                                                            
-//                                                            buyLabel.text =@"Get 3 additional notepads for JUST $0.99";
-//                                                            self.buyText = buyLabel.text;
-//                                                        }
-//                                                        
-//                                                        if ([choice isEqualToString:@"Value"]) {
-//                                                            
-//                                                            buyLabel.text =@"More notepads for your notes and drawings";
-//                                                            self.buyText = buyLabel.text;
-//                                                        }
-//                                                    }];
-    
     
     [self.payView addSubview:buyButton];
     [self.payView addSubview:buyLabel];
@@ -378,6 +336,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     else {
         realPage = page;
     }
+    
     
 
     if (realPage<=self.stacks.count-1)   self.activeStack = self.stacks[realPage];
