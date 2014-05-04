@@ -320,6 +320,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     
     [self.noteText resignFirstResponder];
     NSLog(@"NOTETEXT LENGTH = %i",self.noteText.attributedText.length);
+    self.noteText.height = [[UIScreen mainScreen] bounds].size.height-ktextViewBottomOffset-ktextViewTopOffset;
 }
 
 
