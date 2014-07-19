@@ -5,7 +5,7 @@
 //  Created by Alexey Linkov on 9/1/12.
 //  Copyright (c) 2012 Alexey Linkov. All rights reserved.
 //
-
+#define APPSTORERATEURL @"itms-apps://itunes.apple.com/app/id560094563?at=10l6dK"
 #define TRANSITION_Y_AXIS 108
 #define TRANSFORM_WH 25
 
@@ -18,6 +18,8 @@
 #import "PSPDFTextView.h"
 #import "ISKDrawingView.h"
 #import "Flurry.h"
+#import "LMAlertView.h"
+#import "EDStarRating.h"
 
 static const NSUInteger ktextViewSideOffset = 10;
 static const NSUInteger ktextViewTopOffset = 55;
@@ -25,7 +27,7 @@ static const NSUInteger ktextViewBottomOffset = 74;
 static const NSUInteger kTextViewKeyboardOffset = 142;
 static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
-@interface ISKSimpleStackViewController () {
+@interface ISKSimpleStackViewController () <EDStarRatingProtocol> {
 
 	//UIScrollView *pagingScrollView;
 	//StyledPageControl* pageControl;
@@ -55,8 +57,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	BOOL keyboardShown;
 	BOOL isFirstScreen;
 	CGSize keyboardSize;
-    CGPoint centerBeforeAnimateUp;
-    CGPoint secondViewCenterBeforeCollision;
+	CGPoint centerBeforeAnimateUp;
+	CGPoint secondViewCenterBeforeCollision;
 }
 @property (strong)  UIDynamicAnimator *stackAnimator;
 @property (strong)  PSPDFTextView *noteText;
@@ -68,6 +70,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 @property (strong) UITapGestureRecognizer *switchViewGR;
 @property (strong) UITapGestureRecognizer *switchViewGR2;
+
+@property (strong) LMAlertView *ratingAlertView;
+@property (strong) EDStarRating *starRating;
 
 - (void)toggleArrows:(UIScrollView *)scroll;
 - (void)finishEdit;
@@ -100,7 +105,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	[super viewDidLoad];
 
-    _simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+	_simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
 
 
 
@@ -133,12 +138,12 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	firstView.backgroundColor = YELLOWCOLOR;
 	firstView.tag = [self.viewTags[0] intValue];
 
-	secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, self.view.height*0.08, self.view.frame.size.width, self.view.frame.size.height)];
+	secondView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, self.view.height * 0.08, self.view.frame.size.width, self.view.frame.size.height)];
 	secondView.backgroundColor = BLUECOLOR;
 	secondView.alpha = 0;
 	secondView.tag = [self.viewTags[1] intValue];
 
-	thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, self.view.height*0.155, self.view.frame.size.width, self.view.frame.size.height)];
+	thirdView = [[ISKNoteView alloc]initWithFrame:CGRectMake(0, self.view.height * 0.155, self.view.frame.size.width, self.view.frame.size.height)];
 	thirdView.backgroundColor = REDCOLOR;
 	thirdView.alpha = 0;
 	thirdView.tag = [self.viewTags[2] intValue];
@@ -163,7 +168,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	[self.simpleNotepadStack addSubview:self.noteText];
 
 	doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	doneButton.frame = CGRectMake(self.view.width-80, 10, 55, 44);
+	doneButton.frame = CGRectMake(self.view.width - 80, 10, 55, 44);
 
 	// doneButton.layer.cornerRadius = STACKCORNERRAD;
 	//  doneButton.layer.borderWidth = 1;
@@ -255,10 +260,10 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 		// Show the sheet
 		[sheet showInView:self.simpleNotepadStack];
-	} else if (pencil.alpha != 1 && self.noteText.attributedText.length > 0)    {
+	} else if (pencil.alpha != 1 && self.noteText.attributedText.length > 0) {
 
 		[self shareNoteText];
-	} else if (pencil.alpha == 1 && self.noteText.attributedText.length == 0)   {
+	} else if (pencil.alpha == 1 && self.noteText.attributedText.length == 0) {
 
 		[self shareNoteDrawing];
 	}
@@ -276,8 +281,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	[self presentViewController:activityController animated:YES completion:^{
 
-        [Flurry logEvent:@"Note_Share" withParameters:@{@"shareMode":@"drawing"}];
-    }];
+	    [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"drawing" }];
+        [self showRateAlertIfNeeded];
+	}];
 }
 
 - (void)shareNoteDrawing {
@@ -288,8 +294,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	[self presentViewController:activityController animated:YES completion:^{
 
-        [Flurry logEvent:@"Note_Share" withParameters:@{@"shareMode":@"note"}];
-    }];
+	    [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"note" }];
+        [self showRateAlertIfNeeded];
+	}];
 }
 
 - (void)finishEdit {
@@ -302,12 +309,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 - (void)manageFirstLaunch {
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"]) {
-
 	} else {
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 
-        NSString *welcomeText = @"Swipe up to reveal all notes, doodle on the flip side of a note, clean flip side with 2 finger tap, swipe left to flip this note, swipe right to delete this text";
+		NSString *welcomeText = @"Swipe up to reveal all notes, doodle on the flip side of a note, clean flip side with 2 finger tap, swipe left to flip this note, swipe right to delete this text";
 
 		[self updateTextViewText:welcomeText];
 
@@ -321,17 +327,41 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	if (self.noteText.attributedText.length > 0) {
 
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all text?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
+		alert.tag = 11;
 		[alert show];
 	}
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex != 0) {
-		[self updateTextViewText:@""];
-		[[NSUserDefaults standardUserDefaults] setValue:[self.noteText.attributedText string] forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
-		[[NSUserDefaults standardUserDefaults] synchronize];
 
-		[self toggleArrows:self.noteText];
+	if (alertView.tag == 11) {
+
+		if (buttonIndex != 0) {
+			[self updateTextViewText:@""];
+			[[NSUserDefaults standardUserDefaults] setValue:[self.noteText.attributedText string] forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
+			[[NSUserDefaults standardUserDefaults] synchronize];
+
+			[self toggleArrows:self.noteText];
+		}
+	} else {
+
+
+		if (buttonIndex == 1) {
+
+			[Flurry logEvent:@"a2_rate_alert_submit"];
+
+			if (self.starRating.rating > 3) {
+				[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DidPushRateLaterKey"];
+				[self openRating];
+			} else {
+				[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DidPushRateLaterKey"];
+				[self openEmail];
+			}
+		} else {
+			[Flurry logEvent:@"a2_rate_alert_notnow"];
+			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DidPushRateLaterKey"];
+			[[NSUserDefaults standardUserDefaults] setObject:[NSDate date]  forKey:@"WSCRidersTimeOfLastRateAlertKey"];
+		}
 	}
 }
 
@@ -356,11 +386,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	if ([firstView.backgroundColor isEqual:YELLOWCOLOR]) {
 		activeView = [self.viewTags[0] intValue];
 		NSLog(@"First view YELLOW");
-	} else if ([firstView.backgroundColor isEqual:BLUECOLOR])   {
+	} else if ([firstView.backgroundColor isEqual:BLUECOLOR]) {
 
 		activeView = [self.viewTags[1] intValue];
 		NSLog(@"First view BLUE");
-	} else if ([firstView.backgroundColor isEqual:REDCOLOR])   {
+	} else if ([firstView.backgroundColor isEqual:REDCOLOR]) {
 		activeView = [self.viewTags[2] intValue];
 		NSLog(@"First view RED");
 	}
@@ -535,8 +565,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	[UIView animateWithDuration:0.2 animations:^{
 
 	    CGPoint p = self.simpleNotepadStack.center;
-        centerBeforeAnimateUp = p;
-	    p.y = centerBeforeAnimateUp.y*0.62;
+	    centerBeforeAnimateUp = p;
+	    p.y = centerBeforeAnimateUp.y * 0.62;
 
 	    self.simpleNotepadStack.center = p;
 	    secondView.alpha = 1;
@@ -573,7 +603,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (void)applyDynamics  {
 
-    secondViewCenterBeforeCollision = secondView.center;
+	secondViewCenterBeforeCollision = secondView.center;
 
 	ISKGravityCollisionBehavior *gravCol = [[ISKGravityCollisionBehavior alloc]initWithItems:@[secondView] collisionDelegate:self];
 
@@ -623,7 +653,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (void)animateDown  {
 
-	if (roundf(self.simpleNotepadStack.center.y) <= roundf(centerBeforeAnimateUp.y*0.62)) {
+	if (roundf(self.simpleNotepadStack.center.y) <= roundf(centerBeforeAnimateUp.y * 0.62)) {
 
 		self.delegate.pageControl.alpha = 0;
 
@@ -673,7 +703,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	overlay.alpha = 0;
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
 
@@ -864,8 +893,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 #pragma mark - Flipside View
 
 - (void)flipsideViewControllerDidFinishWithView:(int)aView {
+
 	[self dismissViewControllerAnimated:YES completion:^{
-	    // [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	    [self showRateAlertIfNeeded];
 	}];
 
 	activeView = aView;
@@ -878,6 +908,101 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	ISKFlipsideViewController *controller = [[ISKFlipsideViewController alloc]initWithColor:firstView.backgroundColor noteTag:activeView delegate:self];
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:controller animated:YES completion:nil];
+}
+
+#pragma mark - Rate Alert
+
+- (BOOL)isFirstRateDialog {
+
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"didShowRate_v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]]]) {
+		[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:[NSString stringWithFormat:@"didShowRate_v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]]];
+		return YES;
+	}
+
+	return NO;
+}
+
+- (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime {
+	NSDate *fromDate;
+	NSDate *toDate;
+
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	[calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+	             interval:NULL forDate:fromDateTime];
+	[calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+	             interval:NULL forDate:toDateTime];
+
+	NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+	                                           fromDate:fromDate toDate:toDate options:0];
+
+	return [difference day];
+}
+
+- (void)showRateAlertIfNeeded {
+
+	NSUInteger daysInstalled = [self daysBetweenDate:[NSDate date] andDate:[[NSUserDefaults standardUserDefaults] objectForKey:@"WSCRidersTimeOfLastRateAlertKey"]];
+
+	if ([self isFirstRateDialog] == YES || ([[NSUserDefaults standardUserDefaults] boolForKey:@"DidPushRateLaterKey"] == YES && daysInstalled >= 2)) { // prod
+		[Flurry logEvent:@"a2_rate_alert_shown"];
+		[self showRateAlert];
+	}
+
+}
+
+- (void)showRateAlert {
+
+	if (self.ratingAlertView != nil) {
+		[self.ratingAlertView show];
+		return;
+	}
+
+	self.ratingAlertView = [[LMAlertView alloc] initWithTitle:@"Tell us what you think"
+	                                                  message:@"How would you rate your\nJotted experience?"
+	                                                 delegate:self
+	                                        cancelButtonTitle:@"Not Now"
+	                                        otherButtonTitles:@"Submit", nil];
+
+    self.ratingAlertView.tintColor = UIColorFromRGB(0x26ADE4);
+	CGSize size = self.ratingAlertView.size;
+
+	LMModalItemTableViewCell *cell = [self.ratingAlertView buttonCellForIndex:self.ratingAlertView.firstOtherButtonIndex];
+	cell.isEnabled = NO;
+
+	[self.ratingAlertView setSize:CGSizeMake(size.width, 190.0)];
+
+	UIView *contentView = self.ratingAlertView.contentView;
+
+	_starRating = [[EDStarRating alloc] initWithFrame:CGRectMake((size.width / 2.0 - 225.0 / 2.0), 95.0, 225.0, 50.0)];
+	self.starRating.starImage            = [UIImage imageNamed:@"StarEmpty"];
+	self.starRating.starHighlightedImage = [UIImage imageNamed:@"StarFull"];
+	self.starRating.maxRating            = 5.0;
+	self.starRating.delegate             = self;
+	self.starRating.editable             = YES;
+	self.starRating.displayMode          = EDStarRatingDisplayFull;
+	self.starRating.rating               = 0;
+	self.starRating.backgroundColor      = [UIColor clearColor];
+
+	[contentView addSubview:self.starRating];
+
+	[self.ratingAlertView show];
+}
+
+#pragma mark EDStarRatingProtocol delegate methods
+
+- (void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating {
+	LMModalItemTableViewCell *submitCell = [self.ratingAlertView buttonCellForIndex:self.ratingAlertView.firstOtherButtonIndex];
+	submitCell.isEnabled = (rating > 0);
+}
+
+- (void)openEmail {
+	NSString *mailtoPrefix = [@"mailto:a.linkov@me.com?subject=Jotted - Feedback" stringByAddingPercentEscapesUsingEncoding : NSUTF8StringEncoding];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailtoPrefix]];
+}
+
+- (void)openRating  {
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPSTORERATEURL]];
 }
 
 @end

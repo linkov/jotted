@@ -61,6 +61,29 @@
 		F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F69E918A0723200D4D291 /* PSPDFTextView.m */; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
 		F1A7A3C5197AD60500BEE6AA /* libFlurry_5.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */; };
+		F1A7A3F8197AD7B400BEE6AA /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */; };
+		F1A7A3F9197AD7B400BEE6AA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */; };
+		F1A7A3FA197AD7B400BEE6AA /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */; };
+		F1A7A3FB197AD7B400BEE6AA /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D3197AD7B400BEE6AA /* LMAlertView.m */; };
+		F1A7A3FC197AD7B400BEE6AA /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D5197AD7B400BEE6AA /* LMEmbeddedViewController.m */; };
+		F1A7A3FD197AD7B400BEE6AA /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D7197AD7B400BEE6AA /* LMModalItemTableViewCell.m */; };
+		F1A7A3FE197AD7B400BEE6AA /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D9197AD7B400BEE6AA /* LMModalSegue.m */; };
+		F1A7A3FF197AD7B400BEE6AA /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DB197AD7B400BEE6AA /* LMNavigationBar.m */; };
+		F1A7A400197AD7B400BEE6AA /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DD197AD7B400BEE6AA /* LMNavigationController.m */; };
+		F1A7A401197AD7B400BEE6AA /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DE197AD7B400BEE6AA /* Radial.png */; };
+		F1A7A402197AD7B400BEE6AA /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DF197AD7B400BEE6AA /* StarEmpty@2x.png */; };
+		F1A7A403197AD7B400BEE6AA /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E0197AD7B400BEE6AA /* StarFull@2x.png */; };
+		F1A7A404197AD7B400BEE6AA /* NSValue+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E3197AD7B400BEE6AA /* NSValue+PlatformIndependence.m */; };
+		F1A7A405197AD7B400BEE6AA /* RBBAnimation-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E4197AD7B400BEE6AA /* RBBAnimation-Info.plist */; };
+		F1A7A406197AD7B400BEE6AA /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E7197AD7B400BEE6AA /* RBBAnimation.m */; };
+		F1A7A407197AD7B400BEE6AA /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E9197AD7B400BEE6AA /* RBBBlockBasedArray.m */; };
+		F1A7A408197AD7B400BEE6AA /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EB197AD7B400BEE6AA /* RBBCubicBezier.m */; };
+		F1A7A409197AD7B400BEE6AA /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */; };
+		F1A7A40A197AD7B400BEE6AA /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EF197AD7B400BEE6AA /* RBBEasingFunction.m */; };
+		F1A7A40B197AD7B400BEE6AA /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F1197AD7B400BEE6AA /* RBBLinearInterpolation.m */; };
+		F1A7A40C197AD7B400BEE6AA /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F3197AD7B400BEE6AA /* RBBSpringAnimation.m */; };
+		F1A7A40D197AD7B400BEE6AA /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F5197AD7B400BEE6AA /* RBBTweenAnimation.m */; };
+		F1A7A40E197AD7B400BEE6AA /* UIColor+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F7197AD7B400BEE6AA /* UIColor+PlatformIndependence.m */; };
 		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +170,49 @@
 		F19F69E918A0723200D4D291 /* PSPDFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFTextView.m; sourceTree = "<group>"; };
 		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
 		F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.2.0.a; sourceTree = "<group>"; };
+		F1A7A3CA197AD7B400BEE6AA /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
+		F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
+		F1A7A3CD197AD7B400BEE6AA /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
+		F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
+		F1A7A3D0197AD7B400BEE6AA /* CALayer+ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+ModalAlert.h"; sourceTree = "<group>"; };
+		F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+ModalAlert.m"; sourceTree = "<group>"; };
+		F1A7A3D2197AD7B400BEE6AA /* LMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAlertView.h; sourceTree = "<group>"; };
+		F1A7A3D3197AD7B400BEE6AA /* LMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAlertView.m; sourceTree = "<group>"; };
+		F1A7A3D4197AD7B400BEE6AA /* LMEmbeddedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMEmbeddedViewController.h; sourceTree = "<group>"; };
+		F1A7A3D5197AD7B400BEE6AA /* LMEmbeddedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMEmbeddedViewController.m; sourceTree = "<group>"; };
+		F1A7A3D6197AD7B400BEE6AA /* LMModalItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalItemTableViewCell.h; sourceTree = "<group>"; };
+		F1A7A3D7197AD7B400BEE6AA /* LMModalItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalItemTableViewCell.m; sourceTree = "<group>"; };
+		F1A7A3D8197AD7B400BEE6AA /* LMModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMModalSegue.h; sourceTree = "<group>"; };
+		F1A7A3D9197AD7B400BEE6AA /* LMModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMModalSegue.m; sourceTree = "<group>"; };
+		F1A7A3DA197AD7B400BEE6AA /* LMNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationBar.h; sourceTree = "<group>"; };
+		F1A7A3DB197AD7B400BEE6AA /* LMNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationBar.m; sourceTree = "<group>"; };
+		F1A7A3DC197AD7B400BEE6AA /* LMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMNavigationController.h; sourceTree = "<group>"; };
+		F1A7A3DD197AD7B400BEE6AA /* LMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMNavigationController.m; sourceTree = "<group>"; };
+		F1A7A3DE197AD7B400BEE6AA /* Radial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radial.png; sourceTree = "<group>"; };
+		F1A7A3DF197AD7B400BEE6AA /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmpty@2x.png"; sourceTree = "<group>"; };
+		F1A7A3E0197AD7B400BEE6AA /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFull@2x.png"; sourceTree = "<group>"; };
+		F1A7A3E2197AD7B400BEE6AA /* NSValue+PlatformIndependence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+PlatformIndependence.h"; sourceTree = "<group>"; };
+		F1A7A3E3197AD7B400BEE6AA /* NSValue+PlatformIndependence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+PlatformIndependence.m"; sourceTree = "<group>"; };
+		F1A7A3E4197AD7B400BEE6AA /* RBBAnimation-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RBBAnimation-Info.plist"; sourceTree = "<group>"; };
+		F1A7A3E5197AD7B400BEE6AA /* RBBAnimation-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBBAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		F1A7A3E6197AD7B400BEE6AA /* RBBAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBAnimation.h; sourceTree = "<group>"; };
+		F1A7A3E7197AD7B400BEE6AA /* RBBAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBAnimation.m; sourceTree = "<group>"; };
+		F1A7A3E8197AD7B400BEE6AA /* RBBBlockBasedArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBBlockBasedArray.h; sourceTree = "<group>"; };
+		F1A7A3E9197AD7B400BEE6AA /* RBBBlockBasedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBBlockBasedArray.m; sourceTree = "<group>"; };
+		F1A7A3EA197AD7B400BEE6AA /* RBBCubicBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCubicBezier.h; sourceTree = "<group>"; };
+		F1A7A3EB197AD7B400BEE6AA /* RBBCubicBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCubicBezier.m; sourceTree = "<group>"; };
+		F1A7A3EC197AD7B400BEE6AA /* RBBCustomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBCustomAnimation.h; sourceTree = "<group>"; };
+		F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBCustomAnimation.m; sourceTree = "<group>"; };
+		F1A7A3EE197AD7B400BEE6AA /* RBBEasingFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBEasingFunction.h; sourceTree = "<group>"; };
+		F1A7A3EF197AD7B400BEE6AA /* RBBEasingFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBEasingFunction.m; sourceTree = "<group>"; };
+		F1A7A3F0197AD7B400BEE6AA /* RBBLinearInterpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBLinearInterpolation.h; sourceTree = "<group>"; };
+		F1A7A3F1197AD7B400BEE6AA /* RBBLinearInterpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBLinearInterpolation.m; sourceTree = "<group>"; };
+		F1A7A3F2197AD7B400BEE6AA /* RBBSpringAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBSpringAnimation.h; sourceTree = "<group>"; };
+		F1A7A3F3197AD7B400BEE6AA /* RBBSpringAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBSpringAnimation.m; sourceTree = "<group>"; };
+		F1A7A3F4197AD7B400BEE6AA /* RBBTweenAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBTweenAnimation.h; sourceTree = "<group>"; };
+		F1A7A3F5197AD7B400BEE6AA /* RBBTweenAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBTweenAnimation.m; sourceTree = "<group>"; };
+		F1A7A3F6197AD7B400BEE6AA /* UIColor+PlatformIndependence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PlatformIndependence.h"; sourceTree = "<group>"; };
+		F1A7A3F7197AD7B400BEE6AA /* UIColor+PlatformIndependence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PlatformIndependence.m"; sourceTree = "<group>"; };
 		F1AA7395176A5E71004A6787 /* ISKTiltRevealMotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKTiltRevealMotionEffect.h; sourceTree = "<group>"; };
 		F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKTiltRevealMotionEffect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -293,6 +359,7 @@
 		F113EC6D167DC41A0077B6D1 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F1A7A3C8197AD7B400BEE6AA /* StarAlert */,
 				F169EF3C1916C33400B6A8E6 /* SMPageControl */,
 				F12D8A9A18A5C47600E04BE7 /* Flurry */,
 				F12D8A8518A59A5C00E04BE7 /* KeyChainBindings */,
@@ -376,6 +443,88 @@
 			path = PSPDFTextView;
 			sourceTree = "<group>";
 		};
+		F1A7A3C8197AD7B400BEE6AA /* StarAlert */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7A3C9197AD7B400BEE6AA /* CAAnimationBlocks */,
+				F1A7A3CC197AD7B400BEE6AA /* EDStarRating */,
+				F1A7A3CF197AD7B400BEE6AA /* LMAlertView */,
+				F1A7A3E1197AD7B400BEE6AA /* RBBAnimation */,
+			);
+			path = StarAlert;
+			sourceTree = "<group>";
+		};
+		F1A7A3C9197AD7B400BEE6AA /* CAAnimationBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7A3CA197AD7B400BEE6AA /* CAAnimation+Blocks.h */,
+				F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */,
+			);
+			path = CAAnimationBlocks;
+			sourceTree = "<group>";
+		};
+		F1A7A3CC197AD7B400BEE6AA /* EDStarRating */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7A3CD197AD7B400BEE6AA /* EDStarRating.h */,
+				F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */,
+			);
+			path = EDStarRating;
+			sourceTree = "<group>";
+		};
+		F1A7A3CF197AD7B400BEE6AA /* LMAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7A3D0197AD7B400BEE6AA /* CALayer+ModalAlert.h */,
+				F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */,
+				F1A7A3D2197AD7B400BEE6AA /* LMAlertView.h */,
+				F1A7A3D3197AD7B400BEE6AA /* LMAlertView.m */,
+				F1A7A3D4197AD7B400BEE6AA /* LMEmbeddedViewController.h */,
+				F1A7A3D5197AD7B400BEE6AA /* LMEmbeddedViewController.m */,
+				F1A7A3D6197AD7B400BEE6AA /* LMModalItemTableViewCell.h */,
+				F1A7A3D7197AD7B400BEE6AA /* LMModalItemTableViewCell.m */,
+				F1A7A3D8197AD7B400BEE6AA /* LMModalSegue.h */,
+				F1A7A3D9197AD7B400BEE6AA /* LMModalSegue.m */,
+				F1A7A3DA197AD7B400BEE6AA /* LMNavigationBar.h */,
+				F1A7A3DB197AD7B400BEE6AA /* LMNavigationBar.m */,
+				F1A7A3DC197AD7B400BEE6AA /* LMNavigationController.h */,
+				F1A7A3DD197AD7B400BEE6AA /* LMNavigationController.m */,
+				F1A7A3DE197AD7B400BEE6AA /* Radial.png */,
+				F1A7A3DF197AD7B400BEE6AA /* StarEmpty@2x.png */,
+				F1A7A3E0197AD7B400BEE6AA /* StarFull@2x.png */,
+			);
+			path = LMAlertView;
+			sourceTree = "<group>";
+		};
+		F1A7A3E1197AD7B400BEE6AA /* RBBAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7A3E2197AD7B400BEE6AA /* NSValue+PlatformIndependence.h */,
+				F1A7A3E3197AD7B400BEE6AA /* NSValue+PlatformIndependence.m */,
+				F1A7A3E4197AD7B400BEE6AA /* RBBAnimation-Info.plist */,
+				F1A7A3E5197AD7B400BEE6AA /* RBBAnimation-Prefix.pch */,
+				F1A7A3E6197AD7B400BEE6AA /* RBBAnimation.h */,
+				F1A7A3E7197AD7B400BEE6AA /* RBBAnimation.m */,
+				F1A7A3E8197AD7B400BEE6AA /* RBBBlockBasedArray.h */,
+				F1A7A3E9197AD7B400BEE6AA /* RBBBlockBasedArray.m */,
+				F1A7A3EA197AD7B400BEE6AA /* RBBCubicBezier.h */,
+				F1A7A3EB197AD7B400BEE6AA /* RBBCubicBezier.m */,
+				F1A7A3EC197AD7B400BEE6AA /* RBBCustomAnimation.h */,
+				F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */,
+				F1A7A3EE197AD7B400BEE6AA /* RBBEasingFunction.h */,
+				F1A7A3EF197AD7B400BEE6AA /* RBBEasingFunction.m */,
+				F1A7A3F0197AD7B400BEE6AA /* RBBLinearInterpolation.h */,
+				F1A7A3F1197AD7B400BEE6AA /* RBBLinearInterpolation.m */,
+				F1A7A3F2197AD7B400BEE6AA /* RBBSpringAnimation.h */,
+				F1A7A3F3197AD7B400BEE6AA /* RBBSpringAnimation.m */,
+				F1A7A3F4197AD7B400BEE6AA /* RBBTweenAnimation.h */,
+				F1A7A3F5197AD7B400BEE6AA /* RBBTweenAnimation.m */,
+				F1A7A3F6197AD7B400BEE6AA /* UIColor+PlatformIndependence.h */,
+				F1A7A3F7197AD7B400BEE6AA /* UIColor+PlatformIndependence.m */,
+			);
+			path = RBBAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -438,6 +587,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A7A403197AD7B400BEE6AA /* StarFull@2x.png in Resources */,
 				F1A670ED176923DC00665F19 /* Media.xcassets in Resources */,
 				844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */,
 				844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */,
@@ -446,11 +596,14 @@
 				844B90E11669AAE800935AB8 /* blackArrowUp.png in Resources */,
 				C3CCE24017E0F5C9005C21E2 /* ArchitectsDaughter.ttf in Resources */,
 				F169EF411916C48100B6A8E6 /* appleDot@2x.png in Resources */,
+				F1A7A401197AD7B400BEE6AA /* Radial.png in Resources */,
+				F1A7A405197AD7B400BEE6AA /* RBBAnimation-Info.plist in Resources */,
 				844B90E21669AAE800935AB8 /* blackArrowUp@2x.png in Resources */,
 				C3CCE24417E0F5D4005C21E2 /* daniel.ttf in Resources */,
 				844B90E31669AAE800935AB8 /* blackPencil.png in Resources */,
 				C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */,
 				F12D8A9118A5A4C300E04BE7 /* plus3@2x.png in Resources */,
+				F1A7A402197AD7B400BEE6AA /* StarEmpty@2x.png in Resources */,
 				844B90E41669AAE800935AB8 /* blackPencil@2x.png in Resources */,
 				F15088FD18A58072005AC150 /* plus@2x.png in Resources */,
 				844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */,
@@ -476,21 +629,40 @@
 				C378240717E0DBE600ABB5CE /* UIView+XYWHChange.m in Sources */,
 				F12D8A8B18A59A5C00E04BE7 /* PDKeychainBindingsController.m in Sources */,
 				F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */,
+				F1A7A408197AD7B400BEE6AA /* RBBCubicBezier.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
+				F1A7A3FC197AD7B400BEE6AA /* LMEmbeddedViewController.m in Sources */,
+				F1A7A3FD197AD7B400BEE6AA /* LMModalItemTableViewCell.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
 				C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */,
+				F1A7A3FF197AD7B400BEE6AA /* LMNavigationBar.m in Sources */,
+				F1A7A40A197AD7B400BEE6AA /* RBBEasingFunction.m in Sources */,
 				F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */,
+				F1A7A3FE197AD7B400BEE6AA /* LMModalSegue.m in Sources */,
+				F1A7A40D197AD7B400BEE6AA /* RBBTweenAnimation.m in Sources */,
 				F12D8A8A18A59A5C00E04BE7 /* PDKeychainBindings.m in Sources */,
+				F1A7A40B197AD7B400BEE6AA /* RBBLinearInterpolation.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
+				F1A7A3F8197AD7B400BEE6AA /* CAAnimation+Blocks.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
 				C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */,
 				F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */,
+				F1A7A404197AD7B400BEE6AA /* NSValue+PlatformIndependence.m in Sources */,
+				F1A7A40C197AD7B400BEE6AA /* RBBSpringAnimation.m in Sources */,
+				F1A7A3FA197AD7B400BEE6AA /* CALayer+ModalAlert.m in Sources */,
+				F1A7A3F9197AD7B400BEE6AA /* EDStarRating.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
 				F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */,
 				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
+				F1A7A40E197AD7B400BEE6AA /* UIColor+PlatformIndependence.m in Sources */,
+				F1A7A400197AD7B400BEE6AA /* LMNavigationController.m in Sources */,
+				F1A7A3FB197AD7B400BEE6AA /* LMAlertView.m in Sources */,
 				F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */,
 				F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */,
+				F1A7A406197AD7B400BEE6AA /* RBBAnimation.m in Sources */,
+				F1A7A407197AD7B400BEE6AA /* RBBBlockBasedArray.m in Sources */,
+				F1A7A409197AD7B400BEE6AA /* RBBCustomAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
