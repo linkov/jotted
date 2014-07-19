@@ -24,8 +24,6 @@
         c.collisionMode = UICollisionBehaviorModeBoundaries;
         [self addChildBehavior:g];
         [self addChildBehavior:c];
-        [g release];
-        [c release];
     }
     return self;
 }

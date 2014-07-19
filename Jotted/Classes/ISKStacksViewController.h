@@ -14,9 +14,9 @@
 @interface ISKStacksViewController : UIViewController <UIScrollViewDelegate>
 
 
-@property (nonatomic,retain) SMPageControl *pageControl;
-@property (nonatomic,retain) UIScrollView *pagingScrollView;
-@property (nonatomic,retain) ISKSimpleStackViewController *activeStack;
-@property (retain) NSMutableArray *stacks;
+@property (nonatomic,strong) SMPageControl *pageControl;
+@property (nonatomic,strong) UIScrollView *pagingScrollView;
+@property (nonatomic,strong) ISKSimpleStackViewController *activeStack;
+@property (strong) NSMutableArray *stacks;
 
 @end

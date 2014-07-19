@@ -11,10 +11,8 @@
 #define STACKHEIGHT 400
 #define STACKCORNERRAD 2
 
-#define PAGERPAGEWIDTH 320
-
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
-
+#define IS_LEGACY_35 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
 
 #ifdef DEBUG
 #   define NSLog(...) NSLog(__VA_ARGS__)

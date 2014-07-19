@@ -12,16 +12,10 @@
 
 @implementation ISKAppDelegate
 
-- (void)dealloc
-{
-    [_window release];
-    [_mainViewController release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
     [Flurry setCrashReportingEnabled:YES];
@@ -32,7 +26,7 @@
     // [TestFlight takeOff:@"22b9ee7f-c107-40d5-8e72-d3a91987385d"];
     [ISKStackIAPHelper sharedInstance];
     
-    self.mainViewController = [[ISKStacksViewController new] autorelease];
+    self.mainViewController = [ISKStacksViewController new];
     //self.mainViewController.edgesForExtendedLayout = UIExtendedEdgeBottom;
     //self.mainViewController.view.frame = CGRectOffset(self.mainViewController.view.frame, 0, 22);
     self.window.tintColor =UIColorFromRGB(0x102855);

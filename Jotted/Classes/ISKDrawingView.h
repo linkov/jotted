@@ -11,7 +11,7 @@
 
 @interface ISKDrawingView : UIView
 
-@property (nonatomic,retain)UIBezierPath *mainPath;
-@property (nonatomic,retain) UIColor *brush;
+@property (nonatomic,strong)UIBezierPath *mainPath;
+@property (nonatomic,strong) UIColor *brush;
 
 @end

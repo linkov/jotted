@@ -34,7 +34,6 @@
         deleteTap.numberOfTouchesRequired = 2;
         deleteTap.numberOfTapsRequired = 1;
         [self addGestureRecognizer:deleteTap];
-        [deleteTap release];
         
         // Capture touches
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
@@ -82,11 +81,5 @@ static CGPoint midpoint(CGPoint p0, CGPoint p1) {
     };
 }
 
-- (void)dealloc
-{
-    [mainPath release];
-    [brush release];
-    [super dealloc];
-}
 
 @end

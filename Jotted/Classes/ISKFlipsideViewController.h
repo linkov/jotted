@@ -16,7 +16,7 @@
 
 @interface ISKFlipsideViewController : UIViewController
 
-@property (assign, nonatomic) id <ISKFlipsideViewControllerDelegate> delegate;
+@property (weak, nonatomic) id <ISKFlipsideViewControllerDelegate> delegate;
 
 - (void)done;
 

@@ -9,40 +9,36 @@
 #import "ISKStacksViewController.h"
 #import "ISKStackIAPHelper.h"
 #import "PDKeychainBindings.h"
-#import "SkyLab.h"
 #import "Flurry.h"
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
+static const NSUInteger kInitialAvailableNoteTagPad = 69;
 
 @interface ISKStacksViewController ()
 
 @property  UIView *payView;
-@property (retain) SKProduct *product;
-@property (retain) NSString *buyText;
+@property (strong) SKProduct *product;
+@property (strong) NSString *buyText;
 
 @end
 
 @implementation ISKStacksViewController
 
 
--(void)loadView {
-    
-    //[self manageFirstLaunch];
-    UIView *v = [UIView new];
-    self.view = v;
-    [v release];
-    
-    
+
+- (void)viewDidLoad {
+
+
+
     // setup paging scroll
     CGRect scrollFrame;
     scrollFrame.origin.x = 0;
     scrollFrame.origin.y = 0;
     scrollFrame.size.height =[[UIScreen mainScreen] bounds].size.height;
-    scrollFrame.size.width = PAGERPAGEWIDTH;
+    scrollFrame.size.width = self.view.width;
     UIScrollView *sv = [[UIScrollView alloc]initWithFrame:scrollFrame];
     self.pagingScrollView =sv;
-    [sv release];
-    
+
     self.pagingScrollView.pagingEnabled = NO;
     self.pagingScrollView.scrollEnabled = NO;
     self.pagingScrollView.showsHorizontalScrollIndicator = NO;
@@ -52,64 +48,77 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     self.pagingScrollView.delegate = self;
 
     self.pagingScrollView.backgroundColor = [UIColor blackColor];
-    
 
-    
+
+
     ISKSimpleStackViewController *simpleStack1 = [[ISKSimpleStackViewController alloc]initWithTags:@[@"64",@"65",@"66"] delegate:self];
     [self addChildViewController:simpleStack1];
     [simpleStack1 didMoveToParentViewController:self];
-    
-    ISKSimpleStackViewController *simpleStack2 = [[ISKSimpleStackViewController alloc]initWithTags:@[@"67",@"68",@"69"] delegate:self];
-    [self addChildViewController:simpleStack2];
-    [simpleStack2 didMoveToParentViewController:self];
-    
-    ISKSimpleStackViewController *simpleStack3 = [[ISKSimpleStackViewController alloc]initWithTags:@[@"70",@"71",@"72"] delegate:self];
-    [self addChildViewController:simpleStack3];
-    [simpleStack3 didMoveToParentViewController:self];
-    
-    self.stacks =[NSMutableArray arrayWithObjects:simpleStack1,simpleStack2,simpleStack3, nil];
 
-    
+    if (IS_WIDESCREEN || IS_LEGACY_35 ) {
+
+
+
+        ISKSimpleStackViewController *simpleStack2 = [[ISKSimpleStackViewController alloc]initWithTags:@[@"67",@"68",@"69"] delegate:self];
+        [self addChildViewController:simpleStack2];
+        [simpleStack2 didMoveToParentViewController:self];
+
+        ISKSimpleStackViewController *simpleStack3 = [[ISKSimpleStackViewController alloc]initWithTags:@[@"70",@"71",@"72"] delegate:self];
+        [self addChildViewController:simpleStack3];
+        [simpleStack3 didMoveToParentViewController:self];
+
+        self.stacks =[NSMutableArray arrayWithObjects:simpleStack1,simpleStack2,simpleStack3, nil];
+    }
+    else {
+        self.stacks =[NSMutableArray arrayWithObjects:simpleStack1, nil];
+    }
+
+
+
+
+
+
     self.activeStack = simpleStack1;
-    
-    
+
+
     int i = 0;
     for (ISKSimpleStackViewController *ss  in self.stacks) {
-        
-        ss.view.frame =CGRectMake(320*i, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+
+        ss.view.frame =CGRectMake(self.view.width*i, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height);
         [self.pagingScrollView addSubview:ss.view];
         if (i>0) {
             [ss animateUp];
         }
         i++;
     }
-    
-    
+
+
     if (![self lastStackPage]) {
-        
+
         [self setLastStackPage:kInitialAvailableNoteTag];
     }
     else {
-        
+
         [self restorePurchasedStacks];
     }
-    
+
 
 
     [self.view addSubview:self.pagingScrollView];
-    
+
     [self addPurchaseScreen];
 
-    
-    _pageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(320/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
+
+    _pageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(self.view.width/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
     [self.view addSubview:self.pageControl];
-    
+
     [self updatePageControl];
-    
-  //  [self addPayedStack];
-    
+
+    //  [self addPayedStack];
+
     [self loadProducts];
-    
+
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
 }
 
 -(void)addStackWithTags:(NSArray *)tags {
@@ -118,7 +127,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     ISKSimpleStackViewController *stack = [[ISKSimpleStackViewController alloc]initWithTags:tags delegate:self];
     
-    stack.view.frame =CGRectMake(320*self.stacks.count, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+    stack.view.frame =CGRectMake(self.view.width*self.stacks.count, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height);
     [self.pagingScrollView addSubview:stack.view];
     
     [self addChildViewController:stack];
@@ -211,7 +220,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     ISKSimpleStackViewController *stack = [[ISKSimpleStackViewController alloc]initWithTags:@[first,second,third] delegate:self];
     
-    stack.view.frame =CGRectMake(320*self.stacks.count, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+    stack.view.frame =CGRectMake(self.view.width*self.stacks.count, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height);
     [self.pagingScrollView addSubview:stack.view];
     [stack animateUp];
     
@@ -237,33 +246,11 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
 }
 
-//-(void)viewDidLoad {
-//    
-//    // List all fonts on iPhone
-//    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
-//    NSArray *fontNames;
-//    NSInteger indFamily, indFont;
-//    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
-//    {
-//        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
-//        fontNames = [[NSArray alloc] initWithArray:
-//                     [UIFont fontNamesForFamilyName:
-//                      [familyNames objectAtIndex:indFamily]]];
-//        for (indFont=0; indFont<[fontNames count]; ++indFont)
-//        {
-//            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
-//        }
-//        fontNames = nil;
-//    }
-//    familyNames = nil;
-//
-//}
-
 -(void)updatePageControl {
     
-    self.payView.frame =CGRectMake(320*self.stacks.count, 0, 320, [[UIScreen mainScreen] bounds].size.height);
+    self.payView.frame =CGRectMake(self.view.width*self.stacks.count, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height);
     
-    self.pagingScrollView.contentSize = CGSizeMake(PAGERPAGEWIDTH*self.stacks.count+320, [[UIScreen mainScreen] bounds].size.height);
+    self.pagingScrollView.contentSize = CGSizeMake(self.view.width*self.stacks.count+self.view.width, [[UIScreen mainScreen] bounds].size.height);
 
    // [self.pageControl setPageControlStyle:PageControlStyleDefault];
   //  self.pageControl.diameter = 6;
@@ -285,10 +272,10 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     
     
-    _payView = [[UIView alloc]initWithFrame:CGRectMake(320*self.stacks.count, 0, 320, [[UIScreen mainScreen] bounds].size.height)];
+    _payView = [[UIView alloc]initWithFrame:CGRectMake(self.view.width*self.stacks.count, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height)];
     
     
-    UIButton *buyButton= [[UIButton alloc]initWithFrame:CGRectMake(320/2-200/2, [[UIScreen mainScreen] bounds].size.height/2-200/2-100, 200, 200)];
+    UIButton *buyButton= [[UIButton alloc]initWithFrame:CGRectMake(self.view.width/2-200/2, [[UIScreen mainScreen] bounds].size.height/2-200/2-100, 200, 200)];
     [buyButton setImage:[UIImage imageNamed:@"plus3"] forState:UIControlStateNormal];
     [buyButton addTarget:self action:@selector(beginIAP) forControlEvents:UIControlEventTouchUpInside];
     
@@ -308,8 +295,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     [self.payView addSubview:buyButton];
     [self.payView addSubview:buyLabel];
-    [buyButton release];
-    [buyLabel release];
     
     [self.pagingScrollView addSubview:self.payView];
     
@@ -343,10 +328,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
 }
 
-- (void)viewDidLoad {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-}
-
 
 - (void)productPurchased:(NSNotification *)notification {
     
@@ -358,12 +339,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
 -(void)dealloc {
      [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_activeStack release];
-    [_pageControl release];
-       [_payView release];
-    [_pagingScrollView release];
-    [_product release];
-    [super dealloc];
     
 }
 
