@@ -158,11 +158,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	[self.view addSubview:self.simpleNotepadStack];
 
 
-
-	_noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2, [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset)];
+   _noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2, [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset)];
 	self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
 	self.noteText.backgroundColor = [UIColor clearColor];
-	//noteText.
 
 	self.noteText.delegate = self;
 	[self.simpleNotepadStack addSubview:self.noteText];
@@ -278,12 +276,16 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteSnapShot] applicationActivities:nil];
 	activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard];
+    [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
 
-	[self presentViewController:activityController animated:YES completion:^{
+        if (completed) {
+            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"drawing" }];
+            [self showRateAlertIfNeeded];
+        }
 
-	    [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"drawing" }];
-        [self showRateAlertIfNeeded];
-	}];
+    }];
+
+	[self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void)shareNoteDrawing {
@@ -292,17 +294,22 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteDrawingSnapShot] applicationActivities:nil];
 	activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard];
 
-	[self presentViewController:activityController animated:YES completion:^{
+    [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
 
-	    [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"note" }];
-        [self showRateAlertIfNeeded];
-	}];
+        if (completed) {
+
+            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"note" }];
+            [self showRateAlertIfNeeded];
+        }
+
+    }];
+
+	[self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void)finishEdit {
 
 	[self.noteText resignFirstResponder];
-	NSLog(@"NOTETEXT LENGTH = %i", self.noteText.attributedText.length);
 	self.noteText.height = [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset;
 }
 

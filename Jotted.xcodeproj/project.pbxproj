@@ -38,7 +38,6 @@
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
 		F12A1E701979B83100E88484 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */; };
-		F12A1E78197ABDEC00E88484 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12A1E77197ABDEC00E88484 /* Reveal.framework */; };
 		F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */; };
 		F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8118A58EE900E04BE7 /* ISKStackIAPHelper.m */; };
 		F12D8A8418A5910400E04BE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A8318A5910400E04BE7 /* StoreKit.framework */; };
@@ -136,7 +135,6 @@
 		F113EC73167DD6360077B6D1 /* ISKStacksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStacksViewController.h; sourceTree = "<group>"; };
 		F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKStacksViewController.m; sourceTree = "<group>"; };
 		F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		F12A1E77197ABDEC00E88484 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F12D8A7D18A58E5200E04BE7 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		F12D8A8018A58EE900E04BE7 /* ISKStackIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKStackIAPHelper.h; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				F12D8AA118A5C4A400E04BE7 /* Security.framework in Frameworks */,
 				F12D8A9F18A5C49E00E04BE7 /* SystemConfiguration.framework in Frameworks */,
 				F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */,
-				F12A1E78197ABDEC00E88484 /* Reveal.framework in Frameworks */,
 				F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */,
 				F1A7A3C5197AD60500BEE6AA /* libFlurry_5.2.0.a in Frameworks */,
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
@@ -332,7 +329,6 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F12A1E77197ABDEC00E88484 /* Reveal.framework */,
 				F12D8AA018A5C4A400E04BE7 /* Security.framework */,
 				F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */,
 				F12D8A8318A5910400E04BE7 /* StoreKit.framework */,
@@ -755,8 +751,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -778,8 +774,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
+				PROVISIONING_PROFILE = "D1BA357E-1658-4874-A947-9245A4E15B8D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D1BA357E-1658-4874-A947-9245A4E15B8D";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -793,8 +789,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -817,8 +813,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
+				PROVISIONING_PROFILE = "D1BA357E-1658-4874-A947-9245A4E15B8D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D1BA357E-1658-4874-A947-9245A4E15B8D";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
