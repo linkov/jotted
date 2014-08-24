@@ -13,7 +13,8 @@
 @interface ISKSimpleStackViewController : UIViewController <ISKFlipsideViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,UICollisionBehaviorDelegate,UIActionSheetDelegate>
 
 - (id)initWithTags:(NSArray *)viewTags delegate:(ISKStacksViewController *)delegate;
--(void)animateUp;
+- (void)animateUp;
+- (void)moveUp;
 
 @property (nonatomic,strong) ISKRootView *simpleNotepadStack;
 

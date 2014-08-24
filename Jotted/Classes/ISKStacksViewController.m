@@ -12,7 +12,6 @@
 #import "Flurry.h"
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
-static const NSUInteger kInitialAvailableNoteTagPad = 69;
 
 @interface ISKStacksViewController ()
 
@@ -87,7 +86,7 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
         ss.view.frame =CGRectMake(self.view.width*i, 0, self.view.width, [[UIScreen mainScreen] bounds].size.height);
         [self.pagingScrollView addSubview:ss.view];
         if (i>0) {
-            [ss animateUp];
+            [ss moveUp];
         }
         i++;
     }
@@ -109,7 +108,7 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
     [self addPurchaseScreen];
 
 
-    _pageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(self.view.width/2-100/2, [[UIScreen mainScreen] bounds].size.height-32, 100, 13)];
+    _pageControl = [[SMPageControl alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-22, self.view.width, 13)];
     [self.view addSubview:self.pageControl];
 
     [self updatePageControl];
@@ -132,7 +131,7 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
     
     [self addChildViewController:stack];
     [stack didMoveToParentViewController:self];
-   [stack animateUp];
+    [stack moveUp];
     
     [self.stacks addObject:stack];
     [self updatePageControl];
@@ -170,7 +169,7 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
 
 - (void)setLastStackPage:(NSUInteger)lastStackPage {
     PDKeychainBindings *wrapper=[PDKeychainBindings sharedKeychainBindings];
-    NSString *valueString = [NSString stringWithFormat:@"%i",lastStackPage];
+    NSString *valueString = [NSString stringWithFormat:@"%lu",(unsigned long)lastStackPage];
     [wrapper setObject:valueString forKey:@"LastAvailableNoteTagKey"];
 
 }
@@ -182,20 +181,12 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
         NSUInteger lastStackPage = [self lastStackPage];
         NSUInteger initialAvaivablePage = kInitialAvailableNoteTag;
         NSUInteger numberOfPayedStacksAdded = (lastStackPage - initialAvaivablePage)/3;
-        
-        NSLog(@"lastStackPage = %i",lastStackPage);
-        NSLog(@"initialAvaivablePage = %i",initialAvaivablePage);
-        NSLog(@"number of stacks to add = %i",numberOfPayedStacksAdded);
-        
-        
+
         for (int k =1; k<=numberOfPayedStacksAdded; k++) {
             
-            NSLog(@"add stack");
-            
             NSMutableArray *stackPages = [NSMutableArray arrayWithCapacity:3];
-            for (int i = initialAvaivablePage+((k-1)*3)+1; i<=lastStackPage; i++) {
-                [stackPages addObject:[NSNumber numberWithInt:i]];
-                NSLog(@"add tag %i",i);
+            for (NSUInteger i = initialAvaivablePage+((k-1)*3)+1; i<=lastStackPage; i++) {
+                [stackPages addObject:[NSNumber numberWithInteger:i]];
                 if (stackPages.count == 3) {
                     [self addStackWithTags:stackPages];
                     break;
@@ -214,9 +205,9 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
     
     NSUInteger startTag = [self lastStackPage];
     
-    NSString *first = [NSString stringWithFormat:@"%i",startTag+1];
-    NSString *second = [NSString stringWithFormat:@"%i",startTag+2];
-    NSString *third = [NSString stringWithFormat:@"%i",startTag+3];
+    NSString *first = [NSString stringWithFormat:@"%u",startTag+1];
+    NSString *second = [NSString stringWithFormat:@"%u",startTag+2];
+    NSString *third = [NSString stringWithFormat:@"%u",startTag+3];
     
     ISKSimpleStackViewController *stack = [[ISKSimpleStackViewController alloc]initWithTags:@[first,second,third] delegate:self];
     
@@ -235,6 +226,7 @@ static const NSUInteger kInitialAvailableNoteTagPad = 69;
     CGFloat pageWidth = self.pagingScrollView.frame.size.width;
     int page = floor((self.pagingScrollView.contentOffset.x - pageWidth / self.stacks.count) / pageWidth) + 1;
     self.pageControl.currentPage = page;
+    self.pageControl.clipsToBounds = NO;
     self.activeStack = stack;
     
     [UIView animateWithDuration:0.4 animations:^{

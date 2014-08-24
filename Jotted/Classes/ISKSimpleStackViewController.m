@@ -44,14 +44,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	ISKNoteView *secondView;
 	ISKNoteView *thirdView;
 
+
 	UIView *overlay;
-
-	UIImageView *pencil;
-	UIImageView *upArrow;
-	UIImageView *downArrow;
-
-	UIButton *doneButton;
-
 	int activeView;
 
 	BOOL keyboardShown;
@@ -61,12 +55,19 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	CGPoint secondViewCenterBeforeCollision;
 }
 @property (strong)  UIDynamicAnimator *stackAnimator;
-@property (strong)  PSPDFTextView *noteText;
+@property (nonatomic, strong)  PSPDFTextView *noteText;
 @property (strong)  NSArray *viewTags;
 @property (weak)  ISKStacksViewController *delegate;
 @property (strong) UIButton *shareButton;
 @property (strong) UIImage *noteSnapShot;
 @property (strong) UIImage *noteDrawingSnapShot;
+@property (nonatomic, strong) UIButton *doneButton;
+
+@property (nonatomic, strong) UIImageView *pencil;
+@property (nonatomic, strong) UIImageView *upArrow;
+@property (nonatomic, strong) UIImageView *downArrow;
+
+@property (nonatomic, strong) NSString *storedTextString;
 
 @property (strong) UITapGestureRecognizer *switchViewGR;
 @property (strong) UITapGestureRecognizer *switchViewGR2;
@@ -99,6 +100,102 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 		_delegate = delegate;
 	}
 	return self;
+}
+
+- (NSString *)storedTextString  {
+
+    [self manageFirstLaunch];
+
+    if (!_storedTextString) {
+
+        _storedTextString = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i", activeView]] ? :@"";
+    }
+
+    return _storedTextString;
+}
+
+- (PSPDFTextView *)noteText {
+
+    if (!_noteText) {
+
+        _noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2, [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset)];
+        self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
+        self.noteText.backgroundColor = [UIColor clearColor];
+        self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+        self.noteText.textColor = UIColorFromRGB(0x102855);
+        self.noteText.delegate = self;
+        self.noteText.editable = NO;
+        self.noteText.userInteractionEnabled = NO;
+        [self.simpleNotepadStack addSubview:self.noteText];
+
+    }
+    return _noteText;
+}
+
+- (UIButton *)doneButton {
+
+    if (!_doneButton) {
+
+        _doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _doneButton.frame = CGRectMake(self.view.width - 80, 10, 55, 44);
+
+        // doneButton.layer.cornerRadius = STACKCORNERRAD;
+        //  doneButton.layer.borderWidth = 1;
+        // doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
+        [_doneButton setTitle:@"Done" forState:UIControlStateNormal];
+        // [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
+        //  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
+        [_doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
+        _doneButton.alpha = 0;
+        [self.simpleNotepadStack addSubview:self.doneButton];
+    }
+    return _doneButton;
+}
+
+- (UIImageView *)upArrow {
+
+    if (!_upArrow) {
+
+        _upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, 40, 9, 6)];
+        _upArrow.image = [UIImage imageNamed:@"blackArrowUp"];
+        _upArrow.alpha = 0;
+
+        [self.simpleNotepadStack addSubview:self.upArrow];
+    }
+
+    return _upArrow;
+}
+
+- (UIImageView *)downArrow {
+
+    if (!_downArrow) {
+
+
+        _downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, self.noteText.frame.size.height + 65, 9, 6)];
+        _downArrow.image = [UIImage imageNamed:@"blackArrowDown"];
+        _downArrow.alpha = 0;
+
+        [self.simpleNotepadStack addSubview:self.downArrow];
+    }
+
+    return _downArrow;
+
+}
+
+- (UIImageView *)pencil {
+
+
+    if (!_pencil) {
+
+        _pencil = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 7, 25, 15, 15)];
+        _pencil.image = [[UIImage imageNamed:@"blackPencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        _pencil.alpha = 0;
+
+        [self.simpleNotepadStack addSubview:self.pencil];
+    }
+
+    return _pencil;
+
 }
 
 - (void)viewDidLoad {
@@ -157,98 +254,53 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 	[self.view addSubview:self.simpleNotepadStack];
 
-
-   _noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2, [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset)];
-	self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
-	self.noteText.backgroundColor = [UIColor clearColor];
-
-	self.noteText.delegate = self;
-	[self.simpleNotepadStack addSubview:self.noteText];
-
-	doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	doneButton.frame = CGRectMake(self.view.width - 80, 10, 55, 44);
-
-	// doneButton.layer.cornerRadius = STACKCORNERRAD;
-	//  doneButton.layer.borderWidth = 1;
-	// doneButton.layer.borderColor = [UIColorFromRGB(0xF6F6F6) CGColor];
-	[doneButton setTitle:@"Done" forState:UIControlStateNormal];
-	// [doneButton setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
-	//  doneButton.backgroundColor = UIColorFromRGB(0xE8E8E8);
-	[doneButton addTarget:self action:@selector(finishEdit) forControlEvents:UIControlEventTouchUpInside];
-	doneButton.alpha = 0;
-	[self.simpleNotepadStack addSubview:doneButton];
-
-	activeView = firstView.tag;
-
-	[self updateTextViewText:[[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i", activeView]] ? :@""];
-
-	upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, 40, 9, 6)];
-	upArrow.image = [UIImage imageNamed:@"blackArrowUp"];
-	upArrow.alpha = 0;
-
-	[self.simpleNotepadStack addSubview:upArrow];
-
-	downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, self.noteText.frame.size.height + 65, 9, 6)];
-	downArrow.image = [UIImage imageNamed:@"blackArrowDown"];
-	downArrow.alpha = 0;
-
-	[self.simpleNotepadStack addSubview:downArrow];
-
-	//[self toggleArrows:noteText];
-
-	pencil = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 7, 25, 15, 15)];
-	pencil.image = [[UIImage imageNamed:@"blackPencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-	pencil.alpha = 0;
+    activeView = firstView.tag;
+    NSString *textString = [self storedTextString];
 
 
+    if (textString.length > 0) {
 
 
-	[self.simpleNotepadStack addSubview:pencil];
+        [self updateTextViewText:self.storedTextString];
 
 
-	self.noteText.textColor = UIColorFromRGB(0x102855);
-	self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
-	[self.noteText setScrollEnabled:YES];
+        self.noteText.textColor = UIColorFromRGB(0x102855);
+        self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+        [self.noteText setScrollEnabled:YES];
 
-	[self manageFirstLaunch];
-	[self checkDrawings];
+        [self manageFirstLaunch];
+        [self checkDrawings];
 
-	[self setupOverlay];
-
-
-	self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
-
-	// TextKit stuff
-	[self.noteText.layoutManager setUsesFontLeading:YES];
+        [self setupOverlay];
 
 
-	// text tight trait
-	//    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
-	//    [paragrahStyle setLineSpacing:2];
-	//    [paragrahStyle setLineHeightMultiple:0.75];
-	//
-	//    [self.noteText.textStorage setAttributes:@{NSParagraphStyleAttributeName:paragrahStyle} range:NSMakeRange(0, [self.noteText.text length])];
-	//    [paragrahStyle release];
+        self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
 
-	[self toggleArrows:self.noteText];
+        // TextKit stuff
+        [self.noteText.layoutManager setUsesFontLeading:YES];
 
-	self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [self toggleArrows:self.noteText];
 
-	_shareButton.frame = CGRectMake(self.view.width / 2 - 60 / 2, -34, 60, 34);
-	[_shareButton setTitle:@"Share" forState:UIControlStateNormal];
-	_shareButton.layer.cornerRadius = STACKCORNERRAD;
-	// _shareButton.layer.borderColor = [UIColor blackColor].CGColor;
-	//  _shareButton.layer.borderWidth = 1;
-	_shareButton.backgroundColor = [UIColor whiteColor];
-	_shareButton.alpha = 0.9;
-	[_shareButton addTarget:self action:@selector(shareNote) forControlEvents:UIControlEventTouchUpInside];
+        self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
 
-	[self.view addSubview:self.shareButton];
+        _shareButton.frame = CGRectMake(self.view.width / 2 - 60 / 2, -34, 60, 34);
+        [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
+        _shareButton.layer.cornerRadius = STACKCORNERRAD;
+        // _shareButton.layer.borderColor = [UIColor blackColor].CGColor;
+        //  _shareButton.layer.borderWidth = 1;
+        _shareButton.backgroundColor = [UIColor whiteColor];
+        _shareButton.alpha = 0.9;
+        [_shareButton addTarget:self action:@selector(shareNote) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:self.shareButton];
+    }
+
+
 }
 
 - (void)shareNote {
 
-	if (pencil.alpha == 1 && self.noteText.attributedText.length > 0) {
+	if (self.pencil.alpha == 1 && self.noteText.attributedText.length > 0) {
 
 		UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Share"
 		                                                   delegate:self
@@ -258,10 +310,10 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 		// Show the sheet
 		[sheet showInView:self.simpleNotepadStack];
-	} else if (pencil.alpha != 1 && self.noteText.attributedText.length > 0) {
+	} else if (self.pencil.alpha != 1 && self.noteText.attributedText.length > 0) {
 
 		[self shareNoteText];
-	} else if (pencil.alpha == 1 && self.noteText.attributedText.length == 0) {
+	} else if (self.pencil.alpha == 1 && self.noteText.attributedText.length == 0) {
 
 		[self shareNoteDrawing];
 	}
@@ -322,8 +374,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 		NSString *welcomeText = @"Swipe up to reveal all notes, doodle on the flip side of a note, clean flip side with 2 finger tap, swipe left to flip this note, swipe right to delete this text";
 
-		[self updateTextViewText:welcomeText];
-
 		[[NSUserDefaults standardUserDefaults] setValue:welcomeText forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
@@ -378,8 +428,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	self.switchViewGR.enabled = NO;
 	self.switchViewGR2.enabled = NO;
 
-	downArrow.alpha = 0;
-	upArrow.alpha = 0;
+	self.downArrow.alpha = 0;
+	self.upArrow.alpha = 0;
 
 	[self animateDown];
 
@@ -425,15 +475,15 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 			if ((bezierPath.bounds.size.width == 0 && bezierPath.bounds.size.height == 0) || bezierPath.isEmpty) {
 
-				pencil.alpha = 0;
+				self.pencil.alpha = 0;
 			} else {
-				pencil.alpha = 1.0;
+				self.pencil.alpha = 1.0;
 			}
 		} else {
-			pencil.alpha = 0;
+			self.pencil.alpha = 0;
 		}
 	} else {
-		pencil.alpha = 0;
+		self.pencil.alpha = 0;
 	}
 }
 
@@ -468,21 +518,56 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 		if (![v.class isSubclassOfClass:[UIImageView class]] && ![v.class isSubclassOfClass:[UIControl class]]) {
 
-			CGRect newFrame = v.frame;
-			newFrame.size.height += TRANSFORM_WH;
-			newFrame.size.width += TRANSFORM_WH;
-			newFrame.origin.x -= TRANSFORM_WH / 2;
-			newFrame.origin.y -= TRANSFORM_WH / 2;
-			v.frame = newFrame;
+            if ([v.class isSubclassOfClass:[UITextView class]] && v.frame.size.width == [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2 ) {
+
+
+            }
+            else {
+
+
+                CGRect newFrame = v.frame;
+                newFrame.size.height += TRANSFORM_WH;
+                newFrame.size.width += TRANSFORM_WH;
+                newFrame.origin.x -= TRANSFORM_WH / 2;
+                newFrame.origin.y -= TRANSFORM_WH / 2;
+                v.frame = newFrame;
+            }
+
 
 			//[v.layer setShadowOpacity:0];
 		}
 	}
 }
 
+- (void)moveUp {
+
+    CGPoint p = self.simpleNotepadStack.center;
+    centerBeforeAnimateUp = p;
+    p.y = centerBeforeAnimateUp.y * 0.62;
+
+    self.simpleNotepadStack.center = p;
+    secondView.alpha = 1;
+    thirdView.alpha = 1;
+    if ([self storedTextString].length > 0 ||  self.pencil.alpha == 1.0) self.shareButton.y += 30;
+    [self squeezeStack];
+
+    clearGR.enabled = NO;
+    flipGR.enabled = NO;
+    revealGR.enabled = NO;
+    hideGR.enabled = YES;
+
+    if (self.delegate.activeStack == self) {
+
+        self.delegate.pageControl.alpha = 1;
+        self.delegate.pagingScrollView.pagingEnabled = YES;
+        self.delegate.pagingScrollView.scrollEnabled = YES;
+    }
+
+}
+
 - (void)animateUp  {
 
-	if (self.noteText.attributedText.length > 0) {
+	if ([self storedTextString].length > 0) {
 
 		UIView *snapShotView = [[UIView alloc]initWithFrame:self.view.frame];
 
@@ -526,7 +611,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 		self.noteSnapShot = capturedImage;
 	}
 
-	if (pencil.alpha == 1) {
+	if (self.pencil.alpha == 1) {
 
 
 
@@ -568,7 +653,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	}
 
 
-	// TODO: check out animateWithDuration damping velocity when this is added to iOS7 API seed
 	[UIView animateWithDuration:0.2 animations:^{
 
 	    CGPoint p = self.simpleNotepadStack.center;
@@ -578,8 +662,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	    self.simpleNotepadStack.center = p;
 	    secondView.alpha = 1;
 	    thirdView.alpha = 1;
-	    NSLog(@"NOTETEXT LENGTH in AMIMATE = %i", self.noteText.attributedText.length);
-	    if (self.noteText.attributedText.length > 0 ||  pencil.alpha == 1.0) self.shareButton.y += 30;
+	    if (self.noteText.attributedText.length > 0 ||  self.pencil.alpha == 1.0) self.shareButton.y += 30;
 	    [self squeezeStack];
 	    // [self addOverlay];
 	} completion:^(BOOL finished) {
@@ -648,14 +731,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 
 - (void)updateTextViewText:(NSString *)textString {
-	NSMutableAttributedString *modifiedText = [[NSMutableAttributedString alloc]initWithString:textString ? :@""];
-	NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
-	//  [paragrahStyle setLineSpacing:0];
-	//   [paragrahStyle setLineHeightMultiple:1];
-	//  [paragrahStyle setHyphenationFactor:0.8];
-	[modifiedText addAttributes:@{ NSParagraphStyleAttributeName : paragrahStyle, NSFontAttributeName : [UIFont fontWithName:@"Noteworthy-Light" size:20], NSForegroundColorAttributeName:UIColorFromRGB(0x102855) } range:NSMakeRange(0, [modifiedText length])];
-	//[modifiedText addAttributes:@{NSParagraphStyleAttributeName: paragrahStyle } range:NSMakeRange(0, [modifiedText length])];
-	self.noteText.attributedText = modifiedText;
+
+	self.noteText.text = textString;
 }
 
 - (void)animateDown  {
@@ -670,7 +747,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 		    self.simpleNotepadStack.center = centerBeforeAnimateUp;
 		    secondView.alpha = 0;
 		    thirdView.alpha = 0;
-		    if (self.noteText.attributedText.length > 0 ||  pencil.alpha == 1.0) self.shareButton.y -= 30;
+		    if (self.noteText.attributedText.length > 0 ||  self.pencil.alpha == 1.0) self.shareButton.y -= 30;
 		    [self expandStack];
 		    // [self hideOverlay];
 		} completion:^(BOOL finished) {
@@ -750,9 +827,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	// 18 for big text
 	if (scroll.contentOffset.y > 18) {
 
-		upArrow.alpha = 1;
+		self.upArrow.alpha = 1;
 	} else {
-		upArrow.alpha = 0;
+		self.upArrow.alpha = 0;
 	}
 
 	CGFloat contentHeight = [self text:[self.noteText.attributedText string] sizeWithFont:self.noteText.font constrainedToSize:CGSizeMake(self.noteText.frame.size.width, MAXFLOAT)].height;
@@ -761,10 +838,10 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	//if ( (scroll.contentSize.height-6 > scroll.frame.size.height+(scroll.contentOffset.y == 16 ? 0 : scroll.contentOffset.y ) )) {
 	if ((contentHeight - 8 > scroll.frame.size.height + scroll.contentOffset.y)) {
 
-		downArrow.alpha = 1;
+		self.downArrow.alpha = 1;
 	} else {
 
-		downArrow.alpha = 0;
+		self.downArrow.alpha = 0;
 	}
 
 	NSLog(@" scroll.contentOffset.y = %f", scroll.contentOffset.y);
@@ -786,8 +863,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	flipGR.enabled = NO;
 	revealGR.enabled = NO;
 	clearGR.enabled = NO;
-	doneButton.alpha = 0.7;
-	downArrow.alpha = 0;
+	self.doneButton.alpha = 0.7;
+	self.downArrow.alpha = 0;
 	return YES;
 }
 
@@ -796,10 +873,10 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	flipGR.enabled = YES;
 	revealGR.enabled = YES;
 	clearGR.enabled = YES;
-	doneButton.alpha = 0;
+	self.doneButton.alpha = 0;
 
-	downArrow.alpha = 0;
-	upArrow.alpha = 0;
+	self.downArrow.alpha = 0;
+	self.upArrow.alpha = 0;
 
 	[[NSUserDefaults standardUserDefaults] setValue:tView.text forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
 	[[NSUserDefaults standardUserDefaults] synchronize];
