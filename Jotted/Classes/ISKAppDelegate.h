@@ -14,7 +14,6 @@
 @interface ISKAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) ISKStacksViewController *mainViewController;
 
 @end

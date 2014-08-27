@@ -7,7 +7,6 @@
 //
 #import "Flurry.h"
 #import "ISKAppDelegate.h"
-//#import "TestFlight.h"
 #import "ISKStackIAPHelper.h"
 
 @implementation ISKAppDelegate
@@ -16,8 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    
+
     [Flurry setCrashReportingEnabled:YES];
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
     [Flurry startSession:@"HJVR7C4P9PMF9B948MXK"];
@@ -32,10 +30,7 @@
     self.window.tintColor =UIColorFromRGB(0x102855);
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
-    
-   // NSURL *storeURL = [NSURL fileURLWithPath:[KGStore applicationDataDirectory]];
-  //  [[KGStore sharedInstance] setupCoreDataStackWithStorePathURL:storeURL];
-    
+
     
     // Set the application defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -72,5 +67,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

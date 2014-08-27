@@ -16,5 +16,4 @@
     #import "Const.h"
 #import "UIView+XYWHChange.h"
 #import "SVProgressHUD.h"
-//#import "KGStore.h"
 #endif

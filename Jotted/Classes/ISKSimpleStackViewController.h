@@ -16,7 +16,9 @@
 - (void)animateUp;
 - (void)moveUp;
 
-@property (nonatomic,strong) ISKRootView *simpleNotepadStack;
+- (void)loadActiveView;
 
+@property (nonatomic,strong) ISKRootView *simpleNotepadStack;
+@property (strong)  NSArray *viewTags;
 
 @end

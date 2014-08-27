@@ -56,9 +56,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 @property (strong)  UIDynamicAnimator *stackAnimator;
 @property (nonatomic, strong)  PSPDFTextView *noteText;
-@property (strong)  NSArray *viewTags;
+
 @property (weak)  ISKStacksViewController *delegate;
-@property (strong) UIButton *shareButton;
+@property (nonatomic, strong) UIButton *shareButton;
 @property (strong) UIImage *noteSnapShot;
 @property (strong) UIImage *noteDrawingSnapShot;
 @property (nonatomic, strong) UIButton *doneButton;
@@ -104,12 +104,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (NSString *)storedTextString  {
 
-    [self manageFirstLaunch];
+   [self manageFirstLaunch];
 
-    if (!_storedTextString) {
-
-        _storedTextString = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i", activeView]] ? :@"";
-    }
+    _storedTextString = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"textNote_%i", activeView]] ? :@"";
 
     return _storedTextString;
 }
@@ -127,6 +124,13 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
         self.noteText.editable = NO;
         self.noteText.userInteractionEnabled = NO;
         [self.simpleNotepadStack addSubview:self.noteText];
+
+        CGRect newFrame = self.noteText.frame;
+        newFrame.size.height -= TRANSFORM_WH;
+        newFrame.size.width -= TRANSFORM_WH;
+        newFrame.origin.x += TRANSFORM_WH / 2;
+        newFrame.origin.y += TRANSFORM_WH / 2;
+        self.noteText.frame = newFrame;
 
     }
     return _noteText;
@@ -198,12 +202,60 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 }
 
+- (void)loadActiveView {
+
+    NSString *textString = [self storedTextString];
+
+
+    if (textString.length > 0) {
+
+
+        [self updateTextViewText:self.storedTextString];
+
+
+        self.noteText.textColor = UIColorFromRGB(0x102855);
+        self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
+        [self.noteText setScrollEnabled:YES];
+        [self checkDrawings];
+        [self setupOverlay];
+
+        self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
+
+        // TextKit stuff
+        [self.noteText.layoutManager setUsesFontLeading:YES];
+
+        [self toggleArrows:self.noteText];
+
+
+    }
+
+
+    if (!self.shareButton) {
+
+
+        _shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
+
+        _shareButton.frame = CGRectMake(self.view.width / 2 - 60 / 2, -34, 60, 34);
+        [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
+        _shareButton.layer.cornerRadius = STACKCORNERRAD;
+        _shareButton.backgroundColor = [UIColor whiteColor];
+        _shareButton.alpha = 0.9;
+        [_shareButton addTarget:self action:@selector(shareNote) forControlEvents:UIControlEventTouchUpInside];
+
+        [self.view addSubview:self.shareButton];
+    }
+
+
+    
+
+
+}
+
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
 
-	_simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
-
+    _simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
 
 
 	flipGR = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(showFlipside)];
@@ -255,50 +307,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	[self.view addSubview:self.simpleNotepadStack];
 
     activeView = firstView.tag;
-    NSString *textString = [self storedTextString];
-
-
-    if (textString.length > 0) {
-
-
-        [self updateTextViewText:self.storedTextString];
-
-
-        self.noteText.textColor = UIColorFromRGB(0x102855);
-        self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
-        [self.noteText setScrollEnabled:YES];
-
-        [self manageFirstLaunch];
-        [self checkDrawings];
-
-        [self setupOverlay];
-
-
-        self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
-
-        // TextKit stuff
-        [self.noteText.layoutManager setUsesFontLeading:YES];
-
-        [self toggleArrows:self.noteText];
-
-        self.shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
-
-        _shareButton.frame = CGRectMake(self.view.width / 2 - 60 / 2, -34, 60, 34);
-        [_shareButton setTitle:@"Share" forState:UIControlStateNormal];
-        _shareButton.layer.cornerRadius = STACKCORNERRAD;
-        // _shareButton.layer.borderColor = [UIColor blackColor].CGColor;
-        //  _shareButton.layer.borderWidth = 1;
-        _shareButton.backgroundColor = [UIColor whiteColor];
-        _shareButton.alpha = 0.9;
-        [_shareButton addTarget:self action:@selector(shareNote) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.view addSubview:self.shareButton];
-    }
-
 
 }
 
 - (void)shareNote {
+
 
 	if (self.pencil.alpha == 1 && self.noteText.attributedText.length > 0) {
 
@@ -324,18 +337,21 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	if (buttonIndex == 1) [self shareNoteText];
 }
 
+
 - (void)shareNoteText {
 
-	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[self.noteSnapShot] applicationActivities:nil];
-	activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard];
+	UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[[self storedTextString]]
+                                                                                     applicationActivities:nil];
+	activityController.excludedActivityTypes = @[UIActivityTypeAssignToContact];
     [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
 
         if (completed) {
-            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"drawing" }];
+            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"text" }];
             [self showRateAlertIfNeeded];
         }
 
     }];
+
 
 	[self presentViewController:activityController animated:YES completion:nil];
 }
@@ -350,7 +366,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
         if (completed) {
 
-            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"note" }];
+            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"drawing" }];
             [self showRateAlertIfNeeded];
         }
 
@@ -548,7 +564,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     self.simpleNotepadStack.center = p;
     secondView.alpha = 1;
     thirdView.alpha = 1;
-    if ([self storedTextString].length > 0 ||  self.pencil.alpha == 1.0) self.shareButton.y += 30;
+    //if ([self storedTextString].length > 0 ||  self.pencil.alpha == 1.0) self.shareButton.y += 30;
     [self squeezeStack];
 
     clearGR.enabled = NO;
@@ -693,7 +709,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (void)applyDynamics  {
 
-	secondViewCenterBeforeCollision = secondView.center;
+    if (CGPointEqualToPoint(secondViewCenterBeforeCollision, CGPointZero)) {
+        secondViewCenterBeforeCollision = secondView.center;
+    }
 
 	ISKGravityCollisionBehavior *gravCol = [[ISKGravityCollisionBehavior alloc]initWithItems:@[secondView] collisionDelegate:self];
 
@@ -1025,7 +1043,9 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (void)showRateAlertIfNeeded {
 
-	NSUInteger daysInstalled = [self daysBetweenDate:[NSDate date] andDate:[[NSUserDefaults standardUserDefaults] objectForKey:@"WSCRidersTimeOfLastRateAlertKey"]];
+    NSDate *lastRateAlertShowDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"WSCRidersTimeOfLastRateAlertKey"] ? : [NSDate date];
+
+	NSUInteger daysInstalled = [self daysBetweenDate:[NSDate date] andDate:lastRateAlertShowDate];
 
 	if ([self isFirstRateDialog] == YES || ([[NSUserDefaults standardUserDefaults] boolForKey:@"DidPushRateLaterKey"] == YES && daysInstalled >= 2)) { // prod
 		[Flurry logEvent:@"a2_rate_alert_shown"];

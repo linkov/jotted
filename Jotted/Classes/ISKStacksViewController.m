@@ -24,10 +24,19 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 @implementation ISKStacksViewController
 
 
+- (UIBezierPath *)drawingPathForTag:(int)tag {
+
+    NSString *docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+	NSString *path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"textNoteDrawing_%i",tag]];
+
+	NSData *bezierData = [NSData dataWithContentsOfFile:path];
+    UIBezierPath *bezierPath = [NSKeyedUnarchiver unarchiveObjectWithData:bezierData];
+
+    return bezierPath;
+}
+
 
 - (void)viewDidLoad {
-
-
 
     // setup paging scroll
     CGRect scrollFrame;
@@ -73,12 +82,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     }
 
 
-
-
-
-
     self.activeStack = simpleStack1;
-
 
     int i = 0;
     for (ISKSimpleStackViewController *ss  in self.stacks) {
@@ -117,7 +121,12 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
     [self loadProducts];
 
+
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+
+    [self.activeStack loadActiveView];
+
+
 }
 
 -(void)addStackWithTags:(NSArray *)tags {
@@ -156,7 +165,8 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
             [SVProgressHUD showErrorWithStatus:@"App Store is not available. Please try again in a minute"];
         }
     }];
-   
+
+
 }
 
 
@@ -199,7 +209,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
         
         
 }
-
 
 -(void)addPayedStack {
     
@@ -251,7 +260,7 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     self.pageControl.numberOfPages = self.stacks.count+1;
     self.pageControl.currentPage = 0;
     self.pageControl.alpha = 0;
-    
+
    // [self.pageControl setImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
    // [self.pageControl setCurrentImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
     
@@ -316,7 +325,11 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     
 
-    if (realPage<=self.stacks.count-1)   self.activeStack = self.stacks[realPage];
+    if (realPage<=self.stacks.count-1)  {
+
+        self.activeStack = self.stacks[realPage];
+        [self.activeStack loadActiveView];
+    }
 
 }
 

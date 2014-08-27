@@ -235,9 +235,13 @@
 		F169EF421916C4F800B6A8E6 /* currentAppleDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "currentAppleDot@2x.png"; path = "vendor/SMPageControl/currentAppleDot@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF441916C51300B6A8E6 /* appleMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appleMask@2x.png"; path = "vendor/SMPageControl/appleMask@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF461916C6A700B6A8E6 /* lockMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lockMask@2x.png"; path = "vendor/SMPageControl/lockMask@2x.png"; sourceTree = SOURCE_ROOT; };
-		F1863E4819AA62A000040F80 /* Jotted copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jotted copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1863E4819AA62A000040F80 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1863E4919AA62A000040F80 /* Jotted copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Jotted copy-Info.plist"; path = "/Users/linkov/Documents/sdwr/jotted/Jotted copy-Info.plist"; sourceTree = "<absolute>"; };
 		F1863E4A19AA632700040F80 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		F1863FBD19ACCD2A00040F80 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		F1863FC619ACCE8D00040F80 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F1863FC819ACCE9400040F80 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F1863FD419AD0D7500040F80 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
 		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
 		F19F69D618A05D2B00D4D291 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -423,7 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				C3BA32CE15F2691600EF7DA4 /* Jotted.app */,
-				F1863E4819AA62A000040F80 /* Jotted copy.app */,
+				F1863E4819AA62A000040F80 /* Jotted.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,6 +435,10 @@
 		C3BA32D115F2691600EF7DA4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1863FD419AD0D7500040F80 /* CoreData.framework */,
+				F1863FC819ACCE9400040F80 /* libxml2.dylib */,
+				F1863FC619ACCE8D00040F80 /* MobileCoreServices.framework */,
+				F1863FBD19ACCD2A00040F80 /* libxml2.2.dylib */,
 				F1863E4A19AA632700040F80 /* Reveal.framework */,
 				F12D8AA018A5C4A400E04BE7 /* Security.framework */,
 				F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */,
@@ -658,7 +666,7 @@
 			);
 			name = "Jotted AppStore";
 			productName = IndexStack;
-			productReference = F1863E4819AA62A000040F80 /* Jotted copy.app */;
+			productReference = F1863E4819AA62A000040F80 /* Jotted.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -678,6 +686,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					F1863DF419AA62A000040F80 = {
+						DevelopmentTeam = 43R88X5B35;
 					};
 				};
 			};
@@ -960,6 +971,7 @@
 					/Users/toyota8/sdwr/jotted/Jotted,
 					/Users/linkov/Documents/sdwr/jotted,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vendor/Evernote",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
@@ -975,8 +987,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "36e7d0da-0e8c-4aae-a8cb-424f74ab8dcd";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36e7d0da-0e8c-4aae-a8cb-424f74ab8dcd";
+				PROVISIONING_PROFILE = "4ba10ae9-99aa-4efa-8a1d-83dd6a359c55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4ba10ae9-99aa-4efa-8a1d-83dd6a359c55";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -998,6 +1010,7 @@
 					/Users/toyota8/sdwr/jotted/Jotted,
 					/Users/linkov/Documents/sdwr/jotted,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vendor/Evernote",
 				);
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1014,8 +1027,8 @@
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
-				PROVISIONING_PROFILE = "36e7d0da-0e8c-4aae-a8cb-424f74ab8dcd";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36e7d0da-0e8c-4aae-a8cb-424f74ab8dcd";
+				PROVISIONING_PROFILE = "4ba10ae9-99aa-4efa-8a1d-83dd6a359c55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4ba10ae9-99aa-4efa-8a1d-83dd6a359c55";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1029,14 +1042,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Users/toyota8/sdwr/jotted/Jotted,
 					/Users/linkov/Documents/sdwr/jotted,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vendor/Evernote",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jotted/Jotted-Prefix.pch";
@@ -1051,7 +1065,7 @@
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "Jotted copy";
+				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1067,14 +1081,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
 					/Users/toyota8/sdwr/jotted/Jotted,
 					/Users/linkov/Documents/sdwr/jotted,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vendor/Evernote",
 				);
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1090,7 +1105,7 @@
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "Jotted copy";
+				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "E51AC935-CC45-465B-893A-22A5CC986378";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E51AC935-CC45-465B-893A-22A5CC986378";
 				RUN_CLANG_STATIC_ANALYZER = YES;
