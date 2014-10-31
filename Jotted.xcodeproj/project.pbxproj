@@ -131,7 +131,6 @@
 		F1863E4219AA62A000040F80 /* lockMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF461916C6A700B6A8E6 /* lockMask@2x.png */; };
 		F1863E4319AA62A000040F80 /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8E18A5A39B00E04BE7 /* plus2@2x.png */; };
 		F1863E4419AA62A000040F80 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */; };
-		F1863E4B19AA632700040F80 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1863E4A19AA632700040F80 /* Reveal.framework */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
 		F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D618A05D2B00D4D291 /* libTestFlight.a */; };
 		F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
@@ -237,7 +236,6 @@
 		F169EF461916C6A700B6A8E6 /* lockMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lockMask@2x.png"; path = "vendor/SMPageControl/lockMask@2x.png"; sourceTree = SOURCE_ROOT; };
 		F1863E4819AA62A000040F80 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1863E4919AA62A000040F80 /* Jotted copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Jotted copy-Info.plist"; path = "/Users/linkov/Documents/sdwr/jotted/Jotted copy-Info.plist"; sourceTree = "<absolute>"; };
-		F1863E4A19AA632700040F80 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		F1863FBD19ACCD2A00040F80 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		F1863FC619ACCE8D00040F80 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F1863FC819ACCE9400040F80 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -308,7 +306,6 @@
 				F12D8AA118A5C4A400E04BE7 /* Security.framework in Frameworks */,
 				F12D8A9F18A5C49E00E04BE7 /* SystemConfiguration.framework in Frameworks */,
 				F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */,
-				F1863E4B19AA632700040F80 /* Reveal.framework in Frameworks */,
 				F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */,
 				F1A7A3C5197AD60500BEE6AA /* libFlurry_5.2.0.a in Frameworks */,
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
@@ -439,7 +436,6 @@
 				F1863FC819ACCE9400040F80 /* libxml2.dylib */,
 				F1863FC619ACCE8D00040F80 /* MobileCoreServices.framework */,
 				F1863FBD19ACCD2A00040F80 /* libxml2.2.dylib */,
-				F1863E4A19AA632700040F80 /* Reveal.framework */,
 				F12D8AA018A5C4A400E04BE7 /* Security.framework */,
 				F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */,
 				F12D8A8318A5910400E04BE7 /* StoreKit.framework */,
