@@ -96,9 +96,7 @@
 		F1863E1D19AA62A000040F80 /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */; };
 		F1863E1F19AA62A000040F80 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8AA018A5C4A400E04BE7 /* Security.framework */; };
 		F1863E2019AA62A000040F80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */; };
-		F1863E2119AA62A000040F80 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D618A05D2B00D4D291 /* libTestFlight.a */; };
 		F1863E2219AA62A000040F80 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
-		F1863E2319AA62A000040F80 /* libFlurry_5.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */; };
 		F1863E2419AA62A000040F80 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C378240317E06B0E00ABB5CE /* CFNetwork.framework */; };
 		F1863E2519AA62A000040F80 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A8318A5910400E04BE7 /* StoreKit.framework */; };
 		F1863E2619AA62A000040F80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA330515F271E800EF7DA4 /* QuartzCore.framework */; };
@@ -132,11 +130,9 @@
 		F1863E4319AA62A000040F80 /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8E18A5A39B00E04BE7 /* plus2@2x.png */; };
 		F1863E4419AA62A000040F80 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
-		F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D618A05D2B00D4D291 /* libTestFlight.a */; };
 		F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
 		F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F69E918A0723200D4D291 /* PSPDFTextView.m */; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
-		F1A7A3C5197AD60500BEE6AA /* libFlurry_5.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */; };
 		F1A7A3F8197AD7B400BEE6AA /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */; };
 		F1A7A3F9197AD7B400BEE6AA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */; };
 		F1A7A3FA197AD7B400BEE6AA /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */; };
@@ -224,7 +220,6 @@
 		F12D8A8C18A5A2F400E04BE7 /* plus1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus1@2x.png"; sourceTree = "<group>"; };
 		F12D8A8E18A5A39B00E04BE7 /* plus2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus2@2x.png"; sourceTree = "<group>"; };
 		F12D8A9018A5A4C300E04BE7 /* plus3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus3@2x.png"; sourceTree = "<group>"; };
-		F12D8A9B18A5C47600E04BE7 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F12D8AA018A5C4A400E04BE7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F15088FC18A58072005AC150 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
@@ -242,15 +237,10 @@
 		F1863FD419AD0D7500040F80 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F19B8CEF176BEAD5007C1000 /* ISKGravityCollisionBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKGravityCollisionBehavior.h; sourceTree = "<group>"; };
 		F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKGravityCollisionBehavior.m; sourceTree = "<group>"; };
-		F19F69D618A05D2B00D4D291 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		F19F69D818A05D3A00D4D291 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		F19F69DA18A05DB900D4D291 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		F19F69DB18A05DB900D4D291 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		F19F69DC18A05DB900D4D291 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		F19F69E818A0723200D4D291 /* PSPDFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPDFTextView.h; sourceTree = "<group>"; };
 		F19F69E918A0723200D4D291 /* PSPDFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFTextView.m; sourceTree = "<group>"; };
 		F1A670EC176923DC00665F19 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jotted/Media.xcassets; sourceTree = "<group>"; };
-		F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.2.0.a; sourceTree = "<group>"; };
 		F1A7A3CA197AD7B400BEE6AA /* CAAnimation+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+Blocks.h"; sourceTree = "<group>"; };
 		F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+Blocks.m"; sourceTree = "<group>"; };
 		F1A7A3CD197AD7B400BEE6AA /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
@@ -305,9 +295,7 @@
 			files = (
 				F12D8AA118A5C4A400E04BE7 /* Security.framework in Frameworks */,
 				F12D8A9F18A5C49E00E04BE7 /* SystemConfiguration.framework in Frameworks */,
-				F19F69D718A05D2B00D4D291 /* libTestFlight.a in Frameworks */,
 				F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */,
-				F1A7A3C5197AD60500BEE6AA /* libFlurry_5.2.0.a in Frameworks */,
 				C378240417E06B0E00ABB5CE /* CFNetwork.framework in Frameworks */,
 				F12D8A8418A5910400E04BE7 /* StoreKit.framework in Frameworks */,
 				C3BA330615F271E800EF7DA4 /* QuartzCore.framework in Frameworks */,
@@ -323,9 +311,7 @@
 			files = (
 				F1863E1F19AA62A000040F80 /* Security.framework in Frameworks */,
 				F1863E2019AA62A000040F80 /* SystemConfiguration.framework in Frameworks */,
-				F1863E2119AA62A000040F80 /* libTestFlight.a in Frameworks */,
 				F1863E2219AA62A000040F80 /* libz.dylib in Frameworks */,
-				F1863E2319AA62A000040F80 /* libFlurry_5.2.0.a in Frameworks */,
 				F1863E2419AA62A000040F80 /* CFNetwork.framework in Frameworks */,
 				F1863E2519AA62A000040F80 /* StoreKit.framework in Frameworks */,
 				F1863E2619AA62A000040F80 /* QuartzCore.framework in Frameworks */,
@@ -464,11 +450,9 @@
 			children = (
 				F1A7A3C8197AD7B400BEE6AA /* StarAlert */,
 				F169EF3C1916C33400B6A8E6 /* SMPageControl */,
-				F12D8A9A18A5C47600E04BE7 /* Flurry */,
 				F12D8A8518A59A5C00E04BE7 /* KeyChainBindings */,
 				F12D8A7918A58D8700E04BE7 /* IAPHelper */,
 				F19F69E718A0723200D4D291 /* PSPDFTextView */,
-				F19F69D518A05D2B00D4D291 /* TestFlight */,
 				C3E4A96617E353270001CC6B /* SVProgressHUD */,
 				F113EC6E167DC41A0077B6D1 /* StyledPageControl */,
 			);
@@ -508,15 +492,6 @@
 			path = KeyChainBindings;
 			sourceTree = "<group>";
 		};
-		F12D8A9A18A5C47600E04BE7 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				F12D8A9B18A5C47600E04BE7 /* Flurry.h */,
-				F1A7A3C4197AD60500BEE6AA /* libFlurry_5.2.0.a */,
-			);
-			path = Flurry;
-			sourceTree = "<group>";
-		};
 		F169EF3C1916C33400B6A8E6 /* SMPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,17 +499,6 @@
 				F169EF3E1916C33400B6A8E6 /* SMPageControl.m */,
 			);
 			path = SMPageControl;
-			sourceTree = "<group>";
-		};
-		F19F69D518A05D2B00D4D291 /* TestFlight */ = {
-			isa = PBXGroup;
-			children = (
-				F19F69DA18A05DB900D4D291 /* TestFlight.h */,
-				F19F69DB18A05DB900D4D291 /* TestFlight+AsyncLogging.h */,
-				F19F69DC18A05DB900D4D291 /* TestFlight+ManualSessions.h */,
-				F19F69D618A05D2B00D4D291 /* libTestFlight.a */,
-			);
-			path = TestFlight;
 			sourceTree = "<group>";
 		};
 		F19F69E718A0723200D4D291 /* PSPDFTextView */ = {

@@ -9,7 +9,6 @@
 #import "ISKStacksViewController.h"
 #import "ISKStackIAPHelper.h"
 #import "PDKeychainBindings.h"
-#import "Flurry.h"
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
 
@@ -337,7 +336,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 - (void)productPurchased:(NSNotification *)notification {
     
     [self addPayedStack];
-    [Flurry logEvent:@"Stack_Buy" withParameters:@{@"text":self.buyText}];
    // [TestFlight passCheckpoint:[NSString stringWithFormat:@"bought a stack with buy text [%@] ",self.buyText]];
 }
 

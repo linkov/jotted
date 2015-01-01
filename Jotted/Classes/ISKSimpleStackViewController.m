@@ -17,7 +17,6 @@
 #import "ISKGravityCollisionBehavior.h"
 #import "PSPDFTextView.h"
 #import "ISKDrawingView.h"
-#import "Flurry.h"
 #import "LMAlertView.h"
 #import "EDStarRating.h"
 
@@ -346,7 +345,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
 
         if (completed) {
-            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode" : @"text" }];
             [self showRateAlertIfNeeded];
         }
 
@@ -366,7 +364,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
         if (completed) {
 
-            [Flurry logEvent:@"Note_Share" withParameters:@{ @"shareMode":@"drawing" }];
             [self showRateAlertIfNeeded];
         }
 
@@ -421,7 +418,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 		if (buttonIndex == 1) {
 
-			[Flurry logEvent:@"a2_rate_alert_submit"];
 
 			if (self.starRating.rating > 3) {
 				[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DidPushRateLaterKey"];
@@ -431,7 +427,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 				[self openEmail];
 			}
 		} else {
-			[Flurry logEvent:@"a2_rate_alert_notnow"];
 			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DidPushRateLaterKey"];
 			[[NSUserDefaults standardUserDefaults] setObject:[NSDate date]  forKey:@"WSCRidersTimeOfLastRateAlertKey"];
 		}
@@ -1041,18 +1036,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	return [difference day];
 }
 
-- (void)showRateAlertIfNeeded {
-
-    NSDate *lastRateAlertShowDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"WSCRidersTimeOfLastRateAlertKey"] ? : [NSDate date];
-
-	NSUInteger daysInstalled = [self daysBetweenDate:[NSDate date] andDate:lastRateAlertShowDate];
-
-	if ([self isFirstRateDialog] == YES || ([[NSUserDefaults standardUserDefaults] boolForKey:@"DidPushRateLaterKey"] == YES && daysInstalled >= 2)) { // prod
-		[Flurry logEvent:@"a2_rate_alert_shown"];
-		[self showRateAlert];
-	}
-
-}
+- (void)showRateAlertIfNeeded {}
 
 - (void)showRateAlert {
 
