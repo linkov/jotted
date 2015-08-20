@@ -160,7 +160,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
     if (!_upArrow) {
 
-        _upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, 40, 9, 6)];
+        _upArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, 50, 9, 6)];
         _upArrow.image = [UIImage imageNamed:@"blackArrowUp"];
         _upArrow.alpha = 0;
 
@@ -175,7 +175,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     if (!_downArrow) {
 
 
-        _downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, self.noteText.frame.size.height + 65, 9, 6)];
+        _downArrow = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width / 2 - 9 / 2, self.noteText.frame.size.height + 90, 9, 6)];
         _downArrow.image = [UIImage imageNamed:@"blackArrowDown"];
         _downArrow.alpha = 0;
 
