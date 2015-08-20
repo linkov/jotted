@@ -114,14 +114,15 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
     if (!_noteText) {
 
+        NSLog(@"%s",__PRETTY_FUNCTION__);
+
         _noteText = [[PSPDFTextView alloc]initWithFrame:CGRectMake(ktextViewSideOffset, ktextViewTopOffset, [[UIScreen mainScreen] bounds].size.width - ktextViewSideOffset * 2, [[UIScreen mainScreen] bounds].size.height - ktextViewBottomOffset - ktextViewTopOffset)];
         self.noteText.autocorrectionType  = UITextAutocorrectionTypeNo;
         self.noteText.backgroundColor = [UIColor clearColor];
         self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
         self.noteText.textColor = UIColorFromRGB(0x102855);
         self.noteText.delegate = self;
-        self.noteText.editable = NO;
-        self.noteText.userInteractionEnabled = NO;
+        [self disableTextView];
         [self.simpleNotepadStack addSubview:self.noteText];
 
         CGRect newFrame = self.noteText.frame;
@@ -201,8 +202,21 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 }
 
+- (void)enableTextView {
+
+    self.noteText.editable = YES;
+    self.noteText.userInteractionEnabled = YES;
+}
+
+- (void)disableTextView {
+
+    self.noteText.editable = NO;
+    self.noteText.userInteractionEnabled = NO;
+}
+
 - (void)loadActiveView {
 
+    NSLog(@"%s",__PRETTY_FUNCTION__);
     NSString *textString = [self storedTextString];
 
 
@@ -216,7 +230,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
         self.noteText.font = [UIFont fontWithName:@"Noteworthy-Light" size:20];
         [self.noteText setScrollEnabled:YES];
         [self checkDrawings];
-        [self setupOverlay];
 
         self.noteText.contentInset = UIEdgeInsetsMake(-16, 0, 0, 0);
 
@@ -253,6 +266,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 - (void)viewDidLoad {
 
 	[super viewDidLoad];
+
+    NSLog(@"%s",__PRETTY_FUNCTION__);
 
     _simpleNotepadStack = [[ISKRootView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
 
@@ -345,7 +360,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
     [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
 
         if (completed) {
-            [self showRateAlertIfNeeded];
         }
 
     }];
@@ -364,7 +378,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
         if (completed) {
 
-            [self showRateAlertIfNeeded];
         }
 
     }];
@@ -578,6 +591,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
 - (void)animateUp  {
 
+    NSLog(@"%s",__PRETTY_FUNCTION__);
+
 	if ([self storedTextString].length > 0) {
 
 		UIView *snapShotView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -682,8 +697,7 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	    flipGR.enabled = NO;
 	    revealGR.enabled = NO;
 	    hideGR.enabled = YES;
-	    self.noteText.editable = NO;
-	    self.noteText.userInteractionEnabled = NO;
+        [self disableTextView];
 
 	    if (self.delegate.activeStack == self) {
 
@@ -774,31 +788,11 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 		    self.switchViewGR.enabled = YES;
 		    self.switchViewGR2.enabled = YES;
 
-		    self.noteText.editable = YES;
-		    self.noteText.userInteractionEnabled = YES;
+            [self enableTextView];
 		    //  [self.noteText setContentOffset:CGPointMake(0, 0)];
 		    [self toggleArrows:self.noteText];
 		}];
 	}
-}
-
-- (void)setupOverlay {
-
-	overlay = [[UIView alloc]initWithFrame:self.view.frame];
-	overlay.alpha = 0;
-	overlay.backgroundColor = [UIColor blackColor];
-	[overlay setUserInteractionEnabled:NO];
-	[self.view addSubview:overlay];
-}
-
-- (void)addOverlay {
-
-	overlay.alpha = 0.3;
-}
-
-- (void)hideOverlay {
-
-	overlay.alpha = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -992,7 +986,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 - (void)flipsideViewControllerDidFinishWithView:(int)aView {
 
 	[self dismissViewControllerAnimated:YES completion:^{
-	    [self showRateAlertIfNeeded];
 	}];
 
 	activeView = aView;
@@ -1036,45 +1029,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	return [difference day];
 }
 
-- (void)showRateAlertIfNeeded {}
-
-- (void)showRateAlert {
-
-	if (self.ratingAlertView != nil) {
-		[self.ratingAlertView show];
-		return;
-	}
-
-	self.ratingAlertView = [[LMAlertView alloc] initWithTitle:@"Tell us what you think"
-	                                                  message:@"How would you rate your\nJotted experience?"
-	                                                 delegate:self
-	                                        cancelButtonTitle:@"Not Now"
-	                                        otherButtonTitles:@"Submit", nil];
-
-    self.ratingAlertView.tintColor = UIColorFromRGB(0x26ADE4);
-	CGSize size = self.ratingAlertView.size;
-
-	LMModalItemTableViewCell *cell = [self.ratingAlertView buttonCellForIndex:self.ratingAlertView.firstOtherButtonIndex];
-	cell.isEnabled = NO;
-
-	[self.ratingAlertView setSize:CGSizeMake(size.width, 190.0)];
-
-	UIView *contentView = self.ratingAlertView.contentView;
-
-	_starRating = [[EDStarRating alloc] initWithFrame:CGRectMake((size.width / 2.0 - 225.0 / 2.0), 95.0, 225.0, 50.0)];
-	self.starRating.starImage            = [UIImage imageNamed:@"StarEmpty"];
-	self.starRating.starHighlightedImage = [UIImage imageNamed:@"StarFull"];
-	self.starRating.maxRating            = 5.0;
-	self.starRating.delegate             = self;
-	self.starRating.editable             = YES;
-	self.starRating.displayMode          = EDStarRatingDisplayFull;
-	self.starRating.rating               = 0;
-	self.starRating.backgroundColor      = [UIColor clearColor];
-
-	[contentView addSubview:self.starRating];
-
-	[self.ratingAlertView show];
-}
 
 #pragma mark EDStarRatingProtocol delegate methods
 

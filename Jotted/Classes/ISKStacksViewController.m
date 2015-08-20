@@ -115,15 +115,13 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     [self.view addSubview:self.pageControl];
 
     [self updatePageControl];
-
-    //  [self addPayedStack];
-
     [self loadProducts];
 
 
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
 
     [self.activeStack loadActiveView];
+    [self.activeStack enableTextView];
 
 
 }
@@ -252,17 +250,12 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     
     self.pagingScrollView.contentSize = CGSizeMake(self.view.width*self.stacks.count+self.view.width, [[UIScreen mainScreen] bounds].size.height);
 
-   // [self.pageControl setPageControlStyle:PageControlStyleDefault];
-  //  self.pageControl.diameter = 6;
     self.pageControl.indicatorDiameter = 3;
     
     self.pageControl.numberOfPages = self.stacks.count+1;
     self.pageControl.currentPage = 0;
     self.pageControl.alpha = 0;
 
-   // [self.pageControl setImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
-   // [self.pageControl setCurrentImage:[UIImage imageNamed:@"appleMask"] forPage:self.stacks.count];
-    
     
     [self.pageControl setImageMask:[UIImage imageNamed:@"lockMask"] forPage:self.stacks.count];
    
@@ -304,31 +297,39 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 
 #pragma mark - UIScrollView delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-            
-        // Update the page when more than 50% of the previous/next page is visible
-        CGFloat pageWidth = self.pagingScrollView.frame.size.width;
-        int page = floor((self.pagingScrollView.contentOffset.x - pageWidth / self.stacks.count) / pageWidth) + 1;
-        self.pageControl.currentPage = page;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
-    
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.pagingScrollView.frame.size.width;
+    int page = floor((self.pagingScrollView.contentOffset.x - pageWidth / self.stacks.count) / pageWidth) + 1;
+
+
     int realPage;
-    
+
     if (page<0) {
-        
+
         realPage = 0;
     }
     else {
         realPage = page;
     }
-    
-    
 
+
+    NSLog(@"real page - %i",realPage);
     if (realPage<=self.stacks.count-1)  {
 
         self.activeStack = self.stacks[realPage];
         [self.activeStack loadActiveView];
     }
+}
+
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+            
+    CGFloat pageWidth = self.pagingScrollView.frame.size.width;
+    int page = floor((self.pagingScrollView.contentOffset.x - pageWidth / self.stacks.count) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
 
 }
 
@@ -336,7 +337,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 - (void)productPurchased:(NSNotification *)notification {
     
     [self addPayedStack];
-   // [TestFlight passCheckpoint:[NSString stringWithFormat:@"bought a stack with buy text [%@] ",self.buyText]];
 }
 
 

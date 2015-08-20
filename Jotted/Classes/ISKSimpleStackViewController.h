@@ -15,7 +15,7 @@
 - (id)initWithTags:(NSArray *)viewTags delegate:(ISKStacksViewController *)delegate;
 - (void)animateUp;
 - (void)moveUp;
-
+- (void)enableTextView;
 - (void)loadActiveView;
 
 @property (nonatomic,strong) ISKRootView *simpleNotepadStack;
