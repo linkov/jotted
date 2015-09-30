@@ -11,6 +11,7 @@
 #import "SMPageControl.h"
 #import "ISKSimpleStackViewController.h"
 
+
 @interface ISKStacksViewController : UIViewController <UIScrollViewDelegate>
 
 
@@ -18,5 +19,7 @@
 @property (nonatomic,strong) UIScrollView *pagingScrollView;
 @property (nonatomic,strong) ISKSimpleStackViewController *activeStack;
 @property (strong) NSMutableArray *stacks;
+
+- (void)sendNoteWithDefaultsKey:(NSString *)defaultsKey noteColor:(UIColor *)color;
 
 @end

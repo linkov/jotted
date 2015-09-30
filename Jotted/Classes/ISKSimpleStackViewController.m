@@ -888,6 +888,8 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 	[[NSUserDefaults standardUserDefaults] setValue:tView.text forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 
+    [self.delegate sendNoteWithDefaultsKey:[NSString stringWithFormat:@"textNote_%i", activeView] noteColor:firstView.backgroundColor];
+
 
 
 	// [self toggleArrows:tView];

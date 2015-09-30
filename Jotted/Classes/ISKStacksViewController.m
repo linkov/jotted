@@ -9,14 +9,16 @@
 #import "ISKStacksViewController.h"
 #import "ISKStackIAPHelper.h"
 #import "PDKeychainBindings.h"
+@import WatchConnectivity;
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
 
-@interface ISKStacksViewController ()
+@interface ISKStacksViewController () <WCSessionDelegate>
 
 @property  UIView *payView;
 @property (strong) SKProduct *product;
 @property (strong) NSString *buyText;
+@property WCSession *watchSession;
 
 @end
 
@@ -35,7 +37,56 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 }
 
 
+- (void)startWCSession {
+
+    if ([WCSession isSupported]) {
+        self.watchSession = [WCSession defaultSession];
+        self.watchSession.delegate = self;
+        [self.watchSession activateSession];
+    }
+}
+
+- (void)sessionWatchStateDidChange:(WCSession *)session {
+
+}
+
+- (void)sendNoteWithDefaultsKey:(NSString *)defaultsKey noteColor:(UIColor *)color {
+
+//    if ([WCSession isSupported] && self.watchSession.paired && self.watchSession.watchAppInstalled) {
+
+        NSString *note = [[NSUserDefaults standardUserDefaults] valueForKey:defaultsKey];
+       // [self.watchSession transferUserInfo:@{@"note":note, @"color":color}];
+
+
+    NSString *colorString = [NSString stringWithFormat:@"#%@",[self hexStringFromColor:color]];
+
+    NSError *error = nil;
+        [self.watchSession updateApplicationContext:@{@"note":note,@"colorcode":colorString} error:&error];
+    NSLog(@"err - %@",error);
+  //  }
+
+
+}
+
+
+- (NSString *)hexStringFromColor:(UIColor *)color
+{
+    const CGFloat *components = CGColorGetComponents(color.CGColor);
+
+    CGFloat r = components[0];
+    CGFloat g = components[1];
+    CGFloat b = components[2];
+
+    return [NSString stringWithFormat:@"%02lX%02lX%02lX",
+            lroundf(r * 255),
+            lroundf(g * 255),
+            lroundf(b * 255)];
+}
+
 - (void)viewDidLoad {
+
+    [self startWCSession];
+
 
     // setup paging scroll
     CGRect scrollFrame;

@@ -54,6 +54,14 @@
 		F169EF431916C4F800B6A8E6 /* currentAppleDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF421916C4F800B6A8E6 /* currentAppleDot@2x.png */; };
 		F169EF451916C51300B6A8E6 /* appleMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF441916C51300B6A8E6 /* appleMask@2x.png */; };
 		F169EF471916C6A700B6A8E6 /* lockMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF461916C6A700B6A8E6 /* lockMask@2x.png */; };
+		F17A720E1BBB486D00E35436 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17A720C1BBB486D00E35436 /* Interface.storyboard */; };
+		F17A72101BBB486D00E35436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17A720F1BBB486D00E35436 /* Assets.xcassets */; };
+		F17A72171BBB486D00E35436 /* Jtd Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F17A72161BBB486D00E35436 /* Jtd Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F17A721F1BBB486D00E35436 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A721E1BBB486D00E35436 /* InterfaceController.m */; };
+		F17A72221BBB486D00E35436 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A72211BBB486D00E35436 /* ExtensionDelegate.m */; };
+		F17A72251BBB486D00E35436 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A72241BBB486D00E35436 /* NotificationController.m */; };
+		F17A72271BBB486D00E35436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17A72261BBB486D00E35436 /* Assets.xcassets */; };
+		F17A722B1BBB486D00E35436 /* Jtd.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F17A720A1BBB486D00E35436 /* Jtd.app */; };
 		F1863DF619AA62A000040F80 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F169EF3E1916C33400B6A8E6 /* SMPageControl.m */; };
 		F1863DF719AA62A000040F80 /* ISKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D01669AAE800935AB8 /* ISKAppDelegate.m */; };
 		F1863DF819AA62A000040F80 /* ISKDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D21669AAE800935AB8 /* ISKDrawingView.m */; };
@@ -159,6 +167,48 @@
 		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F17A72181BBB486D00E35436 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3BA32C515F2691600EF7DA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F17A72151BBB486D00E35436;
+			remoteInfo = "Jtd Extension";
+		};
+		F17A72291BBB486D00E35436 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3BA32C515F2691600EF7DA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F17A72091BBB486D00E35436;
+			remoteInfo = Jtd;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F17A72311BBB486D00E35436 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F17A72171BBB486D00E35436 /* Jtd Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F17A72331BBB486D00E35436 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F17A722B1BBB486D00E35436 /* Jtd.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		844B90C81669AAE800935AB8 /* blackArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrowDown.png; sourceTree = "<group>"; };
 		844B90C91669AAE800935AB8 /* blackArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrowDown@2x.png"; sourceTree = "<group>"; };
@@ -229,6 +279,20 @@
 		F169EF421916C4F800B6A8E6 /* currentAppleDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "currentAppleDot@2x.png"; path = "vendor/SMPageControl/currentAppleDot@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF441916C51300B6A8E6 /* appleMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appleMask@2x.png"; path = "vendor/SMPageControl/appleMask@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF461916C6A700B6A8E6 /* lockMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lockMask@2x.png"; path = "vendor/SMPageControl/lockMask@2x.png"; sourceTree = SOURCE_ROOT; };
+		F17A720A1BBB486D00E35436 /* Jtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17A720D1BBB486D00E35436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F17A720F1BBB486D00E35436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F17A72111BBB486D00E35436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F17A72161BBB486D00E35436 /* Jtd Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Jtd Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17A721C1BBB486D00E35436 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F17A721D1BBB486D00E35436 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		F17A721E1BBB486D00E35436 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		F17A72201BBB486D00E35436 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		F17A72211BBB486D00E35436 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		F17A72231BBB486D00E35436 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		F17A72241BBB486D00E35436 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		F17A72261BBB486D00E35436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F17A72281BBB486D00E35436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1863E4819AA62A000040F80 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1863E4919AA62A000040F80 /* Jotted copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Jotted copy-Info.plist"; path = "/Users/linkov/Documents/sdwr/jotted/Jotted copy-Info.plist"; sourceTree = "<absolute>"; };
 		F1863FBD19ACCD2A00040F80 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -302,6 +366,13 @@
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F17A72131BBB486D00E35436 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +471,8 @@
 				F1A670EC176923DC00665F19 /* Media.xcassets */,
 				F113EC6D167DC41A0077B6D1 /* vendor */,
 				844B90C61669AAE800935AB8 /* Jotted */,
+				F17A720B1BBB486D00E35436 /* Jtd */,
+				F17A721A1BBB486D00E35436 /* Jtd Extension */,
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
 				C3BA32CF15F2691600EF7DA4 /* Products */,
 				F1863E4919AA62A000040F80 /* Jotted copy-Info.plist */,
@@ -411,6 +484,8 @@
 			children = (
 				C3BA32CE15F2691600EF7DA4 /* Jotted.app */,
 				F1863E4819AA62A000040F80 /* Jotted.app */,
+				F17A720A1BBB486D00E35436 /* Jtd.app */,
+				F17A72161BBB486D00E35436 /* Jtd Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -499,6 +574,40 @@
 				F169EF3E1916C33400B6A8E6 /* SMPageControl.m */,
 			);
 			path = SMPageControl;
+			sourceTree = "<group>";
+		};
+		F17A720B1BBB486D00E35436 /* Jtd */ = {
+			isa = PBXGroup;
+			children = (
+				F17A720C1BBB486D00E35436 /* Interface.storyboard */,
+				F17A720F1BBB486D00E35436 /* Assets.xcassets */,
+				F17A72111BBB486D00E35436 /* Info.plist */,
+			);
+			path = Jtd;
+			sourceTree = "<group>";
+		};
+		F17A721A1BBB486D00E35436 /* Jtd Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F17A721D1BBB486D00E35436 /* InterfaceController.h */,
+				F17A721E1BBB486D00E35436 /* InterfaceController.m */,
+				F17A72201BBB486D00E35436 /* ExtensionDelegate.h */,
+				F17A72211BBB486D00E35436 /* ExtensionDelegate.m */,
+				F17A72231BBB486D00E35436 /* NotificationController.h */,
+				F17A72241BBB486D00E35436 /* NotificationController.m */,
+				F17A72261BBB486D00E35436 /* Assets.xcassets */,
+				F17A72281BBB486D00E35436 /* Info.plist */,
+				F17A721B1BBB486D00E35436 /* Supporting Files */,
+			);
+			path = "Jtd Extension";
+			sourceTree = "<group>";
+		};
+		F17A721B1BBB486D00E35436 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F17A721C1BBB486D00E35436 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F19F69E718A0723200D4D291 /* PSPDFTextView */ = {
@@ -602,15 +711,51 @@
 				C3BA32CA15F2691600EF7DA4 /* Sources */,
 				C3BA32CB15F2691600EF7DA4 /* Frameworks */,
 				C3BA32CC15F2691600EF7DA4 /* Resources */,
+				F17A72331BBB486D00E35436 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F17A722A1BBB486D00E35436 /* PBXTargetDependency */,
 			);
 			name = Jotted;
 			productName = IndexStack;
 			productReference = C3BA32CE15F2691600EF7DA4 /* Jotted.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F17A72091BBB486D00E35436 /* Jtd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F17A72321BBB486D00E35436 /* Build configuration list for PBXNativeTarget "Jtd" */;
+			buildPhases = (
+				F17A72081BBB486D00E35436 /* Resources */,
+				F17A72311BBB486D00E35436 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F17A72191BBB486D00E35436 /* PBXTargetDependency */,
+			);
+			name = Jtd;
+			productName = Jtd;
+			productReference = F17A720A1BBB486D00E35436 /* Jtd.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F17A72151BBB486D00E35436 /* Jtd Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F17A72301BBB486D00E35436 /* Build configuration list for PBXNativeTarget "Jtd Extension" */;
+			buildPhases = (
+				F17A72121BBB486D00E35436 /* Sources */,
+				F17A72131BBB486D00E35436 /* Frameworks */,
+				F17A72141BBB486D00E35436 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Jtd Extension";
+			productName = "Jtd Extension";
+			productReference = F17A72161BBB486D00E35436 /* Jtd Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		F1863DF419AA62A000040F80 /* Jotted AppStore */ = {
 			isa = PBXNativeTarget;
@@ -647,6 +792,14 @@
 							};
 						};
 					};
+					F17A72091BBB486D00E35436 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 43R88X5B35;
+					};
+					F17A72151BBB486D00E35436 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 43R88X5B35;
+					};
 					F1863DF419AA62A000040F80 = {
 						DevelopmentTeam = 43R88X5B35;
 					};
@@ -658,6 +811,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C3BA32C315F2691600EF7DA4;
 			productRefGroup = C3BA32CF15F2691600EF7DA4 /* Products */;
@@ -666,6 +820,8 @@
 			targets = (
 				C3BA32CD15F2691600EF7DA4 /* Jotted */,
 				F1863DF419AA62A000040F80 /* Jotted AppStore */,
+				F17A72091BBB486D00E35436 /* Jtd */,
+				F17A72151BBB486D00E35436 /* Jtd Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -701,6 +857,23 @@
 				F169EF471916C6A700B6A8E6 /* lockMask@2x.png in Resources */,
 				F12D8A8F18A5A39B00E04BE7 /* plus2@2x.png in Resources */,
 				F12A1E701979B83100E88484 /* SVProgressHUD.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F17A72081BBB486D00E35436 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F17A72101BBB486D00E35436 /* Assets.xcassets in Resources */,
+				F17A720E1BBB486D00E35436 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F17A72141BBB486D00E35436 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F17A72271BBB486D00E35436 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +960,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F17A72121BBB486D00E35436 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F17A72221BBB486D00E35436 /* ExtensionDelegate.m in Sources */,
+				F17A721F1BBB486D00E35436 /* InterfaceController.m in Sources */,
+				F17A72251BBB486D00E35436 /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1863DF519AA62A000040F80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,6 +1019,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F17A72191BBB486D00E35436 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F17A72151BBB486D00E35436 /* Jtd Extension */;
+			targetProxy = F17A72181BBB486D00E35436 /* PBXContainerItemProxy */;
+		};
+		F17A722A1BBB486D00E35436 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F17A72091BBB486D00E35436 /* Jtd */;
+			targetProxy = F17A72291BBB486D00E35436 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		844B90DA1669AAE800935AB8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -843,6 +1039,14 @@
 				844B90DB1669AAE800935AB8 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F17A720C1BBB486D00E35436 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F17A720D1BBB486D00E35436 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -988,10 +1192,132 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ddb26054-7def-4f50-9582-e08286af050d";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F17A722C1BBB486D00E35436 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = Jtd_Extension;
+				INFOPLIST_FILE = Jtd/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		F17A722D1BBB486D00E35436 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = Jtd_Extension;
+				INFOPLIST_FILE = Jtd/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		F17A722E1BBB486D00E35436 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Jtd Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		F17A722F1BBB486D00E35436 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Jtd Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -1094,6 +1420,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F17A72301BBB486D00E35436 /* Build configuration list for PBXNativeTarget "Jtd Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F17A722E1BBB486D00E35436 /* Debug */,
+				F17A722F1BBB486D00E35436 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F17A72321BBB486D00E35436 /* Build configuration list for PBXNativeTarget "Jtd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F17A722C1BBB486D00E35436 /* Debug */,
+				F17A722D1BBB486D00E35436 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		F1863E4519AA62A000040F80 /* Build configuration list for PBXNativeTarget "Jotted AppStore" */ = {
 			isa = XCConfigurationList;
