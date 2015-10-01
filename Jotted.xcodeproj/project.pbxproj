@@ -1167,7 +1167,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1192,7 +1192,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3cea7042-17a5-4a7e-8798-02967a390030";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1428,6 +1428,7 @@
 				F17A722F1BBB486D00E35436 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F17A72321BBB486D00E35436 /* Build configuration list for PBXNativeTarget "Jtd" */ = {
 			isa = XCConfigurationList;
@@ -1436,6 +1437,7 @@
 				F17A722D1BBB486D00E35436 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1863E4519AA62A000040F80 /* Build configuration list for PBXNativeTarget "Jotted AppStore" */ = {
 			isa = XCConfigurationList;

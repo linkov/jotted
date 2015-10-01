@@ -24,12 +24,6 @@
     self.session = [WCSession defaultSession];
     self.session.delegate = self;
     [self.session activateSession];
-
-
-
-//    [self.backgroupGroup setBackgroundColor:[UIColor blackColor]];
-//    [self.mainTextLabel setTextColor:[UIColor whiteColor]];
-//    [self.mainTextLabel setText:@"Edit a note in Jotted for iOS and you will see it here"];
 }
 
 - (void)willActivate {
@@ -54,18 +48,6 @@
     });
 
 }
-
-//- (void)session:(WCSession *)session didReceiveUserInfo:(nonnull NSDictionary<NSString *,id> *)userInfo {
-//
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//
-//        [self.mainTextLabel setTextColor:[UIColor blackColor]];
-//        [self.mainTextLabel setText:userInfo[@"note"] ];
-//        [self.backgroupGroup setBackgroundColor:userInfo[@"color"]];
-//    });
-//
-//
-//}
 
 + (UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
