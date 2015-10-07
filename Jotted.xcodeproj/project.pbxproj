@@ -56,12 +56,12 @@
 		F169EF471916C6A700B6A8E6 /* lockMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF461916C6A700B6A8E6 /* lockMask@2x.png */; };
 		F17A720E1BBB486D00E35436 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17A720C1BBB486D00E35436 /* Interface.storyboard */; };
 		F17A72101BBB486D00E35436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17A720F1BBB486D00E35436 /* Assets.xcassets */; };
-		F17A72171BBB486D00E35436 /* Jtd Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F17A72161BBB486D00E35436 /* Jtd Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F17A72171BBB486D00E35436 /* Jotted.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F17A72161BBB486D00E35436 /* Jotted.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F17A721F1BBB486D00E35436 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A721E1BBB486D00E35436 /* InterfaceController.m */; };
 		F17A72221BBB486D00E35436 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A72211BBB486D00E35436 /* ExtensionDelegate.m */; };
 		F17A72251BBB486D00E35436 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A72241BBB486D00E35436 /* NotificationController.m */; };
 		F17A72271BBB486D00E35436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17A72261BBB486D00E35436 /* Assets.xcassets */; };
-		F17A722B1BBB486D00E35436 /* Jtd.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F17A720A1BBB486D00E35436 /* Jtd.app */; };
+		F17A722B1BBB486D00E35436 /* Jotted.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F17A720A1BBB486D00E35436 /* Jotted.app */; };
 		F1863DF619AA62A000040F80 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F169EF3E1916C33400B6A8E6 /* SMPageControl.m */; };
 		F1863DF719AA62A000040F80 /* ISKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D01669AAE800935AB8 /* ISKAppDelegate.m */; };
 		F1863DF819AA62A000040F80 /* ISKDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D21669AAE800935AB8 /* ISKDrawingView.m */; };
@@ -191,7 +191,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F17A72171BBB486D00E35436 /* Jtd Extension.appex in Embed App Extensions */,
+				F17A72171BBB486D00E35436 /* Jotted.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +202,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				F17A722B1BBB486D00E35436 /* Jtd.app in Embed Watch Content */,
+				F17A722B1BBB486D00E35436 /* Jotted.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,11 +279,11 @@
 		F169EF421916C4F800B6A8E6 /* currentAppleDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "currentAppleDot@2x.png"; path = "vendor/SMPageControl/currentAppleDot@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF441916C51300B6A8E6 /* appleMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "appleMask@2x.png"; path = "vendor/SMPageControl/appleMask@2x.png"; sourceTree = SOURCE_ROOT; };
 		F169EF461916C6A700B6A8E6 /* lockMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lockMask@2x.png"; path = "vendor/SMPageControl/lockMask@2x.png"; sourceTree = SOURCE_ROOT; };
-		F17A720A1BBB486D00E35436 /* Jtd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jtd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17A720A1BBB486D00E35436 /* Jotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17A720D1BBB486D00E35436 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F17A720F1BBB486D00E35436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F17A72111BBB486D00E35436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F17A72161BBB486D00E35436 /* Jtd Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Jtd Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17A72161BBB486D00E35436 /* Jotted.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Jotted.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17A721C1BBB486D00E35436 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		F17A721D1BBB486D00E35436 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
 		F17A721E1BBB486D00E35436 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
@@ -484,8 +484,8 @@
 			children = (
 				C3BA32CE15F2691600EF7DA4 /* Jotted.app */,
 				F1863E4819AA62A000040F80 /* Jotted.app */,
-				F17A720A1BBB486D00E35436 /* Jtd.app */,
-				F17A72161BBB486D00E35436 /* Jtd Extension.appex */,
+				F17A720A1BBB486D00E35436 /* Jotted.app */,
+				F17A72161BBB486D00E35436 /* Jotted.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -737,7 +737,7 @@
 			);
 			name = Jtd;
 			productName = Jtd;
-			productReference = F17A720A1BBB486D00E35436 /* Jtd.app */;
+			productReference = F17A720A1BBB486D00E35436 /* Jotted.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		F17A72151BBB486D00E35436 /* Jtd Extension */ = {
@@ -754,7 +754,7 @@
 			);
 			name = "Jtd Extension";
 			productName = "Jtd Extension";
-			productReference = F17A72161BBB486D00E35436 /* Jtd Extension.appex */;
+			productReference = F17A72161BBB486D00E35436 /* Jotted.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		F1863DF419AA62A000040F80 /* Jotted AppStore */ = {
@@ -1101,7 +1101,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1114,7 +1114,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1152,7 +1152,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1167,7 +1167,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1192,7 +1192,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3cea7042-17a5-4a7e-8798-02967a390030";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1209,8 +1209,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1221,7 +1221,9 @@
 				INFOPLIST_FILE = Jtd/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jotted;
+				PROVISIONING_PROFILE = "be668393-5377-4082-afdc-aaaf167d0a7f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1239,8 +1241,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1252,7 +1254,9 @@
 				INFOPLIST_FILE = Jtd/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jotted;
+				PROVISIONING_PROFILE = "be668393-5377-4082-afdc-aaaf167d0a7f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1269,8 +1273,9 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1281,8 +1286,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = Jotted;
+				PROVISIONING_PROFILE = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1299,8 +1304,9 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1312,8 +1318,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SDWR.Jotted.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = Jotted;
+				PROVISIONING_PROFILE = "be668393-5377-4082-afdc-aaaf167d0a7f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1368,7 +1375,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexey Linkov (43R88X5B35)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1393,7 +1400,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ddb26054-7def-4f50-9582-e08286af050d";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

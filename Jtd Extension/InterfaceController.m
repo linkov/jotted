@@ -24,6 +24,7 @@
     self.session = [WCSession defaultSession];
     self.session.delegate = self;
     [self.session activateSession];
+    [self.backgroupGroup setRelativeHeight:1.0 withAdjustment:0.2];
 }
 
 - (void)willActivate {
