@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000EA3BE676241439DA311C04F6A21C3 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 75866692524D3578DF9FD8662A70D02F /* IAPHelper.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		12BF1BDE302C600FA6BA7FDC9CE3F457 /* NSString+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A8407D86B798DA215D41BB0CA56E6306 /* NSString+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1886B05BE207A716576E13B37DA9ADE2 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE9A736E6B343558DDCBDB046E6EE5A /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32CA3904B82DF567762A300A96219DE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABFC8CBE03606487D162D85B742F947 /* Foundation.framework */; };
+		424324489463298F93CCD83A08730812 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 74BE7BE854231A7F8BA70F4351C94270 /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45B71456F4048D06AC90211D7EC3EEDB /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E045ECF36F9E47BBCD16ED676A25E1 /* SVProgressHUD.m */; };
+		577256ABC017FE959D49D01B672FCB4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABFC8CBE03606487D162D85B742F947 /* Foundation.framework */; };
+		5842C68B418C5C330FA1D63758D6A076 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6028A217A89578BA789CCFCBFE4DC20 /* SVIndefiniteAnimatedView.m */; };
+		7E9868B8A9F41DAA05CA09C0C7D0B127 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3586FA4078B02553614C29910B827F /* SVProgressHUD-dummy.m */; };
+		92050525AE85C99AABD8D0488285B410 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */; };
+		9B29E5295AFC7D41A1B12AFC53F932D3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A8AEA63E7C075943B2212EC8BC4E7 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9B362F0B990F73CCDFAF49C548D80D61 /* SFHFKeychainUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC7C7C14A864594F806361742A2F6F1 /* SFHFKeychainUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B25462D0436803086E5F2E59238DC827 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABFC8CBE03606487D162D85B742F947 /* Foundation.framework */; };
+		C2A93071E81156C0311636015501EEB2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D61047896D54DE761A566BD4C557ACC /* StoreKit.framework */; };
+		C4939C154CDF95F0F0F6D8060CFFC2CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF07DE81A41EAEC8E08A4373C734D143 /* QuartzCore.framework */; };
+		C8F71E01C206ABD50C84C2467D07E3A4 /* IAPHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 709E6561BFB436CEA4EE1D9612701B05 /* IAPHelper-dummy.m */; };
+		CCDDFE64C215A845BE67C2E001B922F5 /* IAPShare.m in Sources */ = {isa = PBXBuildFile; fileRef = A179DB5EA5D961F722DF1148BD9598EF /* IAPShare.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D88CC4C4AFE7CC9F84739F5A5C324E50 /* IAPHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 88E137E47A07C9578BDD651935770972 /* IAPHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9D4DCC56DA9073624142E0690A1F562 /* IAPShare.h in Headers */ = {isa = PBXBuildFile; fileRef = 86AFB614144FCFAF64C928E6C4FA030D /* IAPShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DEA5CC4063E654BC31BEE326AE37C9AA /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 15DBEDB59E3610FBCF13A8B2BD9580BE /* NSString+Base64.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C3F6C3B00B28079292B431D91C6BFCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05FBE5985053C36D9629C5D274D41C7F;
+			remoteInfo = IAPHelper;
+		};
+		FC85E023DA2F84BA3FA5BB3CBD7C21EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 619A7ACDC04DF9ABCDEA228C4DDE0E25;
+			remoteInfo = SVProgressHUD;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		15DBEDB59E3610FBCF13A8B2BD9580BE /* NSString+Base64.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+Base64.m"; path = "IAPHelper/NSString+Base64.m"; sourceTree = "<group>"; };
+		1CC7C7C14A864594F806361742A2F6F1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = IAPHelper/SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		23F3155B39F84D1ED8E200DE70333ED1 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
+		24E045ECF36F9E47BBCD16ED676A25E1 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		281A8AEA63E7C075943B2212EC8BC4E7 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = IAPHelper/SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3D61047896D54DE761A566BD4C557ACC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		3E5A88E6536A7FF7ABA51B8BF7AFA455 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		65C8212C4D959DF1A457E12D381BA5F9 /* IAPHelper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IAPHelper.xcconfig; sourceTree = "<group>"; };
+		68BC3EC4D694331195B803CF43807DB4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		6ABFC8CBE03606487D162D85B742F947 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		709E6561BFB436CEA4EE1D9612701B05 /* IAPHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IAPHelper-dummy.m"; sourceTree = "<group>"; };
+		74BE7BE854231A7F8BA70F4351C94270 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		75866692524D3578DF9FD8662A70D02F /* IAPHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IAPHelper.m; path = IAPHelper/IAPHelper.m; sourceTree = "<group>"; };
+		86AFB614144FCFAF64C928E6C4FA030D /* IAPShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IAPShare.h; path = IAPHelper/IAPShare.h; sourceTree = "<group>"; };
+		88E137E47A07C9578BDD651935770972 /* IAPHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IAPHelper.h; path = IAPHelper/IAPHelper.h; sourceTree = "<group>"; };
+		98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		9E3586FA4078B02553614C29910B827F /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		A179DB5EA5D961F722DF1148BD9598EF /* IAPShare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IAPShare.m; path = IAPHelper/IAPShare.m; sourceTree = "<group>"; };
+		A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		A8407D86B798DA215D41BB0CA56E6306 /* NSString+Base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+Base64.h"; path = "IAPHelper/NSString+Base64.h"; sourceTree = "<group>"; };
+		AA9525F3C2CD467ADBE16F6483993828 /* libIAPHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIAPHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF07DE81A41EAEC8E08A4373C734D143 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		B6028A217A89578BA789CCFCBFE4DC20 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C26B6A870B41DFDEC8D614FBB9B4603C /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9558E192CAF62425E0679EF1650E8B5 /* IAPHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IAPHelper-prefix.pch"; sourceTree = "<group>"; };
+		CC104B7D62BA225FD2867628898FCE5A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		FDE9A736E6B343558DDCBDB046E6EE5A /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01F45E5519DEE0001E946FEADD4DB4A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25462D0436803086E5F2E59238DC827 /* Foundation.framework in Frameworks */,
+				C2A93071E81156C0311636015501EEB2 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F09FEA2802D6F92C38200A10285C0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577256ABC017FE959D49D01B672FCB4D /* Foundation.framework in Frameworks */,
+				C4939C154CDF95F0F0F6D8060CFFC2CA /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2C14876F873EF546E82470D0E3B5E2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32CA3904B82DF567762A300A96219DE2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3D1D13E0C6553800746CB8FD61CF946 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26BCB637F6C612E46B709CD778A56B29 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		26BCB637F6C612E46B709CD778A56B29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6ABFC8CBE03606487D162D85B742F947 /* Foundation.framework */,
+				AF07DE81A41EAEC8E08A4373C734D143 /* QuartzCore.framework */,
+				3D61047896D54DE761A566BD4C557ACC /* StoreKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		276703D825226113CA4893D8DDD8668A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				23F3155B39F84D1ED8E200DE70333ED1 /* SVProgressHUD.xcconfig */,
+				9E3586FA4078B02553614C29910B827F /* SVProgressHUD-dummy.m */,
+				3E5A88E6536A7FF7ABA51B8BF7AFA455 /* SVProgressHUD-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SVProgressHUD";
+			sourceTree = "<group>";
+		};
+		3EC23EB98222214E996AADFC19757841 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				65C8212C4D959DF1A457E12D381BA5F9 /* IAPHelper.xcconfig */,
+				709E6561BFB436CEA4EE1D9612701B05 /* IAPHelper-dummy.m */,
+				C9558E192CAF62425E0679EF1650E8B5 /* IAPHelper-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IAPHelper";
+			sourceTree = "<group>";
+		};
+		3FA83D281082D05F4786A0FC050ABC5F /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FDE9A736E6B343558DDCBDB046E6EE5A /* SVIndefiniteAnimatedView.h */,
+				B6028A217A89578BA789CCFCBFE4DC20 /* SVIndefiniteAnimatedView.m */,
+				74BE7BE854231A7F8BA70F4351C94270 /* SVProgressHUD.h */,
+				24E045ECF36F9E47BBCD16ED676A25E1 /* SVProgressHUD.m */,
+				C578F02F198AF9290989D2BA9016BF9B /* Resources */,
+				276703D825226113CA4893D8DDD8668A /* Support Files */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		4D77E9A608E5BA2D7F4A94E30BA738A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEBEF69838ABC32F09BDE409B66A49AE /* IAPHelper */,
+				3FA83D281082D05F4786A0FC050ABC5F /* SVProgressHUD */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		54D93321A4C5A07E503E549BEEA01B9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA9525F3C2CD467ADBE16F6483993828 /* libIAPHelper.a */,
+				68BC3EC4D694331195B803CF43807DB4 /* libPods.a */,
+				C26B6A870B41DFDEC8D614FBB9B4603C /* libSVProgressHUD.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				4D77E9A608E5BA2D7F4A94E30BA738A5 /* Pods */,
+				54D93321A4C5A07E503E549BEEA01B9B /* Products */,
+				037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		B3D1D13E0C6553800746CB8FD61CF946 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */,
+				10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */,
+				272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */,
+				6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */,
+				A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */,
+				4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */,
+				98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		C578F02F198AF9290989D2BA9016BF9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC104B7D62BA225FD2867628898FCE5A /* SVProgressHUD.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FEBEF69838ABC32F09BDE409B66A49AE /* IAPHelper */ = {
+			isa = PBXGroup;
+			children = (
+				88E137E47A07C9578BDD651935770972 /* IAPHelper.h */,
+				75866692524D3578DF9FD8662A70D02F /* IAPHelper.m */,
+				86AFB614144FCFAF64C928E6C4FA030D /* IAPShare.h */,
+				A179DB5EA5D961F722DF1148BD9598EF /* IAPShare.m */,
+				A8407D86B798DA215D41BB0CA56E6306 /* NSString+Base64.h */,
+				15DBEDB59E3610FBCF13A8B2BD9580BE /* NSString+Base64.m */,
+				1CC7C7C14A864594F806361742A2F6F1 /* SFHFKeychainUtils.h */,
+				281A8AEA63E7C075943B2212EC8BC4E7 /* SFHFKeychainUtils.m */,
+				3EC23EB98222214E996AADFC19757841 /* Support Files */,
+			);
+			path = IAPHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		135341D8FB43CC8A4AB535C06A05AF64 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D88CC4C4AFE7CC9F84739F5A5C324E50 /* IAPHelper.h in Headers */,
+				D9D4DCC56DA9073624142E0690A1F562 /* IAPShare.h in Headers */,
+				12BF1BDE302C600FA6BA7FDC9CE3F457 /* NSString+Base64.h in Headers */,
+				9B362F0B990F73CCDFAF49C548D80D61 /* SFHFKeychainUtils.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CA4B9F842C9F179D21411F3A679B89 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1886B05BE207A716576E13B37DA9ADE2 /* SVIndefiniteAnimatedView.h in Headers */,
+				424324489463298F93CCD83A08730812 /* SVProgressHUD.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		05FBE5985053C36D9629C5D274D41C7F /* IAPHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 687B211C9C96159977664190006DEC5A /* Build configuration list for PBXNativeTarget "IAPHelper" */;
+			buildPhases = (
+				E1FCE42B6BDE6D8EF74863161BE16639 /* Sources */,
+				01F45E5519DEE0001E946FEADD4DB4A5 /* Frameworks */,
+				135341D8FB43CC8A4AB535C06A05AF64 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IAPHelper;
+			productName = IAPHelper;
+			productReference = AA9525F3C2CD467ADBE16F6483993828 /* libIAPHelper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2FED9EF7DE75EEFF657BFDFE7E82AC8B /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A41D1190675D7DCA8F1D5DFA3998F92A /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				D552379DA229CE78A647647ABB6C1ED9 /* Sources */,
+				A2C14876F873EF546E82470D0E3B5E2D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4077A2FAC2AB4D74D4B0A68F3952322 /* PBXTargetDependency */,
+				1A71A26C1CB75EF773D44C6540CBA27E /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 68BC3EC4D694331195B803CF43807DB4 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		619A7ACDC04DF9ABCDEA228C4DDE0E25 /* SVProgressHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C94CEDC5DD1DF55051823B8AB97A365 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */;
+			buildPhases = (
+				3C53547351C6F0A6BAE3C4473B45F25F /* Sources */,
+				54F09FEA2802D6F92C38200A10285C0F /* Frameworks */,
+				E6CA4B9F842C9F179D21411F3A679B89 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SVProgressHUD;
+			productName = SVProgressHUD;
+			productReference = C26B6A870B41DFDEC8D614FBB9B4603C /* libSVProgressHUD.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 54D93321A4C5A07E503E549BEEA01B9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05FBE5985053C36D9629C5D274D41C7F /* IAPHelper */,
+				2FED9EF7DE75EEFF657BFDFE7E82AC8B /* Pods */,
+				619A7ACDC04DF9ABCDEA228C4DDE0E25 /* SVProgressHUD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C53547351C6F0A6BAE3C4473B45F25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5842C68B418C5C330FA1D63758D6A076 /* SVIndefiniteAnimatedView.m in Sources */,
+				7E9868B8A9F41DAA05CA09C0C7D0B127 /* SVProgressHUD-dummy.m in Sources */,
+				45B71456F4048D06AC90211D7EC3EEDB /* SVProgressHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D552379DA229CE78A647647ABB6C1ED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92050525AE85C99AABD8D0488285B410 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1FCE42B6BDE6D8EF74863161BE16639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8F71E01C206ABD50C84C2467D07E3A4 /* IAPHelper-dummy.m in Sources */,
+				000EA3BE676241439DA311C04F6A21C3 /* IAPHelper.m in Sources */,
+				CCDDFE64C215A845BE67C2E001B922F5 /* IAPShare.m in Sources */,
+				DEA5CC4063E654BC31BEE326AE37C9AA /* NSString+Base64.m in Sources */,
+				9B29E5295AFC7D41A1B12AFC53F932D3 /* SFHFKeychainUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A71A26C1CB75EF773D44C6540CBA27E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVProgressHUD;
+			target = 619A7ACDC04DF9ABCDEA228C4DDE0E25 /* SVProgressHUD */;
+			targetProxy = FC85E023DA2F84BA3FA5BB3CBD7C21EA /* PBXContainerItemProxy */;
+		};
+		E4077A2FAC2AB4D74D4B0A68F3952322 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IAPHelper;
+			target = 05FBE5985053C36D9629C5D274D41C7F /* IAPHelper */;
+			targetProxy = 5C3F6C3B00B28079292B431D91C6BFCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03CA91998D6773EC5D02B3DB87B8353E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		94294A32ADFBEC67725704D82E30F335 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F3155B39F84D1ED8E200DE70333ED1 /* SVProgressHUD.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BCF8ADA9627F41386BD59275354FE9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C5F4FCD0665B9C6D51061CA1F96F7570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C9B9686FE91FF5E10C4D9DAD023E15FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F3155B39F84D1ED8E200DE70333ED1 /* SVProgressHUD.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CD10210DB62B6B4F07E9F96A2FE91A17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C8212C4D959DF1A457E12D381BA5F9 /* IAPHelper.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IAPHelper/IAPHelper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F18DE2C4C0AD06A32461A05942BE8BFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65C8212C4D959DF1A457E12D381BA5F9 /* IAPHelper.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IAPHelper/IAPHelper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C94CEDC5DD1DF55051823B8AB97A365 /* Build configuration list for PBXNativeTarget "SVProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94294A32ADFBEC67725704D82E30F335 /* Debug */,
+				C9B9686FE91FF5E10C4D9DAD023E15FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */,
+				03CA91998D6773EC5D02B3DB87B8353E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		687B211C9C96159977664190006DEC5A /* Build configuration list for PBXNativeTarget "IAPHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD10210DB62B6B4F07E9F96A2FE91A17 /* Debug */,
+				F18DE2C4C0AD06A32461A05942BE8BFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A41D1190675D7DCA8F1D5DFA3998F92A /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5F4FCD0665B9C6D51061CA1F96F7570 /* Debug */,
+				BCF8ADA9627F41386BD59275354FE9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

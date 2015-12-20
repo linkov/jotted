@@ -9,6 +9,8 @@
 #import "ISKStacksViewController.h"
 #import "ISKStackIAPHelper.h"
 #import "PDKeychainBindings.h"
+#import "IAPHelper.h"
+
 @import WatchConnectivity;
 
 static const NSUInteger kInitialAvailableNoteTag = 72;
@@ -168,9 +170,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     [self updatePageControl];
     [self loadProducts];
 
-
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-
     [self.activeStack loadActiveView];
     [self.activeStack enableTextView];
 
@@ -203,15 +202,14 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
 -(void)beginIAP {
     
     [SVProgressHUD show];
-    [[ISKStackIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
+    [[ISKStackIAPHelper sharedInstance] requestProductsWithCompletion:^(SKProductsRequest* request , SKProductsResponse* response) {
+
             [SVProgressHUD dismiss];
-            [[ISKStackIAPHelper sharedInstance] buyProduct:[products lastObject]];
+            [[ISKStackIAPHelper sharedInstance] buyProduct:[response.products lastObject] onCompletion:^(SKPaymentTransaction *transcation) {
+
+                [self addPayedStack];
+            }];
             
-        }else {
-            
-            [SVProgressHUD showErrorWithStatus:@"App Store is not available. Please try again in a minute"];
-        }
     }];
 
 
@@ -383,13 +381,6 @@ static const NSUInteger kInitialAvailableNoteTag = 72;
     self.pageControl.currentPage = page;
 
 }
-
-
-- (void)productPurchased:(NSNotification *)notification {
-    
-    [self addPayedStack];
-}
-
 
 -(void)dealloc {
      [[NSNotificationCenter defaultCenter] removeObserver:self];

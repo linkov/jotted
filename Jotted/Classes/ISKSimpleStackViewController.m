@@ -17,8 +17,6 @@
 #import "ISKGravityCollisionBehavior.h"
 #import "PSPDFTextView.h"
 #import "ISKDrawingView.h"
-#import "LMAlertView.h"
-#import "EDStarRating.h"
 
 static const NSUInteger ktextViewSideOffset = 10;
 static const NSUInteger ktextViewTopOffset = 55;
@@ -26,7 +24,7 @@ static const NSUInteger ktextViewBottomOffset = 74;
 static const NSUInteger kTextViewKeyboardOffset = 142;
 static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 
-@interface ISKSimpleStackViewController () <EDStarRatingProtocol> {
+@interface ISKSimpleStackViewController () {
 
 	//UIScrollView *pagingScrollView;
 	//StyledPageControl* pageControl;
@@ -71,8 +69,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 @property (strong) UITapGestureRecognizer *switchViewGR;
 @property (strong) UITapGestureRecognizer *switchViewGR2;
 
-@property (strong) LMAlertView *ratingAlertView;
-@property (strong) EDStarRating *starRating;
 
 - (void)toggleArrows:(UIScrollView *)scroll;
 - (void)finishEdit;
@@ -412,37 +408,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all text?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
 		alert.tag = 11;
 		[alert show];
-	}
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-	if (alertView.tag == 11) {
-
-		if (buttonIndex != 0) {
-			[self updateTextViewText:@""];
-			[[NSUserDefaults standardUserDefaults] setValue:[self.noteText.attributedText string] forKey:[NSString stringWithFormat:@"textNote_%i", activeView]];
-			[[NSUserDefaults standardUserDefaults] synchronize];
-
-			[self toggleArrows:self.noteText];
-		}
-	} else {
-
-
-		if (buttonIndex == 1) {
-
-
-			if (self.starRating.rating > 3) {
-				[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DidPushRateLaterKey"];
-				[self openRating];
-			} else {
-				[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"DidPushRateLaterKey"];
-				[self openEmail];
-			}
-		} else {
-			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"DidPushRateLaterKey"];
-			[[NSUserDefaults standardUserDefaults] setObject:[NSDate date]  forKey:@"WSCRidersTimeOfLastRateAlertKey"];
-		}
 	}
 }
 
@@ -1032,12 +997,6 @@ static const NSUInteger kTextViewKeyboardOffsetActivateHeight = 250;
 }
 
 
-#pragma mark EDStarRatingProtocol delegate methods
-
-- (void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating {
-	LMModalItemTableViewCell *submitCell = [self.ratingAlertView buttonCellForIndex:self.ratingAlertView.firstOtherButtonIndex];
-	submitCell.isEnabled = (rating > 0);
-}
 
 - (void)openEmail {
 	NSString *mailtoPrefix = [@"mailto:a.linkov@me.com?subject=Jotted - Feedback" stringByAddingPercentEscapesUsingEncoding : NSUTF8StringEncoding];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D434008FBCA526413C51D73 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DAB4649B3DD8BC5FECC121 /* libPods.a */; };
 		844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90C81669AAE800935AB8 /* blackArrowDown.png */; };
 		844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90C91669AAE800935AB8 /* blackArrowDown@2x.png */; };
 		844B90E11669AAE800935AB8 /* blackArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90CA1669AAE800935AB8 /* blackArrowUp.png */; };
@@ -34,11 +35,8 @@
 		C3CCE24517E0F5D4005C21E2 /* danielbd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24217E0F5D4005C21E2 /* danielbd.ttf */; };
 		C3CCE24617E0F5D4005C21E2 /* danielbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24317E0F5D4005C21E2 /* danielbk.ttf */; };
 		C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */; };
-		C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; };
 		F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
 		F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
-		F12A1E701979B83100E88484 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */; };
-		F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */; };
 		F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8118A58EE900E04BE7 /* ISKStackIAPHelper.m */; };
 		F12D8A8418A5910400E04BE7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A8318A5910400E04BE7 /* StoreKit.framework */; };
 		F12D8A8A18A59A5C00E04BE7 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8718A59A5C00E04BE7 /* PDKeychainBindings.m */; };
@@ -68,40 +66,18 @@
 		F1863DF919AA62A000040F80 /* UIView+XYWHChange.m in Sources */ = {isa = PBXBuildFile; fileRef = C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */; };
 		F1863DFA19AA62A000040F80 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8918A59A5C00E04BE7 /* PDKeychainBindingsController.m */; };
 		F1863DFB19AA62A000040F80 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
-		F1863DFC19AA62A000040F80 /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EB197AD7B400BEE6AA /* RBBCubicBezier.m */; };
 		F1863DFD19AA62A000040F80 /* ISKFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D41669AAE800935AB8 /* ISKFlipsideViewController.m */; };
-		F1863DFE19AA62A000040F80 /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D5197AD7B400BEE6AA /* LMEmbeddedViewController.m */; };
-		F1863DFF19AA62A000040F80 /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D7197AD7B400BEE6AA /* LMModalItemTableViewCell.m */; };
 		F1863E0019AA62A000040F80 /* ISKRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D71669AAE800935AB8 /* ISKRootView.m */; };
 		F1863E0119AA62A000040F80 /* ISKStackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A17F7F17DF81A0009AAC5D /* ISKStackVC.m */; };
-		F1863E0219AA62A000040F80 /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DB197AD7B400BEE6AA /* LMNavigationBar.m */; };
-		F1863E0319AA62A000040F80 /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EF197AD7B400BEE6AA /* RBBEasingFunction.m */; };
 		F1863E0419AA62A000040F80 /* PSPDFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F69E918A0723200D4D291 /* PSPDFTextView.m */; };
-		F1863E0519AA62A000040F80 /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D9197AD7B400BEE6AA /* LMModalSegue.m */; };
-		F1863E0619AA62A000040F80 /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F5197AD7B400BEE6AA /* RBBTweenAnimation.m */; };
 		F1863E0719AA62A000040F80 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8718A59A5C00E04BE7 /* PDKeychainBindings.m */; };
-		F1863E0819AA62A000040F80 /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F1197AD7B400BEE6AA /* RBBLinearInterpolation.m */; };
 		F1863E0919AA62A000040F80 /* ISKSimpleStackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90D91669AAE800935AB8 /* ISKSimpleStackViewController.m */; };
-		F1863E0A19AA62A000040F80 /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */; };
 		F1863E0B19AA62A000040F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844B90DE1669AAE800935AB8 /* main.m */; };
-		F1863E0C19AA62A000040F80 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4A96817E353270001CC6B /* SVProgressHUD.m */; };
 		F1863E0D19AA62A000040F80 /* ISKStackIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A8118A58EE900E04BE7 /* ISKStackIAPHelper.m */; };
-		F1863E0E19AA62A000040F80 /* NSValue+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E3197AD7B400BEE6AA /* NSValue+PlatformIndependence.m */; };
-		F1863E0F19AA62A000040F80 /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F3197AD7B400BEE6AA /* RBBSpringAnimation.m */; };
-		F1863E1019AA62A000040F80 /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */; };
-		F1863E1119AA62A000040F80 /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */; };
 		F1863E1219AA62A000040F80 /* ISKNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D041669BCBB006501CE /* ISKNoteView.m */; };
 		F1863E1319AA62A000040F80 /* ISKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84738D111669CE2C006501CE /* ISKMainViewController.m */; };
-		F1863E1419AA62A000040F80 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 		F1863E1519AA62A000040F80 /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC70167DC41A0077B6D1 /* StyledPageControl.m */; };
-		F1863E1619AA62A000040F80 /* UIColor+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F7197AD7B400BEE6AA /* UIColor+PlatformIndependence.m */; };
-		F1863E1719AA62A000040F80 /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DD197AD7B400BEE6AA /* LMNavigationController.m */; };
-		F1863E1819AA62A000040F80 /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D3197AD7B400BEE6AA /* LMAlertView.m */; };
-		F1863E1919AA62A000040F80 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F12D8A7E18A58E5200E04BE7 /* IAPHelper.m */; };
 		F1863E1A19AA62A000040F80 /* ISKStacksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F113EC74167DD6360077B6D1 /* ISKStacksViewController.m */; };
-		F1863E1B19AA62A000040F80 /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E7197AD7B400BEE6AA /* RBBAnimation.m */; };
-		F1863E1C19AA62A000040F80 /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E9197AD7B400BEE6AA /* RBBBlockBasedArray.m */; };
-		F1863E1D19AA62A000040F80 /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */; };
 		F1863E1F19AA62A000040F80 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8AA018A5C4A400E04BE7 /* Security.framework */; };
 		F1863E2019AA62A000040F80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12D8A9E18A5C49E00E04BE7 /* SystemConfiguration.framework */; };
 		F1863E2219AA62A000040F80 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
@@ -111,7 +87,6 @@
 		F1863E2719AA62A000040F80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D215F2691600EF7DA4 /* UIKit.framework */; };
 		F1863E2819AA62A000040F80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D415F2691600EF7DA4 /* Foundation.framework */; };
 		F1863E2919AA62A000040F80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */; };
-		F1863E2B19AA62A000040F80 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E0197AD7B400BEE6AA /* StarFull@2x.png */; };
 		F1863E2C19AA62A000040F80 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
 		F1863E2D19AA62A000040F80 /* blackArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90C81669AAE800935AB8 /* blackArrowDown.png */; };
 		F1863E2E19AA62A000040F80 /* blackArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90C91669AAE800935AB8 /* blackArrowDown@2x.png */; };
@@ -120,14 +95,11 @@
 		F1863E3119AA62A000040F80 /* blackArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90CA1669AAE800935AB8 /* blackArrowUp.png */; };
 		F1863E3219AA62A000040F80 /* ArchitectsDaughter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE23F17E0F5C9005C21E2 /* ArchitectsDaughter.ttf */; };
 		F1863E3319AA62A000040F80 /* appleDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF401916C48100B6A8E6 /* appleDot@2x.png */; };
-		F1863E3419AA62A000040F80 /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DE197AD7B400BEE6AA /* Radial.png */; };
-		F1863E3519AA62A000040F80 /* RBBAnimation-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E4197AD7B400BEE6AA /* RBBAnimation-Info.plist */; };
 		F1863E3619AA62A000040F80 /* blackArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90CB1669AAE800935AB8 /* blackArrowUp@2x.png */; };
 		F1863E3719AA62A000040F80 /* daniel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24117E0F5D4005C21E2 /* daniel.ttf */; };
 		F1863E3819AA62A000040F80 /* blackPencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90CC1669AAE800935AB8 /* blackPencil.png */; };
 		F1863E3919AA62A000040F80 /* Xiomara-Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CCE24717E0F8AC005C21E2 /* Xiomara-Script.ttf */; };
 		F1863E3A19AA62A000040F80 /* plus3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A9018A5A4C300E04BE7 /* plus3@2x.png */; };
-		F1863E3B19AA62A000040F80 /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DF197AD7B400BEE6AA /* StarEmpty@2x.png */; };
 		F1863E3C19AA62A000040F80 /* blackPencil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844B90CD1669AAE800935AB8 /* blackPencil@2x.png */; };
 		F1863E3D19AA62A000040F80 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F15088FC18A58072005AC150 /* plus@2x.png */; };
 		F1863E3E19AA62A000040F80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844B90DA1669AAE800935AB8 /* InfoPlist.strings */; };
@@ -136,35 +108,10 @@
 		F1863E4119AA62A000040F80 /* plus1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8C18A5A2F400E04BE7 /* plus1@2x.png */; };
 		F1863E4219AA62A000040F80 /* lockMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F169EF461916C6A700B6A8E6 /* lockMask@2x.png */; };
 		F1863E4319AA62A000040F80 /* plus2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F12D8A8E18A5A39B00E04BE7 /* plus2@2x.png */; };
-		F1863E4419AA62A000040F80 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F12A1E6F1979B83100E88484 /* SVProgressHUD.bundle */; };
 		F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = F19B8CF0176BEAD5007C1000 /* ISKGravityCollisionBehavior.m */; };
 		F19F69D918A05D3A00D4D291 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F19F69D818A05D3A00D4D291 /* libz.dylib */; };
 		F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F69E918A0723200D4D291 /* PSPDFTextView.m */; };
 		F1A670ED176923DC00665F19 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A670EC176923DC00665F19 /* Media.xcassets */; };
-		F1A7A3F8197AD7B400BEE6AA /* CAAnimation+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CB197AD7B400BEE6AA /* CAAnimation+Blocks.m */; };
-		F1A7A3F9197AD7B400BEE6AA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3CE197AD7B400BEE6AA /* EDStarRating.m */; };
-		F1A7A3FA197AD7B400BEE6AA /* CALayer+ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D1197AD7B400BEE6AA /* CALayer+ModalAlert.m */; };
-		F1A7A3FB197AD7B400BEE6AA /* LMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D3197AD7B400BEE6AA /* LMAlertView.m */; };
-		F1A7A3FC197AD7B400BEE6AA /* LMEmbeddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D5197AD7B400BEE6AA /* LMEmbeddedViewController.m */; };
-		F1A7A3FD197AD7B400BEE6AA /* LMModalItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D7197AD7B400BEE6AA /* LMModalItemTableViewCell.m */; };
-		F1A7A3FE197AD7B400BEE6AA /* LMModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3D9197AD7B400BEE6AA /* LMModalSegue.m */; };
-		F1A7A3FF197AD7B400BEE6AA /* LMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DB197AD7B400BEE6AA /* LMNavigationBar.m */; };
-		F1A7A400197AD7B400BEE6AA /* LMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3DD197AD7B400BEE6AA /* LMNavigationController.m */; };
-		F1A7A401197AD7B400BEE6AA /* Radial.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DE197AD7B400BEE6AA /* Radial.png */; };
-		F1A7A402197AD7B400BEE6AA /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3DF197AD7B400BEE6AA /* StarEmpty@2x.png */; };
-		F1A7A403197AD7B400BEE6AA /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E0197AD7B400BEE6AA /* StarFull@2x.png */; };
-		F1A7A404197AD7B400BEE6AA /* NSValue+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E3197AD7B400BEE6AA /* NSValue+PlatformIndependence.m */; };
-		F1A7A405197AD7B400BEE6AA /* RBBAnimation-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A7A3E4197AD7B400BEE6AA /* RBBAnimation-Info.plist */; };
-		F1A7A406197AD7B400BEE6AA /* RBBAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E7197AD7B400BEE6AA /* RBBAnimation.m */; };
-		F1A7A407197AD7B400BEE6AA /* RBBBlockBasedArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3E9197AD7B400BEE6AA /* RBBBlockBasedArray.m */; };
-		F1A7A408197AD7B400BEE6AA /* RBBCubicBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EB197AD7B400BEE6AA /* RBBCubicBezier.m */; };
-		F1A7A409197AD7B400BEE6AA /* RBBCustomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3ED197AD7B400BEE6AA /* RBBCustomAnimation.m */; };
-		F1A7A40A197AD7B400BEE6AA /* RBBEasingFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3EF197AD7B400BEE6AA /* RBBEasingFunction.m */; };
-		F1A7A40B197AD7B400BEE6AA /* RBBLinearInterpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F1197AD7B400BEE6AA /* RBBLinearInterpolation.m */; };
-		F1A7A40C197AD7B400BEE6AA /* RBBSpringAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F3197AD7B400BEE6AA /* RBBSpringAnimation.m */; };
-		F1A7A40D197AD7B400BEE6AA /* RBBTweenAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F5197AD7B400BEE6AA /* RBBTweenAnimation.m */; };
-		F1A7A40E197AD7B400BEE6AA /* UIColor+PlatformIndependence.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A7A3F7197AD7B400BEE6AA /* UIColor+PlatformIndependence.m */; };
-		F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = F1AA7396176A5E71004A6787 /* ISKTiltRevealMotionEffect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +157,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		26F3DB8235B8BCC8C03C8A8F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		844B90C81669AAE800935AB8 /* blackArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrowDown.png; sourceTree = "<group>"; };
 		844B90C91669AAE800935AB8 /* blackArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrowDown@2x.png"; sourceTree = "<group>"; };
 		844B90CA1669AAE800935AB8 /* blackArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrowUp.png; sourceTree = "<group>"; };
@@ -236,6 +184,8 @@
 		84738D101669CE2C006501CE /* ISKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKMainViewController.h; sourceTree = "<group>"; };
 		84738D111669CE2C006501CE /* ISKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKMainViewController.m; sourceTree = "<group>"; };
 		84738D141669CE95006501CE /* ISKSimpleStackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKSimpleStackViewController.h; sourceTree = "<group>"; };
+		98DAB4649B3DD8BC5FECC121 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A34EA5F8C463050743DC29E5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C378240317E06B0E00ABB5CE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C378240517E0DBE600ABB5CE /* UIView+XYWHChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XYWHChange.h"; sourceTree = "<group>"; };
 		C378240617E0DBE600ABB5CE /* UIView+XYWHChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XYWHChange.m"; sourceTree = "<group>"; };
@@ -366,6 +316,7 @@
 				C3BA32D315F2691600EF7DA4 /* UIKit.framework in Frameworks */,
 				C3BA32D515F2691600EF7DA4 /* Foundation.framework in Frameworks */,
 				C3BA32D715F2691600EF7DA4 /* CoreGraphics.framework in Frameworks */,
+				0D434008FBCA526413C51D73 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +427,7 @@
 				C3BA32D115F2691600EF7DA4 /* Frameworks */,
 				C3BA32CF15F2691600EF7DA4 /* Products */,
 				F1863E4919AA62A000040F80 /* Jotted copy-Info.plist */,
+				F31A61BF89EED10C593E7FAC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -506,6 +458,7 @@
 				C3BA32D215F2691600EF7DA4 /* UIKit.framework */,
 				C3BA32D415F2691600EF7DA4 /* Foundation.framework */,
 				C3BA32D615F2691600EF7DA4 /* CoreGraphics.framework */,
+				98DAB4649B3DD8BC5FECC121 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -701,6 +654,15 @@
 			path = RBBAnimation;
 			sourceTree = "<group>";
 		};
+		F31A61BF89EED10C593E7FAC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A34EA5F8C463050743DC29E5 /* Pods.debug.xcconfig */,
+				26F3DB8235B8BCC8C03C8A8F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -708,10 +670,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3BA32F215F2691600EF7DA4 /* Build configuration list for PBXNativeTarget "Jotted" */;
 			buildPhases = (
+				6746DFE15B0448D328FBF8B1 /* Check Pods Manifest.lock */,
 				C3BA32CA15F2691600EF7DA4 /* Sources */,
 				C3BA32CB15F2691600EF7DA4 /* Frameworks */,
 				C3BA32CC15F2691600EF7DA4 /* Resources */,
 				F17A72331BBB486D00E35436 /* Embed Watch Content */,
+				61693DE51559F0894BA96527 /* Embed Pods Frameworks */,
+				2EC1115F71CE99FED9EE6096 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -831,7 +796,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A7A403197AD7B400BEE6AA /* StarFull@2x.png in Resources */,
 				F1A670ED176923DC00665F19 /* Media.xcassets in Resources */,
 				844B90DF1669AAE800935AB8 /* blackArrowDown.png in Resources */,
 				844B90E01669AAE800935AB8 /* blackArrowDown@2x.png in Resources */,
@@ -840,14 +804,11 @@
 				844B90E11669AAE800935AB8 /* blackArrowUp.png in Resources */,
 				C3CCE24017E0F5C9005C21E2 /* ArchitectsDaughter.ttf in Resources */,
 				F169EF411916C48100B6A8E6 /* appleDot@2x.png in Resources */,
-				F1A7A401197AD7B400BEE6AA /* Radial.png in Resources */,
-				F1A7A405197AD7B400BEE6AA /* RBBAnimation-Info.plist in Resources */,
 				844B90E21669AAE800935AB8 /* blackArrowUp@2x.png in Resources */,
 				C3CCE24417E0F5D4005C21E2 /* daniel.ttf in Resources */,
 				844B90E31669AAE800935AB8 /* blackPencil.png in Resources */,
 				C3CCE24817E0F8AC005C21E2 /* Xiomara-Script.ttf in Resources */,
 				F12D8A9118A5A4C300E04BE7 /* plus3@2x.png in Resources */,
-				F1A7A402197AD7B400BEE6AA /* StarEmpty@2x.png in Resources */,
 				844B90E41669AAE800935AB8 /* blackPencil@2x.png in Resources */,
 				F15088FD18A58072005AC150 /* plus@2x.png in Resources */,
 				844B90EA1669AAE800935AB8 /* InfoPlist.strings in Resources */,
@@ -856,7 +817,6 @@
 				F12D8A8D18A5A2F400E04BE7 /* plus1@2x.png in Resources */,
 				F169EF471916C6A700B6A8E6 /* lockMask@2x.png in Resources */,
 				F12D8A8F18A5A39B00E04BE7 /* plus2@2x.png in Resources */,
-				F12A1E701979B83100E88484 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,7 +841,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1863E2B19AA62A000040F80 /* StarFull@2x.png in Resources */,
 				F1863E2C19AA62A000040F80 /* Media.xcassets in Resources */,
 				F1863E2D19AA62A000040F80 /* blackArrowDown.png in Resources */,
 				F1863E2E19AA62A000040F80 /* blackArrowDown@2x.png in Resources */,
@@ -890,14 +849,11 @@
 				F1863E3119AA62A000040F80 /* blackArrowUp.png in Resources */,
 				F1863E3219AA62A000040F80 /* ArchitectsDaughter.ttf in Resources */,
 				F1863E3319AA62A000040F80 /* appleDot@2x.png in Resources */,
-				F1863E3419AA62A000040F80 /* Radial.png in Resources */,
-				F1863E3519AA62A000040F80 /* RBBAnimation-Info.plist in Resources */,
 				F1863E3619AA62A000040F80 /* blackArrowUp@2x.png in Resources */,
 				F1863E3719AA62A000040F80 /* daniel.ttf in Resources */,
 				F1863E3819AA62A000040F80 /* blackPencil.png in Resources */,
 				F1863E3919AA62A000040F80 /* Xiomara-Script.ttf in Resources */,
 				F1863E3A19AA62A000040F80 /* plus3@2x.png in Resources */,
-				F1863E3B19AA62A000040F80 /* StarEmpty@2x.png in Resources */,
 				F1863E3C19AA62A000040F80 /* blackPencil@2x.png in Resources */,
 				F1863E3D19AA62A000040F80 /* plus@2x.png in Resources */,
 				F1863E3E19AA62A000040F80 /* InfoPlist.strings in Resources */,
@@ -906,11 +862,58 @@
 				F1863E4119AA62A000040F80 /* plus1@2x.png in Resources */,
 				F1863E4219AA62A000040F80 /* lockMask@2x.png in Resources */,
 				F1863E4319AA62A000040F80 /* plus2@2x.png in Resources */,
-				F1863E4419AA62A000040F80 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EC1115F71CE99FED9EE6096 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61693DE51559F0894BA96527 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6746DFE15B0448D328FBF8B1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C3BA32CA15F2691600EF7DA4 /* Sources */ = {
@@ -923,40 +926,18 @@
 				C378240717E0DBE600ABB5CE /* UIView+XYWHChange.m in Sources */,
 				F12D8A8B18A59A5C00E04BE7 /* PDKeychainBindingsController.m in Sources */,
 				F19B8CF1176BEAD5007C1000 /* ISKGravityCollisionBehavior.m in Sources */,
-				F1A7A408197AD7B400BEE6AA /* RBBCubicBezier.m in Sources */,
 				844B90E71669AAE800935AB8 /* ISKFlipsideViewController.m in Sources */,
-				F1A7A3FC197AD7B400BEE6AA /* LMEmbeddedViewController.m in Sources */,
-				F1A7A3FD197AD7B400BEE6AA /* LMModalItemTableViewCell.m in Sources */,
 				844B90E81669AAE800935AB8 /* ISKRootView.m in Sources */,
 				C3A17F8017DF81A0009AAC5D /* ISKStackVC.m in Sources */,
-				F1A7A3FF197AD7B400BEE6AA /* LMNavigationBar.m in Sources */,
-				F1A7A40A197AD7B400BEE6AA /* RBBEasingFunction.m in Sources */,
 				F19F69EA18A0723200D4D291 /* PSPDFTextView.m in Sources */,
-				F1A7A3FE197AD7B400BEE6AA /* LMModalSegue.m in Sources */,
-				F1A7A40D197AD7B400BEE6AA /* RBBTweenAnimation.m in Sources */,
 				F12D8A8A18A59A5C00E04BE7 /* PDKeychainBindings.m in Sources */,
-				F1A7A40B197AD7B400BEE6AA /* RBBLinearInterpolation.m in Sources */,
 				844B90E91669AAE800935AB8 /* ISKSimpleStackViewController.m in Sources */,
-				F1A7A3F8197AD7B400BEE6AA /* CAAnimation+Blocks.m in Sources */,
 				844B90EC1669AAE800935AB8 /* main.m in Sources */,
-				C3E4A96917E353270001CC6B /* SVProgressHUD.m in Sources */,
 				F12D8A8218A58EE900E04BE7 /* ISKStackIAPHelper.m in Sources */,
-				F1A7A404197AD7B400BEE6AA /* NSValue+PlatformIndependence.m in Sources */,
-				F1A7A40C197AD7B400BEE6AA /* RBBSpringAnimation.m in Sources */,
-				F1A7A3FA197AD7B400BEE6AA /* CALayer+ModalAlert.m in Sources */,
-				F1A7A3F9197AD7B400BEE6AA /* EDStarRating.m in Sources */,
 				84738D051669BCBB006501CE /* ISKNoteView.m in Sources */,
 				84738D121669CE2C006501CE /* ISKMainViewController.m in Sources */,
-				F1AA7397176A5E71004A6787 /* ISKTiltRevealMotionEffect.m in Sources */,
 				F113EC71167DC41A0077B6D1 /* StyledPageControl.m in Sources */,
-				F1A7A40E197AD7B400BEE6AA /* UIColor+PlatformIndependence.m in Sources */,
-				F1A7A400197AD7B400BEE6AA /* LMNavigationController.m in Sources */,
-				F1A7A3FB197AD7B400BEE6AA /* LMAlertView.m in Sources */,
-				F12D8A7F18A58E5200E04BE7 /* IAPHelper.m in Sources */,
 				F113EC75167DD6360077B6D1 /* ISKStacksViewController.m in Sources */,
-				F1A7A406197AD7B400BEE6AA /* RBBAnimation.m in Sources */,
-				F1A7A407197AD7B400BEE6AA /* RBBBlockBasedArray.m in Sources */,
-				F1A7A409197AD7B400BEE6AA /* RBBCustomAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,40 +961,18 @@
 				F1863DF919AA62A000040F80 /* UIView+XYWHChange.m in Sources */,
 				F1863DFA19AA62A000040F80 /* PDKeychainBindingsController.m in Sources */,
 				F1863DFB19AA62A000040F80 /* ISKGravityCollisionBehavior.m in Sources */,
-				F1863DFC19AA62A000040F80 /* RBBCubicBezier.m in Sources */,
 				F1863DFD19AA62A000040F80 /* ISKFlipsideViewController.m in Sources */,
-				F1863DFE19AA62A000040F80 /* LMEmbeddedViewController.m in Sources */,
-				F1863DFF19AA62A000040F80 /* LMModalItemTableViewCell.m in Sources */,
 				F1863E0019AA62A000040F80 /* ISKRootView.m in Sources */,
 				F1863E0119AA62A000040F80 /* ISKStackVC.m in Sources */,
-				F1863E0219AA62A000040F80 /* LMNavigationBar.m in Sources */,
-				F1863E0319AA62A000040F80 /* RBBEasingFunction.m in Sources */,
 				F1863E0419AA62A000040F80 /* PSPDFTextView.m in Sources */,
-				F1863E0519AA62A000040F80 /* LMModalSegue.m in Sources */,
-				F1863E0619AA62A000040F80 /* RBBTweenAnimation.m in Sources */,
 				F1863E0719AA62A000040F80 /* PDKeychainBindings.m in Sources */,
-				F1863E0819AA62A000040F80 /* RBBLinearInterpolation.m in Sources */,
 				F1863E0919AA62A000040F80 /* ISKSimpleStackViewController.m in Sources */,
-				F1863E0A19AA62A000040F80 /* CAAnimation+Blocks.m in Sources */,
 				F1863E0B19AA62A000040F80 /* main.m in Sources */,
-				F1863E0C19AA62A000040F80 /* SVProgressHUD.m in Sources */,
 				F1863E0D19AA62A000040F80 /* ISKStackIAPHelper.m in Sources */,
-				F1863E0E19AA62A000040F80 /* NSValue+PlatformIndependence.m in Sources */,
-				F1863E0F19AA62A000040F80 /* RBBSpringAnimation.m in Sources */,
-				F1863E1019AA62A000040F80 /* CALayer+ModalAlert.m in Sources */,
-				F1863E1119AA62A000040F80 /* EDStarRating.m in Sources */,
 				F1863E1219AA62A000040F80 /* ISKNoteView.m in Sources */,
 				F1863E1319AA62A000040F80 /* ISKMainViewController.m in Sources */,
-				F1863E1419AA62A000040F80 /* ISKTiltRevealMotionEffect.m in Sources */,
 				F1863E1519AA62A000040F80 /* StyledPageControl.m in Sources */,
-				F1863E1619AA62A000040F80 /* UIColor+PlatformIndependence.m in Sources */,
-				F1863E1719AA62A000040F80 /* LMNavigationController.m in Sources */,
-				F1863E1819AA62A000040F80 /* LMAlertView.m in Sources */,
-				F1863E1919AA62A000040F80 /* IAPHelper.m in Sources */,
 				F1863E1A19AA62A000040F80 /* ISKStacksViewController.m in Sources */,
-				F1863E1B19AA62A000040F80 /* RBBAnimation.m in Sources */,
-				F1863E1C19AA62A000040F80 /* RBBBlockBasedArray.m in Sources */,
-				F1863E1D19AA62A000040F80 /* RBBCustomAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,6 +1081,7 @@
 		};
 		C3BA32F315F2691600EF7DA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A34EA5F8C463050743DC29E5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1149,7 +1109,6 @@
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
@@ -1161,6 +1120,7 @@
 		};
 		C3BA32F415F2691600EF7DA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26F3DB8235B8BCC8C03C8A8F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1189,7 +1149,6 @@
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";
@@ -1357,7 +1316,6 @@
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ddb26054-7def-4f50-9582-e08286af050d";
@@ -1397,7 +1355,6 @@
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Jotted;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "be668393-5377-4082-afdc-aaaf167d0a7f";

@@ -1,0 +1,13 @@
+PODS:
+  - IAPHelper (1.0.8.1)
+  - SVProgressHUD (1.1.3)
+
+DEPENDENCIES:
+  - IAPHelper
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  IAPHelper: fbed593436838c3d40753ded319062b68c00cc38
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+
+COCOAPODS: 0.39.0
